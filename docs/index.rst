@@ -12,7 +12,7 @@ Table of Contents
 =================
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 3
 
   specifications.rst
   getting_started.rst
