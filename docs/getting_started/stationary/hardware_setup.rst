@@ -2,14 +2,14 @@
 Stationary ALOHA Hardware Setup
 ===============================
 
-.. attention::
+.. tip::
 
-  Don't tighten bolts all the way until every bolt is partially installed
+  Don't tighten bolts all the way until every bolt is partially installed.
 
 1) Lay Out AA/AB Sub-Assembly on Surface
 ========================================
 
-Use the orientation of T-nuts to determine which side each one goes on
+Use the orientation of T-nuts to determine which side each one goes on.
 
 .. image:: images/001_aaab_prep.jpeg
   :align: center
@@ -36,13 +36,13 @@ AA/AB SUB-ASSEMBLY with BACK 1220 attached.
         :align: center
         :height: 400px
 
-Attach AA/AB SUB-ASSEMBLIES to BACK 1220 BAR with **(4x) M5x10s** bolts at these 20/30 BRACKETS
+Attach AA/AB SUB-ASSEMBLIES to BACK 1220 BAR with **(4x) M5x10s** bolts at these 20/30 BRACKETS.
 
 .. image:: images/005_aaab_front1220.jpeg
   :align: center
   :height: 400px
 
-Upside-Down AA/AB SUB-ASSEMBLY with FRONT 1220 attached
+Upside-Down AA/AB SUB-ASSEMBLY with FRONT 1220 attached.
 
 .. list-table::
   :widths: 50 50
@@ -56,7 +56,7 @@ Upside-Down AA/AB SUB-ASSEMBLY with FRONT 1220 attached
         :align: center
         :height: 400px
 
-Install **(8x) M5x10s** bolts at these CORNER PLATES
+Install **(8x) M5x10s** bolts at these CORNER PLATES.
 
 3) Attach 200 Bars to H Bars and 890 Bar
 ========================================
@@ -73,13 +73,13 @@ Install **(8x) M5x10s** bolts at these CORNER PLATES
         :align: center
         :height: 400px
 
-Use **(12x) M5x10s** bolts to attach (2) 200 P BARS to H BARS
+Use **(12x) M5x10s** bolts to attach (2) 200 P BARS to H BARS.
 
 .. image:: images/010_g_to_890.jpeg
   :align: center
   :height: 400px
 
-Use **(8x) M5x10s** bolts to attach (2) 200 G BARS to 890 BAR
+Use **(8x) M5x10s** bolts to attach (2) 200 G BARS to 890 BAR.
 
 4) Attach 890 Bar on top of the two H Bars
 ==========================================
@@ -88,7 +88,7 @@ Use **(8x) M5x10s** bolts to attach (2) 200 G BARS to 890 BAR
   :align: center
   :height: 400px
 
-Use **(8x) M5x10s** bolts to install 890 BAR to top of H BARS
+Use **(8x) M5x10s** bolts to install 890 BAR to top of H BARS.
 
 5) Attach H Bars to AA/AB Sub-Assembly
 ======================================
@@ -111,7 +111,7 @@ H BARS fully installed onto AA/AB SUB-ASSEMBLY
         :align: center
         :height: 400px
 
-Install **(2x) M5x10s** bolts at these 20/30 BRACKETS to keep H BAR in place
+Install **(2x) M5x10s** bolts at these 20/30 BRACKETS to keep H BAR in place.
 
 6) Attach 305 Bars on back of H Bar and top of AA/AB Sub-Assembly
 =================================================================
@@ -120,7 +120,7 @@ Install **(2x) M5x10s** bolts at these 20/30 BRACKETS to keep H BAR in place
   :align: center
   :height: 400px
 
-Install **(8x) M5x12s** bolts to CORNER BRACKETS to connect H-BAR and AA/AB SUB-ASSEMBLY
+Install **(8x) M5x12s** bolts to CORNER BRACKETS to connect H-BAR and AA/AB SUB-ASSEMBLY.
 
 7) Clamp frame to stationary table
 ==================================
@@ -162,7 +162,7 @@ WidowX Arm placed on right side location
         :align: center
         :height: 400px
 
-Use **(4x) M5x14s** bolts for each ViperX Arm to install into AA/AB SUB-ASSEMBLY
+Use **(4x) M5x14s** bolts for each ViperX Arm to install into AA/AB SUB-ASSEMBLY.
 
 
 10) Install Pulley System
@@ -173,19 +173,19 @@ Use **(4x) M5x14s** bolts for each ViperX Arm to install into AA/AB SUB-ASSEMBLY
   :height: 400px
 
 
-Install AERO-MOTIVE GRAVITY COMPENSATORS to the 200 G BARS
+Install AERO-MOTIVE GRAVITY COMPENSATORS to the 200 G BARS.
 
 .. image:: images/022_carab_hbars.jpeg
   :align: center
   :height: 400px
 
-Install CARABINERS at ROPE GUIDES on both H BARS
+Install CARABINERS at ROPE GUIDES on both H BARS.
 
 .. image:: images/023_carab_wx.jpeg
   :align: center
   :height: 400px
 
-Install CARABINER onto both WidowX Arms
+Install CARABINER onto both WidowX Arms.
 
 
 .. list-table::
@@ -200,7 +200,7 @@ Install CARABINER onto both WidowX Arms
         :align: center
         :height: 400px
 
-Install SPRINGS into both ROPE GUIDES at the front 1220 BAR with a PULLEY at the end
+Install SPRINGS into both ROPE GUIDES at the front 1220 BAR with a PULLEY at the end.
 
 .. list-table::
   :widths: 50 50
@@ -214,7 +214,7 @@ Install SPRINGS into both ROPE GUIDES at the front 1220 BAR with a PULLEY at the
         :align: center
         :height: 400px
 
-Connect 110mm STEEL CABLE from WidowX Arm to top ROPE GUIDE
+Connect 110mm STEEL CABLE from WidowX Arm to top ROPE GUIDE.
 
 
 .. image:: images/028_gcomp_to_wx.jpeg
@@ -223,7 +223,7 @@ Connect 110mm STEEL CABLE from WidowX Arm to top ROPE GUIDE
 
 
 
-Attach cable from GRAVITY COMPENSATORS to WidowX Arm
+Attach cable from GRAVITY COMPENSATORS to WidowX Arm.
 
 11) Add Camera Mounts
 =====================
@@ -233,12 +233,14 @@ Attach cable from GRAVITY COMPENSATORS to WidowX Arm
   :height: 400px
 
 
-Use **(4x) M5x8s** bolts to install camera mount
+Use **(4x) M5x8s** bolts to install camera mount.
 
 .. image:: images/030_cam_2.jpeg
   :align: center
   :height: 400px
 
-Use **(4x) M5x8s** bolts to install camera mount
+Use **(4x) M5x8s** bolts to install camera mount.
 
-If you need any assistance or have questions, please `contact our customer` service.
+If you need any assistance or have questions, please `contact our customer service`_.
+
+.. _`contact our customer service`: https://www.trossenrobotics.com/support
