@@ -2,9 +2,18 @@
 Stationary ALOHA Hardware Setup
 ===============================
 
+If you need any assistance or have questions about this process, please `contact our customer service`_.
+
+.. _`contact our customer service`: https://www.trossenrobotics.com/support
+
 .. tip::
 
-  Don't tighten bolts all the way until every bolt is partially installed.
+  Building tip: Don't tighten bolts all the way until every bolt is partially installed.
+
+Video Overview
+==============
+
+Coming soon!
 
 1) Lay Out AA/AB Sub-Assembly on Surface
 ========================================
@@ -232,7 +241,3 @@ Use **(4x) M5x8s** bolts to install camera mount.
   :height: 400px
 
 Use **(4x) M5x8s** bolts to install camera mount.
-
-If you need any assistance or have questions, please `contact our customer service`_.
-
-.. _`contact our customer service`: https://www.trossenrobotics.com/support
