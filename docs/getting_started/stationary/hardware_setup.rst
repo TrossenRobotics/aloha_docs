@@ -129,7 +129,6 @@ Install **(8x) M5x12s** bolts to CORNER BRACKETS to connect H-BAR and AA/AB SUB-
   :widths: 50 50
   :align: center
 
-
   * - .. image:: images/016_clamp_1.jpeg
         :align: center
         :height: 400px
@@ -164,14 +163,12 @@ WidowX Arm placed on right side location
 
 Use **(4x) M5x14s** bolts for each ViperX Arm to install into AA/AB SUB-ASSEMBLY.
 
-
 10) Install Pulley System
 =========================
 
 .. image:: images/021_gcomp_200g.jpeg
   :align: center
   :height: 400px
-
 
 Install AERO-MOTIVE GRAVITY COMPENSATORS to the 200 G BARS.
 
@@ -186,7 +183,6 @@ Install CARABINERS at ROPE GUIDES on both H BARS.
   :height: 400px
 
 Install CARABINER onto both WidowX Arms.
-
 
 .. list-table::
   :widths: 50 50
@@ -216,12 +212,9 @@ Install SPRINGS into both ROPE GUIDES at the front 1220 BAR with a PULLEY at the
 
 Connect 110mm STEEL CABLE from WidowX Arm to top ROPE GUIDE.
 
-
 .. image:: images/028_gcomp_to_wx.jpeg
   :align: center
   :height: 400px
-
-
 
 Attach cable from GRAVITY COMPENSATORS to WidowX Arm.
 
@@ -231,7 +224,6 @@ Attach cable from GRAVITY COMPENSATORS to WidowX Arm.
 .. image:: images/029_cam_1.jpeg
   :align: center
   :height: 400px
-
 
 Use **(4x) M5x8s** bolts to install camera mount.
 
@@ -244,4 +236,3 @@ Use **(4x) M5x8s** bolts to install camera mount.
 If you need any assistance or have questions, please `contact our customer service`_.
 
 .. _`contact our customer service`: https://www.trossenrobotics.com/support
-
