@@ -73,7 +73,11 @@ ALOHA Software Installation
 
 .. _`link`: https://github.com/Interbotix/interbotix_ros_toolboxes/blob/c187bcea89b60391244bb19943ebd78f770aa975/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py#L81
 
-4.  Build the workspace:
+4.  Change the ``IS_MOBILE`` constant in ``~/interbotix_ws/src/aloha/aloha/constants.py`` to ``False``.
+
+5.  Change the ``is_mobile`` launch argument default value in ``~/interbotix_ws/src/aloha/launch/aloha_bringup.launch.py`` to ``false``.
+
+6.  Build the workspace:
 
   .. code-block:: bash
 
