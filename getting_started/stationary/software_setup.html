@@ -63,7 +63,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../mobile.html">Mobile ALOHA Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../stationary.html">Stationary ALOHA Getting Started</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="hardware_setup.html">Stationary ALOHA Hardware Setup</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Stationary ALOHA Software Setup</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Stationary ALOHA Software Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ros-2-installation">ROS 2 Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interbotix-x-series-arm-control-software-installation">Interbotix X-Series Arm Control Software Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aloha-software-installation">ALOHA Software Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-install-hardware-setup">Post-Install Hardware Setup</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#arm-symlink-setup">Arm Symlink Setup</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#camera-setup">Camera Setup</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -98,6 +108,173 @@
              
   <div class="section" id="stationary-aloha-software-setup">
 <h1>Stationary ALOHA Software Setup<a class="headerlink" href="#stationary-aloha-software-setup" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Interbotix ALOHA Stationary control software is currently supported for <strong>ROS 2 Humble</strong> running on <strong>native Linux Ubuntu 22.04</strong>.</p>
+</div>
+<p>This guide will walk through the process of setting up the Interbotix ALOHA Stationary control software.</p>
+<div class="section" id="ros-2-installation">
+<h2>ROS 2 Installation<a class="headerlink" href="#ros-2-installation" title="Permalink to this headline"></a></h2>
+<p>ROS 2 can be installed in one of two ways:</p>
+<ul class="simple">
+<li>(Preferred) Using the Interbotix X-Series Arm installation script.
+See the next section for details.</li>
+<li>Following the <a class="reference external" href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html" rel="noopener noreferrer" target="_blank">official ROS 2 Humble Ubuntu Debian install guide</a>.</li>
+</ul>
+</div>
+<div class="section" id="interbotix-x-series-arm-control-software-installation">
+<h2>Interbotix X-Series Arm Control Software Installation<a class="headerlink" href="#interbotix-x-series-arm-control-software-installation" title="Permalink to this headline"></a></h2>
+<p>Follow the <a class="reference external" href="https://docs.trossenrobotics.com/interbotix_xsarms_docs/ros_interface/ros2/software_setup.html#amd64-architecture" rel="noopener noreferrer" target="_blank">ROS 2 Standard Software Setup &gt; AMD64 Architecture guide</a>.</p>
+<p>In short, run the following commands on a machine running Linux Ubuntu 22.04:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl
+$<span class="w"> </span>curl<span class="w"> </span><span class="s1">&#39;https://raw.githubusercontent.com/Interbotix/interbotix_ros_manipulators/main/interbotix_ros_xsarms/install/amd64/xsarm_amd64_install.sh&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>xsarm_amd64_install.sh
+$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>xsarm_amd64_install.sh
+$<span class="w"> </span>./xsarm_amd64_install.sh<span class="w"> </span>-d<span class="w"> </span>humble<span class="w"> </span>-n
+</pre></div>
+</div>
+</div></blockquote>
+<p>The installation script does the following:</p>
+<ol class="arabic simple">
+<li>Installs ROS 2 Humble (if not already installed).</li>
+<li>Creates the following directory structure:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/interbotix_ws
+  └── src
+      ├── interbotix_ros_core
+      ├── interbotix_ros_manipulators
+      └── interbotix_ros_toolboxes
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Installs dependencies.</li>
+<li>Builds the control software and other related tools.</li>
+<li>Configures the ROS 2 environment.</li>
+</ol>
+</div>
+<div class="section" id="aloha-software-installation">
+<h2>ALOHA Software Installation<a class="headerlink" href="#aloha-software-installation" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li>Clone the Interbotix fork of ALOHA into the workspace’s source directory:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws/src
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Interbotix/aloha.git
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Run rosdep to install any dependencies:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws
+$<span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Set the <code class="docutils literal notranslate"><span class="pre">InterbotixManipulatorXS</span></code>’s <code class="docutils literal notranslate"><span class="pre">iterative_update_fk</span></code> constructor arg to <code class="docutils literal notranslate"><span class="pre">False</span></code> at <code class="docutils literal notranslate"><span class="pre">~/interbotix_ws/src/interbotix_ros_toolboxes/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py</span></code> (<a class="reference external" href="https://github.com/Interbotix/interbotix_ros_toolboxes/blob/c187bcea89b60391244bb19943ebd78f770aa975/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py#L81" rel="noopener noreferrer" target="_blank">link</a>).</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Build the workspace:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws
+$<span class="w"> </span>colcon<span class="w"> </span>build
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If planning to change the control software later on, you may want to do a symbolically-linked build.
+If that is the case, remove the build and install directories, and re-run <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> with the <code class="docutils literal notranslate"><span class="pre">--symlink-install</span></code> flag.</p>
+</div>
+</div>
+<div class="section" id="post-install-hardware-setup">
+<h2>Post-Install Hardware Setup<a class="headerlink" href="#post-install-hardware-setup" title="Permalink to this headline"></a></h2>
+<p>The arm and cameras need to be bound to a unique device.
+The following sections will provide steps on setting up unique symbolic links for each device.</p>
+<div class="section" id="arm-symlink-setup">
+<h3>Arm Symlink Setup<a class="headerlink" href="#arm-symlink-setup" title="Permalink to this headline"></a></h3>
+<p>We will configure udev rules for the arms such that they are bound to the following device names:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ttyDXL_leader_left</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ttyDXL_leader_right</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ttyDXL_follower_left</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ttyDXL_follower_right</span></code></li>
+</ul>
+<p>To set these up, do the following:</p>
+<ol class="arabic simple">
+<li>Plug in only the leader left robot to the computer.</li>
+<li>Determine its device name.
+This is likely something like <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code>.</li>
+<li>Print out the device serial number by running the following command:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>udevadm<span class="w"> </span>info<span class="w"> </span>--name<span class="o">=</span>/dev/ttyUSB0<span class="w"> </span>--attribute-walk<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ATTRS<span class="o">{</span>serial<span class="o">}</span>
+ATTRS<span class="o">{</span>serial<span class="o">}==</span><span class="s2">&quot;FT88YWBJ&quot;</span>
+ATTRS<span class="o">{</span>serial<span class="o">}==</span><span class="s2">&quot;0000:00:14.0&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>The serial attribute that looks like <code class="docutils literal notranslate"><span class="pre">&quot;FT88YWBJ&quot;</span></code> is the serial number of the arm’s U2D2 serial converter.</li>
+<li>Add the following line to the computer’s fixed Interbotix udev rules at <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/99-fixed-interbotix-udev.rules</span></code>:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;tty&quot;</span>,<span class="w"> </span>ATTRS<span class="o">{</span>serial<span class="o">}==</span><span class="s2">&quot;&lt;SERIAL NUMBER&gt;&quot;</span>,<span class="w"> </span>ENV<span class="o">{</span>ID_MM_DEVICE_IGNORE<span class="o">}=</span><span class="s2">&quot;1&quot;</span>,<span class="w"> </span>ATTR<span class="o">{</span>device/latency_timer<span class="o">}=</span><span class="s2">&quot;1&quot;</span>,<span class="w"> </span><span class="nv">SYMLINK</span><span class="o">+=</span><span class="s2">&quot;ttyDXL_leader_left&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Repeat for the rest of the arms.</li>
+<li>To update and refresh the rules, run the following command:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>udevadm<span class="w"> </span>control<span class="w"> </span>--reload<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>udevadm<span class="w"> </span>trigger
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>Plug all arms back into the computer and verify that you can see all devices:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>/dev<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ttyDXL_
+ttyDXL_leader_left
+ttyDXL_leader_right
+ttyDXL_follower_left
+ttyDXL_follower_right
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="camera-setup">
+<h3>Camera Setup<a class="headerlink" href="#camera-setup" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li>Open realsense-viewer</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ realsense-viewer
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Plug in a single camera and check the sidebar for its entry.
+If it does not show up in the side bar, click <strong>Add Source</strong> and find the Intel RealSense D405 in the drop down.</li>
+<li>Click on Info for the camera, find the Serial Number, and copy it.</li>
+</ol>
+<blockquote>
+<div><img alt="getting_started/stationary/images/rsviewer_serialno.png" class="align-center" src="getting_started/stationary/images/rsviewer_serialno.png" />
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Put the camera serial number in the appropriate config entry at <code class="docutils literal notranslate"><span class="pre">~/interbotix_ws/src/aloha/config/rs_cam.yaml</span></code>.</li>
+<li>Repeat for the rest of the cameras.
+If the workspace has not been symbolically-linked, a rebuild may be necessary.</li>
+</ol>
+</div>
+</div>
 </div>
 
 
