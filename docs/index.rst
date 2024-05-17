@@ -2,6 +2,10 @@
 ALOHA
 =====
 
+.. image:: images/header.png
+  :align: center
+  :width: 100%
+
 What's Here
 ===========
 
