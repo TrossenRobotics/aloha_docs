@@ -57,6 +57,11 @@ The installation script does the following:
 4.  Builds the control software and other related tools.
 5.  Configures the ROS 2 environment.
 
+.. tip::
+
+  After running the install script, remove all added lines beneath the ``# Interbotix Configurations`` header in the ``~/.bashrc`` file.
+  Doing so will make environment configuration easier later on.
+
 ALOHA Software Installation
 ===========================
 
@@ -180,3 +185,40 @@ Camera Setup
 
 5.  Repeat for the rest of the cameras.
     If the workspace has not been symbolically-linked, a rebuild may be necessary.
+
+Post-Install Software Tips
+==========================
+
+Disable wandb
+-------------
+
+It may be helpful to disable wandb while getting started.
+To do so, run the command below.
+Note that this line is added by default to the laptops distributed by Trossen Robotics.
+
+.. code-block:: bash
+
+  $ echo "WANDB_MODE=disabled" >> ~/.bashrc
+
+Alias Setup
+-----------
+
+It may be helpful to create bash aliases to make environment configuration easier.
+
+Create a ~/.bash_aliases file:
+
+.. code-block:: bash
+
+  $ touch ~/.bash_aliases
+
+To create an alias that can be used to set up the ROS 2 environment, add the following line to the ``~/.bash_aliases`` file:
+
+.. code-block:: bash
+
+  alias setup_aloha="source /opt/ros/humble/setup.bash && source ~/interbotix_ws/install/setup.bash"
+
+Assuming that dependencies of ACT were installed using a venv, to create an alias that can be used to set up the ROS 2 and ACT environments, add the following line to the ``~/.bash_aliases`` file:
+
+.. code-block:: bash
+
+  alias setup_act="setup_aloha && source ~/act/bin/activate"
