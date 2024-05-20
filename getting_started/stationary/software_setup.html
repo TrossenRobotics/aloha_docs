@@ -73,6 +73,11 @@
 <li class="toctree-l5"><a class="reference internal" href="#camera-setup">Camera Setup</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#post-install-software-tips">Post-Install Software Tips</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#disable-wandb">Disable wandb</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#alias-setup">Alias Setup</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -111,14 +116,19 @@
 <h1>Stationary ALOHA Software Setup<a class="headerlink" href="#stationary-aloha-software-setup" title="Permalink to this headline"></a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The Interbotix ALOHA Stationary control software is currently supported for <strong>ROS 2 Humble</strong> running on <strong>native Linux Ubuntu 22.04</strong>.</p>
+<p class="last">The Interbotix ALOHA Stationary control software is supported for <strong>ROS 2 Humble</strong> running on <strong>native Linux Ubuntu 22.04</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If using a laptop supplied by Trossen Robotics, all required software will be pre-installed.
+In this case, you can skip to the Post-Install Hardware Setup section of this guide.</p>
 </div>
 <p>This guide will walk through the process of setting up the Interbotix ALOHA Stationary control software.</p>
 <div class="section" id="ros-2-installation">
 <h2>ROS 2 Installation<a class="headerlink" href="#ros-2-installation" title="Permalink to this headline"></a></h2>
 <p>ROS 2 can be installed in one of two ways:</p>
 <ul class="simple">
-<li>(Preferred) Using the Interbotix X-Series Arm installation script.
+<li>(<strong>Preferred</strong>) Using the Interbotix X-Series Arm installation script.
 See the next section for details.</li>
 <li>Following the <a class="reference external" href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html" rel="noopener noreferrer" target="_blank">official ROS 2 Humble Ubuntu Debian install guide</a>.</li>
 </ul>
@@ -154,6 +164,11 @@ $<span class="w"> </span>./xsarm_amd64_install.sh<span class="w"> </span>-d<span
 <li>Builds the control software and other related tools.</li>
 <li>Configures the ROS 2 environment.</li>
 </ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">After running the install script, remove all added lines beneath the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Interbotix</span> <span class="pre">Configurations</span></code> header in the <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file.
+Doing so will make environment configuration easier later on.</p>
+</div>
 </div>
 <div class="section" id="aloha-software-installation">
 <h2>ALOHA Software Installation<a class="headerlink" href="#aloha-software-installation" title="Permalink to this headline"></a></h2>
@@ -176,11 +191,17 @@ $<span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> <
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Set the <code class="docutils literal notranslate"><span class="pre">InterbotixManipulatorXS</span></code>’s <code class="docutils literal notranslate"><span class="pre">iterative_update_fk</span></code> constructor arg to <code class="docutils literal notranslate"><span class="pre">False</span></code> at <code class="docutils literal notranslate"><span class="pre">~/interbotix_ws/src/interbotix_ros_toolboxes/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py</span></code> (<a class="reference external" href="https://github.com/Interbotix/interbotix_ros_toolboxes/blob/c187bcea89b60391244bb19943ebd78f770aa975/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py#L81" rel="noopener noreferrer" target="_blank">link</a>).</li>
+<li>Set the <code class="docutils literal notranslate"><span class="pre">InterbotixManipulatorXS</span></code>’s <code class="docutils literal notranslate"><span class="pre">iterative_update_fk</span></code> default value to <code class="docutils literal notranslate"><span class="pre">False</span></code> at <code class="docutils literal notranslate"><span class="pre">~/interbotix_ws/src/interbotix_ros_toolboxes/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py</span></code> (<a class="reference external" href="https://github.com/Interbotix/interbotix_ros_toolboxes/blob/c187bcea89b60391244bb19943ebd78f770aa975/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py#L81" rel="noopener noreferrer" target="_blank">link</a>).</li>
 </ol>
 <ol class="arabic simple" start="4">
-<li>Change the <code class="docutils literal notranslate"><span class="pre">IS_MOBILE</span></code> constant in <code class="docutils literal notranslate"><span class="pre">~/interbotix_ws/src/aloha/aloha/constants.py</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
-<li>Change the <code class="docutils literal notranslate"><span class="pre">is_mobile</span></code> launch argument default value in <code class="docutils literal notranslate"><span class="pre">~/interbotix_ws/src/aloha/launch/aloha_bringup.launch.py</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</li>
+<li>Add the following line to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export INTERBOTIX_ALOHA_IS_MOBILE=false&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
 <li>Build the workspace:</li>
 </ol>
 <blockquote>
@@ -191,8 +212,15 @@ $<span class="w"> </span>colcon<span class="w"> </span>build
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If planning to change the control software later on, you may want to do a symbolically-linked build.
+<p>If planning to change the control or data collection software later on, you may want to do a symbolically-linked install.
 If that is the case, remove the build and install directories, and re-run <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> with the <code class="docutils literal notranslate"><span class="pre">--symlink-install</span></code> flag.</p>
+<blockquote class="last">
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws
+$<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>build<span class="w"> </span>install
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="post-install-hardware-setup">
@@ -211,7 +239,7 @@ The following sections will provide steps on setting up unique symbolic links fo
 <p>To set these up, do the following:</p>
 <ol class="arabic simple">
 <li>Plug in only the leader left robot to the computer.</li>
-<li>Determine its device name.
+<li>Determine its device name by checking the <code class="docutils literal notranslate"><span class="pre">/dev</span></code> directory before and after plugging the device in.
 This is likely something like <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code>.</li>
 <li>Print out the device serial number by running the following command:</li>
 </ol>
@@ -276,6 +304,34 @@ If it does not show up in the side bar, click <strong>Add Source</strong> and fi
 <li>Repeat for the rest of the cameras.
 If the workspace has not been symbolically-linked, a rebuild may be necessary.</li>
 </ol>
+</div>
+</div>
+<div class="section" id="post-install-software-tips">
+<h2>Post-Install Software Tips<a class="headerlink" href="#post-install-software-tips" title="Permalink to this headline"></a></h2>
+<div class="section" id="disable-wandb">
+<h3>Disable wandb<a class="headerlink" href="#disable-wandb" title="Permalink to this headline"></a></h3>
+<p>It may be helpful to disable wandb while getting started.
+To do so, run the command below.
+Note that this line is added by default to the laptops distributed by Trossen Robotics.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;WANDB_MODE=disabled&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</div>
+<div class="section" id="alias-setup">
+<h3>Alias Setup<a class="headerlink" href="#alias-setup" title="Permalink to this headline"></a></h3>
+<p>It may be helpful to create bash aliases to make environment configuration easier.</p>
+<p>Create a ~/.bash_aliases file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>touch<span class="w"> </span>~/.bash_aliases
+</pre></div>
+</div>
+<p>To create an alias that can be used to set up the ROS 2 environment, add the following line to the <code class="docutils literal notranslate"><span class="pre">~/.bash_aliases</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">setup_aloha</span><span class="o">=</span><span class="s2">&quot;source /opt/ros/humble/setup.bash &amp;&amp; source ~/interbotix_ws/install/setup.bash&quot;</span>
+</pre></div>
+</div>
+<p>Assuming that dependencies of ACT were installed using a venv, to create an alias that can be used to set up the ROS 2 and ACT environments, add the following line to the <code class="docutils literal notranslate"><span class="pre">~/.bash_aliases</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">setup_act</span><span class="o">=</span><span class="s2">&quot;setup_aloha &amp;&amp; source ~/act/bin/activate&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

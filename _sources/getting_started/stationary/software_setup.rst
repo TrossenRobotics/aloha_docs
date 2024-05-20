@@ -4,7 +4,12 @@ Stationary ALOHA Software Setup
 
 .. note::
 
-  The Interbotix ALOHA Stationary control software is currently supported for **ROS 2 Humble** running on **native Linux Ubuntu 22.04**.
+  The Interbotix ALOHA Stationary control software is supported for **ROS 2 Humble** running on **native Linux Ubuntu 22.04**.
+
+.. note::
+
+  If using a laptop supplied by Trossen Robotics, all required software will be pre-installed.
+  In this case, you can skip to the Post-Install Hardware Setup section of this guide.
 
 This guide will walk through the process of setting up the Interbotix ALOHA Stationary control software.
 
@@ -13,7 +18,7 @@ ROS 2 Installation
 
 ROS 2 can be installed in one of two ways:
 
-* (Preferred) Using the Interbotix X-Series Arm installation script.
+* (**Preferred**) Using the Interbotix X-Series Arm installation script.
   See the next section for details.
 * Following the `official ROS 2 Humble Ubuntu Debian install guide`_.
 
@@ -52,6 +57,11 @@ The installation script does the following:
 4.  Builds the control software and other related tools.
 5.  Configures the ROS 2 environment.
 
+.. tip::
+
+  After running the install script, remove all added lines beneath the ``# Interbotix Configurations`` header in the ``~/.bashrc`` file.
+  Doing so will make environment configuration easier later on.
+
 ALOHA Software Installation
 ===========================
 
@@ -69,15 +79,17 @@ ALOHA Software Installation
     $ cd ~/interbotix_ws
     $ rosdep install --from-paths src --ignore-src -r -y
 
-3.  Set the ``InterbotixManipulatorXS``'s ``iterative_update_fk`` constructor arg to ``False`` at ``~/interbotix_ws/src/interbotix_ros_toolboxes/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py`` (`link`_).
+3.  Set the ``InterbotixManipulatorXS``'s ``iterative_update_fk`` default value to ``False`` at ``~/interbotix_ws/src/interbotix_ros_toolboxes/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py`` (`link`_).
 
 .. _`link`: https://github.com/Interbotix/interbotix_ros_toolboxes/blob/c187bcea89b60391244bb19943ebd78f770aa975/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py#L81
 
-4.  Change the ``IS_MOBILE`` constant in ``~/interbotix_ws/src/aloha/aloha/constants.py`` to ``False``.
+4.  Add the following line to your ``~/.bashrc`` file:
 
-5.  Change the ``is_mobile`` launch argument default value in ``~/interbotix_ws/src/aloha/launch/aloha_bringup.launch.py`` to ``false``.
+  .. code-block:: bash
 
-6.  Build the workspace:
+    $ echo "export INTERBOTIX_ALOHA_IS_MOBILE=false" >> ~/.bashrc
+
+5.  Build the workspace:
 
   .. code-block:: bash
 
@@ -86,8 +98,14 @@ ALOHA Software Installation
 
 .. note::
 
-  If planning to change the control software later on, you may want to do a symbolically-linked build.
+  If planning to change the control or data collection software later on, you may want to do a symbolically-linked install.
   If that is the case, remove the build and install directories, and re-run ``colcon build`` with the ``--symlink-install`` flag.
+
+    .. code-block:: bash
+
+      $ cd ~/interbotix_ws
+      $ rm -rf build install
+      $ colcon build --symlink-install
 
 Post-Install Hardware Setup
 ===========================
@@ -109,7 +127,7 @@ To set these up, do the following:
 
 1.  Plug in only the leader left robot to the computer.
 
-2.  Determine its device name.
+2.  Determine its device name by checking the ``/dev`` directory before and after plugging the device in.
     This is likely something like ``/dev/ttyUSB0``.
 
 3.  Print out the device serial number by running the following command:
@@ -167,3 +185,40 @@ Camera Setup
 
 5.  Repeat for the rest of the cameras.
     If the workspace has not been symbolically-linked, a rebuild may be necessary.
+
+Post-Install Software Tips
+==========================
+
+Disable wandb
+-------------
+
+It may be helpful to disable wandb while getting started.
+To do so, run the command below.
+Note that this line is added by default to the laptops distributed by Trossen Robotics.
+
+.. code-block:: bash
+
+  $ echo "WANDB_MODE=disabled" >> ~/.bashrc
+
+Alias Setup
+-----------
+
+It may be helpful to create bash aliases to make environment configuration easier.
+
+Create a ~/.bash_aliases file:
+
+.. code-block:: bash
+
+  $ touch ~/.bash_aliases
+
+To create an alias that can be used to set up the ROS 2 environment, add the following line to the ``~/.bash_aliases`` file:
+
+.. code-block:: bash
+
+  alias setup_aloha="source /opt/ros/humble/setup.bash && source ~/interbotix_ws/install/setup.bash"
+
+Assuming that dependencies of ACT were installed using a venv, to create an alias that can be used to set up the ROS 2 and ACT environments, add the following line to the ``~/.bash_aliases`` file:
+
+.. code-block:: bash
+
+  alias setup_act="setup_aloha && source ~/act/bin/activate"
