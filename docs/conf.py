@@ -33,6 +33,17 @@ extensions = [
     'sphinx_collapse',
 ]
 
+# True to prefix each section label with the name of the document it is in, followed by a colon.
+# For example, index:Introduction for a section called Introduction that appears in document
+# index.rst. Useful for avoiding ambiguity when the same section heading appears in different
+# documents.
+autosectionlabel_prefix_document = True
+
+# If set, autosectionlabel chooses the sections for labeling by its depth. For example, when set 1
+# to autosectionlabel_maxdepth, labels are generated only for top level sections, and deeper
+# sections are not labeled. It defaults to None (disabled).
+autosectionlabel_maxdepth = 4
+
 # Used by the sphinx_copybutton extension - Define the prompt text that should be removed from
 # copied text in code blocks.
 copybutton_prompt_text = "$ "
