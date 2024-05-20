@@ -81,3 +81,17 @@ Technical Drawing
 -----------------
 
 Coming Soon!
+
+ALOHA Pre-configured Laptop
+===========================
+
+Trossen Robotics offers the option of providing a laptop pre-configured to work with either variant of the ALOHA kit.
+The laptop is the Serval WS (serw13) from System76 with the following specifications:
+
+* Ubuntu 22.04 LTS
+* 5.8 GHz i9-14900HX
+* 32 GB DDR5 4800 MHz (2x 16GB)
+* 1 TB PCIe4 M.2 SSD
+* WiFi 6E + Bluetooth 5
+* 8 GB GeForce RTX 4060 with 3072 CUDA Cores
+* 17.3" Matte 2K QHD (240Hz) Display
