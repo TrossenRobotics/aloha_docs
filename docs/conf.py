@@ -23,14 +23,15 @@ release = ''
 # Add any Sphinx extension module names here, as strings. They can be extensions coming with Sphinx
 # (named 'sphinx.ext.*') or your custom ones.
 extensions = [
-    'sphinx.ext.githubpages',
+    'sphinx_collapse',
+    'sphinx_copybutton',
+    'sphinx_tabs.tabs',
     'sphinx.ext.extlinks',
+    'sphinx.ext.githubpages',
     'sphinx.ext.graphviz',
     'sphinx.ext.mathjax',
     'sphinxcontrib.youtube',
-    'sphinx_copybutton',
-    'sphinx_tabs.tabs',
-    'sphinx_collapse',
+    "sphinx.ext.autosectionlabel",
 ]
 
 # True to prefix each section label with the name of the document it is in, followed by a colon.
@@ -42,7 +43,7 @@ autosectionlabel_prefix_document = True
 # If set, autosectionlabel chooses the sections for labeling by its depth. For example, when set 1
 # to autosectionlabel_maxdepth, labels are generated only for top level sections, and deeper
 # sections are not labeled. It defaults to None (disabled).
-autosectionlabel_maxdepth = 4
+# autosectionlabel_maxdepth = 4
 
 # Used by the sphinx_copybutton extension - Define the prompt text that should be removed from
 # copied text in code blocks.
