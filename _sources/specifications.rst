@@ -5,8 +5,8 @@ Specifications
 Aloha Stationary
 ================
 
-Packing List
-------------
+Stationary Packing List
+-----------------------
 
 .. table::
   :align: center
@@ -111,11 +111,8 @@ Packing List
   | USB-A to Micro USB, 10 Foot, Black                                                       | 4       |
   +------------------------------------------------------------------------------------------+---------+
 
-
-
-
-Specifications
---------------
+Stationary Specifications
+-------------------------
 
 .. list-table::
   :width: 50%
@@ -138,8 +135,8 @@ Specifications
   * - Gravity Compensators
     - Yes
 
-Technical Drawing
------------------
+Stationary Technical Drawing
+----------------------------
 
 Coming Soon!
 
@@ -148,8 +145,8 @@ Aloha Mobile
 ============
 
 
-Specifications
---------------
+Mobile Specifications
+---------------------
 
 .. list-table::
   :width: 50%
@@ -186,8 +183,8 @@ Specifications
   * - Mobile Power Station Battery
     - Yes - 1.4kWh
 
-Technical Drawing
------------------
+Mobile Technical Drawing
+------------------------
 
 Coming Soon!
 
