@@ -241,3 +241,12 @@ Use **(4x) M5x8s** bolts to install camera mount.
   :height: 400px
 
 Use **(4x) M5x8s** bolts to install camera mount.
+
+12) Wiring
+==========
+
+We have found that alternating arm and camera cables on the hub on the side opposite the Sabrent logo provides the most reliable connection for all devices.
+
+.. image:: images/hub_arrangement.jpg
+  :align: center
+  :height: 400px
