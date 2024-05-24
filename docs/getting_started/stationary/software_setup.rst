@@ -134,17 +134,17 @@ To set these up, do the following:
 
   .. code-block:: bash
 
-    $ udevadm info --name=/dev/ttyUSB0 --attribute-walk | grep ATTRS{serial}
-    ATTRS{serial}=="FT88YWBJ"
-    ATTRS{serial}=="0000:00:14.0"
+    $ udevadm info --name=/dev/ttyUSB0 --attribute-walk | grep ATTRS{serial} | head -n 1 | cut -d '"' -f2
+    FT88YWBJ
 
-4.  The serial attribute that looks like ``"FT88YWBJ"`` is the serial number of the arm's U2D2 serial converter.
+4.  The output of the command will look like ``FT88YWBJ`` and be the serial number of the arm's U2D2 serial converter.
 
 5.  Add the following line to the computer's fixed Interbotix udev rules at ``/etc/udev/rules.d/99-fixed-interbotix-udev.rules``:
 
   .. code-block:: bash
 
     SUBSYSTEM=="tty", ATTRS{serial}=="<SERIAL NUMBER>", ENV{ID_MM_DEVICE_IGNORE}="1", ATTR{device/latency_timer}="1", SYMLINK+="ttyDXL_leader_left"
+    #                                 ^^^^^^^^^^^^^^^ The result from the previous step
 
 6.  Repeat for the rest of the arms.
 
