@@ -29,7 +29,7 @@ While ALOHA bringup is running in another terminal, open a new one and run the f
   $ export INTERBOTIX_ALOHA_IS_MOBILE=false # if not already in your environment
   $ source /opt/ros/humble/setup.bash # configure ROS system install environment
   $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-  $ source ~/aloha/bin/activate # configure ALOHA Python environment
+  $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
   $ cd ~/interbotix_ws/src/aloha/scripts/
   $ python3 dual_side_teleop.py
 
@@ -50,7 +50,7 @@ While ALOHA bringup is running in another terminal, open a new one and run the f
   $ export INTERBOTIX_ALOHA_IS_MOBILE=false # if not already in your environment
   $ source /opt/ros/humble/setup.bash # configure ROS system install environment
   $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-  $ source ~/aloha/bin/activate # configure ALOHA Python environment
+  $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
   $ cd ~/interbotix_ws/src/aloha/scripts/
   $ python3 sleep.py
 

@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Troubleshooting" href="../troubleshooting.html" />
-    <link rel="prev" title="Operation" href="../operation.html" /> 
+    <link rel="prev" title="Mobile Operation" href="mobile.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -63,6 +63,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../operation.html">Operation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">Mobile Operation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Stationary Operation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#running-aloha-bringup">Running ALOHA Bringup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#teleoperation">Teleoperation</a></li>
@@ -122,7 +123,7 @@ Be sure to run the <a class="reference internal" href="#sending-arms-to-sleep-co
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">INTERBOTIX_ALOHA_IS_MOBILE</span><span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="c1"># if not already in your environment</span>
 $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="c1"># configure ROS system install environment</span>
 $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/interbotix_ws/install/setup.bash<span class="w"> </span><span class="c1"># configure ROS workspace environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/aloha/bin/activate<span class="w"> </span><span class="c1"># configure ALOHA Python environment</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/&lt;path_to_aloha_venv&gt;/bin/activate<span class="w"> </span><span class="c1"># configure ALOHA Python environment</span>
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws/src/aloha/scripts/
 $<span class="w"> </span>python3<span class="w"> </span>dual_side_teleop.py
 </pre></div>
@@ -139,7 +140,7 @@ Place the leader arms in their cradles.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">INTERBOTIX_ALOHA_IS_MOBILE</span><span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="c1"># if not already in your environment</span>
 $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="c1"># configure ROS system install environment</span>
 $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/interbotix_ws/install/setup.bash<span class="w"> </span><span class="c1"># configure ROS workspace environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/aloha/bin/activate<span class="w"> </span><span class="c1"># configure ALOHA Python environment</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/&lt;path_to_aloha_venv&gt;/bin/activate<span class="w"> </span><span class="c1"># configure ALOHA Python environment</span>
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws/src/aloha/scripts/
 $<span class="w"> </span>python3<span class="w"> </span>sleep.py
 </pre></div>
@@ -161,7 +162,7 @@ $<span class="w"> </span>python3<span class="w"> </span>sleep.py<span class="w">
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../operation.html" class="btn btn-neutral float-left" title="Operation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mobile.html" class="btn btn-neutral float-left" title="Mobile Operation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

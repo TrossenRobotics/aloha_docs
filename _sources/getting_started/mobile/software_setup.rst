@@ -244,4 +244,4 @@ Assuming that dependencies of ACT were installed using a venv, to create an alia
 
 .. code-block:: bash
 
-  alias setup_act="setup_aloha && source ~/act/bin/activate"
+  alias setup_act="setup_aloha && source /<path_to_aloha_venv>/bin/activate"
