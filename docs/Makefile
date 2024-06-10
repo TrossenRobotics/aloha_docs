@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = Interbotix X-Series Manipulators Documentation
+SPHINXPROJ    = ALOHA Documentation
 SOURCEDIR     = .
 BUILDDIR      = _build
 
