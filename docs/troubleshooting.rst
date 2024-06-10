@@ -28,4 +28,4 @@ If using an ALOHA version with the Sabrent 7-Port USB Hubs and fail to see all c
 *   Check that all buttons corresponding to occupied ports are pressed.
     The LEDs should be lit and the button should be depressed.
 *   We have found that, occasionally, switching the port that a cable is plugged into can resolve connection issues.
-    Make sure that the button of the now empty port is pressed so that it is off, and that the button of the now occupied port has been depressed.
+    Make sure that the button of the now empty port is pressed again so that it is released, and that the button of the now occupied port has been depressed.
