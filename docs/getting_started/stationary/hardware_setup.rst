@@ -10,13 +10,20 @@ If you need any assistance or have questions about this process, please `contact
 
   Building tip: Don't tighten bolts all the way until every bolt is partially installed.
 
-Video Overview
+Assembly Guide
 ==============
 
-Coming soon!
+Video Overview
+--------------
+
+.. youtube:: 8G9gxX3DB9Q
+    :align: center
+
+Steps
+-----
 
 1) Lay Out AA/AB Sub-Assembly on Surface
-========================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the orientation of T-nuts to determine which side each one goes on.
 
@@ -25,7 +32,7 @@ Use the orientation of T-nuts to determine which side each one goes on.
   :height: 400px
 
 2) Attach Front and Back 1220 Bars to AA/AB Sub-Assembly
-========================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/002_aaab_back1220.jpeg
   :align: center
@@ -68,7 +75,7 @@ Upside-Down AA/AB SUB-ASSEMBLY with FRONT 1220 attached.
 Install **(8x) M5x10s** bolts at these CORNER PLATES.
 
 3) Attach 200 Bars to H Bars and 890 Bar
-========================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 50 50
@@ -91,7 +98,7 @@ Use **(12x) M5x10s** bolts to attach (2) 200 P BARS to H BARS.
 Use **(8x) M5x10s** bolts to attach (2) 200 G BARS to 890 BAR.
 
 4) Attach 890 Bar on top of the two H Bars
-==========================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/011_890_to_h_top.jpeg
   :align: center
@@ -100,7 +107,7 @@ Use **(8x) M5x10s** bolts to attach (2) 200 G BARS to 890 BAR.
 Use **(8x) M5x10s** bolts to install 890 BAR to top of H BARS.
 
 5) Attach H Bars to AA/AB Sub-Assembly
-======================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/012_h_installed_aaab.jpeg
   :align: center
@@ -123,7 +130,7 @@ H BARS fully installed onto AA/AB SUB-ASSEMBLY
 Install **(2x) M5x10s** bolts at these 20/30 BRACKETS to keep H BAR in place.
 
 6) Attach 305 Bars on back of H Bar and top of AA/AB Sub-Assembly
-=================================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/015_corner_hbar_to_aaab.jpeg
   :align: center
@@ -132,7 +139,7 @@ Install **(2x) M5x10s** bolts at these 20/30 BRACKETS to keep H BAR in place.
 Install **(8x) M5x12s** bolts to CORNER BRACKETS to connect H-BAR and AA/AB SUB-ASSEMBLY.
 
 7) Clamp frame to stationary table
-==================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 50 50
@@ -147,7 +154,7 @@ Install **(8x) M5x12s** bolts to CORNER BRACKETS to connect H-BAR and AA/AB SUB-
         :height: 400px
 
 8) Install WidowX arms to the front of the Aloha Stationary
-===========================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/018_wx_right.jpeg
   :align: center
@@ -156,7 +163,7 @@ Install **(8x) M5x12s** bolts to CORNER BRACKETS to connect H-BAR and AA/AB SUB-
 WidowX Arm placed on right side location
 
 9) Install ViperX arms to the back of the Aloha Stationary
-==========================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 50 50
@@ -173,7 +180,7 @@ WidowX Arm placed on right side location
 Use **(4x) M5x14s** bolts for each ViperX Arm to install into AA/AB SUB-ASSEMBLY.
 
 10) Install Pulley System
-=========================
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/021_gcomp_200g.jpeg
   :align: center
@@ -228,7 +235,7 @@ Connect 110mm STEEL CABLE from WidowX Arm to top ROPE GUIDE.
 Attach cable from GRAVITY COMPENSATORS to WidowX Arm.
 
 11) Add Camera Mounts
-=====================
+^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/029_cam_1.jpeg
   :align: center
@@ -243,7 +250,7 @@ Use **(4x) M5x8s** bolts to install camera mount.
 Use **(4x) M5x8s** bolts to install camera mount.
 
 12) Wiring
-==========
+^^^^^^^^^^
 
 We have found that alternating arm and camera cables on the hub on the side opposite the Sabrent logo provides the most reliable connection for all devices.
 
