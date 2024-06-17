@@ -16,7 +16,8 @@ Assembly Guide
 Video Overview
 --------------
 
-Coming soon!
+.. youtube:: jh21xCD_H0w
+    :align: center
 
 Steps
 -----
