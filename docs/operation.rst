@@ -7,3 +7,4 @@ Operation
 
   ./operation/mobile.rst
   ./operation/stationary.rst
+  ./operation/data_collection.rst
