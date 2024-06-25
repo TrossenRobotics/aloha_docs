@@ -51,7 +51,7 @@ To record an episode, follow the steps below:
 
     The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
 
-  .. note::
+  .. tip::
 
     Each platform has a "dummy" task that can be used to test basic data collection and playback.
     For the Stationary variant, use the ``aloha_stationary_dummy`` task.
@@ -83,7 +83,7 @@ To play back a previously-recorded episode, follow the steps below:
     $ cd ~/interbotix_ws/src/aloha/scripts/
     $ python3 replay_episodes.py --dataset_dir </path/to/dataset> --episode_idx <episode_idx>
 
-  .. note::
+  .. tip::
 
     An example for replaying the dummy Mobile episode recorded above would look like:
 
