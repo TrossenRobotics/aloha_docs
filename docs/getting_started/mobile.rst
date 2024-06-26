@@ -7,3 +7,4 @@ Mobile ALOHA Getting Started
 
   ./mobile/hardware_setup.rst
   ./mobile/software_setup.rst
+  ./mobile/pairing_controller.rst
