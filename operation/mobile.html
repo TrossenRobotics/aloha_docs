@@ -67,6 +67,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#running-aloha-bringup">Running ALOHA Bringup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#teleoperation">Teleoperation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sending-arms-to-sleep-configuration">Sending Arms to Sleep Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#joystick-base-teleoperation">Joystick Base Teleoperation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="stationary.html">Stationary Operation</a></li>
@@ -157,6 +158,20 @@ $<span class="w"> </span>python3<span class="w"> </span>sleep.py<span class="w">
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="joystick-base-teleoperation">
+<h2>Joystick Base Teleoperation<a class="headerlink" href="#joystick-base-teleoperation" title="Permalink to this headline"></a></h2>
+<p>To teleoperate the base using the provided PS4 Bluetooth controller, you must first pair the controller with the control computer following the Mobile <a class="reference internal" href="../getting_started/mobile/pairing_controller.html#pairing-your-controller"><span class="std std-ref">Pairing Your Controller</span></a> guide.
+Then proceed with the following steps:</p>
+<ol class="arabic simple">
+<li>Turn on the PS4 controller by pressing the controller’s <kbd class="kbd docutils literal notranslate">PS</kbd> button.</li>
+<li>Bring up ALOHA, making sure that the <code class="docutils literal notranslate"><span class="pre">use_base</span></code> and <code class="docutils literal notranslate"><span class="pre">use_joystick_teleop</span></code> launch arguments are both set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+This is the default if your control computer environment is configured as Mobile.</li>
+<li>Press and hold the controller’s <kbd class="kbd docutils literal notranslate">L2</kbd> button to enable joystick control.</li>
+<li>Use the controller’s left stick to send forwards or backwards linear velocity commands.</li>
+<li>Use the controller’s right stick to send clockwise or counter-clockwise angular velocity commands.</li>
+<li>At any time, release the controllers <kbd class="kbd docutils literal notranslate">L2</kbd> button to disable joystick control.</li>
+</ol>
 </div>
 </div>
 

@@ -67,10 +67,16 @@ The follower arms will move to their "staged" configurations and then place them
     # or
     $ python3 sleep.py --all
 
-.. Episode Collection
-.. ==================
+Joystick Base Teleoperation
+===========================
 
+To teleoperate the base using the provided PS4 Bluetooth controller, you must first pair the controller with the control computer following the Mobile :ref:`getting_started/mobile/pairing_controller:Pairing Your Controller` guide.
+Then proceed with the following steps:
 
-
-.. Automatic Episode Collection
-.. ============================
+#.  Turn on the PS4 controller by pressing the controller's :kbd:`PS` button.
+#.  Bring up ALOHA, making sure that the ``use_base`` and ``use_joystick_teleop`` launch arguments are both set to ``true``.
+    This is the default if your control computer environment is configured as Mobile.
+#.  Press and hold the controller's :kbd:`L2` button to enable joystick control.
+#.  Use the controller's left stick to send forwards or backwards linear velocity commands.
+#.  Use the controller's right stick to send clockwise or counter-clockwise angular velocity commands.
+#.  At any time, release the controllers :kbd:`L2` button to disable joystick control.
