@@ -73,7 +73,7 @@ Joystick Base Teleoperation
 To teleoperate the base using the provided PS4 Bluetooth controller, you must first pair the controller with the control computer following the Mobile :ref:`getting_started/mobile/pairing_controller:Pairing Your Controller` guide.
 Then proceed with the following steps:
 
-#.  Turn on the PS4 controller.
+#.  Turn on the PS4 controller by pressing the controller's :kbd:`PS` button.
 #.  Bring up ALOHA, making sure that the ``use_base`` and ``use_joystick_teleop`` launch arguments are both set to ``true``.
     This is the default if your control computer environment is configured as Mobile.
 #.  Press and hold the controller's :kbd:`L2` button to enable joystick control.
