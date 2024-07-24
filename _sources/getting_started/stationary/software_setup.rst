@@ -173,6 +173,12 @@ Camera Setup
 
     $ realsense-viewer
 
+  .. note::
+
+    If realsense-viewer is not already installed on your machine, follow `these steps on the librealsense GitHub repository`_ to install ``librealsense2-utils``.
+
+.. _`these steps on the librealsense GitHub repository`: https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
+
 2.  Plug in a single camera and check the sidebar for its entry.
     If it does not show up in the side bar, click **Add Source** and find the Intel RealSense D405 in the drop down.
 
