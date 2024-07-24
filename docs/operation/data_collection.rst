@@ -91,6 +91,104 @@ To play back a previously-recorded episode, follow the steps below:
 
       $ python3 replay_episodes.py --dataset_dir ~/aloha_data/aloha_mobile_dummy/ --episode_idx 0
 
+Episode Auto-Recording
+======================
+
+A helpful bash script, ``auto_record.sh``, is provided to allow users to collect many episodes consecutively without having to interact with the control computer.
+
+Configuration
+-------------
+
+This script, whose `source`_ can be found on the ALOHA GitHub repository, has a few configuration options that should be verified or set before running.
+
+.. _`source`: https://github.com/Interbotix/aloha/blob/main/scripts/auto_record.sh
+
+``ROS_DISTRO``
+^^^^^^^^^^^^^^
+
+Set the codename of the ROS distribution used on the control computer.
+This value is used to set the path to the ``ROS_SETUP_PATH`` variable used later in the script.
+``ROS_DISTRO`` defaults to ``humble``.
+
+.. code-block:: bash
+
+  ROS_DISTRO=humble
+
+``VENV_ACTIVATE_PATH``
+^^^^^^^^^^^^^^^^^^^^^^
+
+Set the path to the virtual environment's activate file.
+This value is used when setting up the Python virtual environment.
+``VENV_ACTIVATE_PATH`` defaults to ``"$HOME/act/bin/activate"``.
+
+.. code-block:: bash
+
+  VENV_ACTIVATE_PATH="$HOME/act/bin/activate"
+
+``ROS_SETUP_PATH``
+^^^^^^^^^^^^^^^^^^
+
+Set the path to the ROS distribution's setup script.
+This value is used when setting up the system-installed ROS environment.
+Setting the ``ROS_DISTRO`` variable from before should be sufficient to configure this variable.
+``ROS_SETUP_PATH`` defaults to ``"/opt/ros/$ROS_DISTRO/setup.bash"``.
+
+.. code-block:: bash
+
+  ROS_SETUP_PATH="/opt/ros/$ROS_DISTRO/setup.bash"
+
+``WORKSPACE_SETUP_PATH``
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set the path to the Interbotix workspace's setup script.
+This value is used when setting up the Interbotix workspace's ROS environment.
+``WORKSPACE_SETUP_PATH`` defaults to ``"$HOME/interbotix_ws/install/setup.bash"``.
+
+.. code-block:: bash
+
+  WORKSPACE_SETUP_PATH="$HOME/interbotix_ws/install/setup.bash"
+
+``RECORD_EPISODES``
+^^^^^^^^^^^^^^^^^^^
+
+Set the path to the ``record_episodes.py`` script.
+This value is used when calling the record_episodes script.
+``RECORD_EPISODES`` defaults to ``"$HOME/interbotix_ws/src/aloha/scripts/record_episodes.py"``.
+
+.. code-block:: bash
+
+  RECORD_EPISODES="$HOME/interbotix_ws/src/aloha/scripts/record_episodes.py"
+
+Usage
+-----
+
+Once configured, the auto_record script is now ready to use. To auto-record a specific amount of episodes, follow the steps below:
+
+#.  Bring up the ALOHA control stack according to your platform
+
+    * Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
+    * Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
+
+#.  In a new terminal, navigate to the directory storing the auto_record script and run the command below:
+
+    .. code-block::
+
+      $ auto_record.sh <task_name> <num_episodes>
+
+    .. tip::
+
+      An example for auto-recording 50 episodes of the dummy Mobile ALOHA task would look like:
+
+      .. code-block:: bash
+
+        $ auto_record.sh aloha_mobile_dummy 50
+
+    The auto_record script will then call the record_episodes Python script the specified number of times.
+
+    .. note::
+
+      If episodes of the specified task already exist, episode indices will be automatically calculated as one greater than the number of tasks in the episode save directory.
+
 Dataset Format
 ==============
 
