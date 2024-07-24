@@ -90,3 +90,23 @@ To play back a previously-recorded episode, follow the steps below:
     .. code-block:: bash
 
       $ python3 replay_episodes.py --dataset_dir ~/aloha_data/aloha_mobile_dummy/ --episode_idx 0
+
+Dataset Format
+==============
+
+ALOHA saves its episodes in the `hdf5 format`_ with the following format:
+
+.. _`hdf5 format`: https://en.wikipedia.org/wiki/Hierarchical_Data_Format#HDF5
+
+.. code-block::
+
+    - images
+        - cam_high          (480, 640, 3) 'uint8'
+        - cam_low           (480, 640, 3) 'uint8'   (on Stationary)
+        - cam_left_wrist    (480, 640, 3) 'uint8'
+        - cam_right_wrist   (480, 640, 3) 'uint8'
+    - qpos                  (14,)         'float64'
+    - qvel                  (14,)         'float64'
+
+    action                  (14,)         'float64'
+    base_action             (2,)          'float64' (on Mobile)

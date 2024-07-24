@@ -69,6 +69,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#task-creation">Task Creation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recording-episodes">Recording Episodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#episode-playback">Episode Playback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset-format">Dataset Format</a></li>
 </ul>
 </li>
 </ul>
@@ -197,6 +198,22 @@ $<span class="w"> </span>python3<span class="w"> </span>replay_episodes.py<span 
 </div>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="dataset-format">
+<h2>Dataset Format<a class="headerlink" href="#dataset-format" title="Permalink to this headline"></a></h2>
+<p>ALOHA saves its episodes in the <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format#HDF5" rel="noopener noreferrer" target="_blank">hdf5 format</a> with the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">images</span>
+    <span class="o">-</span> <span class="n">cam_high</span>          <span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">&#39;uint8&#39;</span>
+    <span class="o">-</span> <span class="n">cam_low</span>           <span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">&#39;uint8&#39;</span>   <span class="p">(</span><span class="n">on</span> <span class="n">Stationary</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">cam_left_wrist</span>    <span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">&#39;uint8&#39;</span>
+    <span class="o">-</span> <span class="n">cam_right_wrist</span>   <span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">&#39;uint8&#39;</span>
+<span class="o">-</span> <span class="n">qpos</span>                  <span class="p">(</span><span class="mi">14</span><span class="p">,)</span>         <span class="s1">&#39;float64&#39;</span>
+<span class="o">-</span> <span class="n">qvel</span>                  <span class="p">(</span><span class="mi">14</span><span class="p">,)</span>         <span class="s1">&#39;float64&#39;</span>
+
+<span class="n">action</span>                  <span class="p">(</span><span class="mi">14</span><span class="p">,)</span>         <span class="s1">&#39;float64&#39;</span>
+<span class="n">base_action</span>             <span class="p">(</span><span class="mi">2</span><span class="p">,)</span>          <span class="s1">&#39;float64&#39;</span> <span class="p">(</span><span class="n">on</span> <span class="n">Mobile</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
