@@ -69,6 +69,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#task-creation">Task Creation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recording-episodes">Recording Episodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#episode-playback">Episode Playback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#episode-auto-recording">Episode Auto-Recording</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#ros-distro"><code class="docutils literal notranslate"><span class="pre">ROS_DISTRO</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#venv-activate-path"><code class="docutils literal notranslate"><span class="pre">VENV_ACTIVATE_PATH</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ros-setup-path"><code class="docutils literal notranslate"><span class="pre">ROS_SETUP_PATH</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#workspace-setup-path"><code class="docutils literal notranslate"><span class="pre">WORKSPACE_SETUP_PATH</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#record-episodes"><code class="docutils literal notranslate"><span class="pre">RECORD_EPISODES</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#dataset-format">Dataset Format</a></li>
 </ul>
 </li>
@@ -198,6 +210,89 @@ $<span class="w"> </span>python3<span class="w"> </span>replay_episodes.py<span 
 </div>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="episode-auto-recording">
+<h2>Episode Auto-Recording<a class="headerlink" href="#episode-auto-recording" title="Permalink to this headline"></a></h2>
+<p>A helpful bash script, <code class="docutils literal notranslate"><span class="pre">auto_record.sh</span></code>, is provided to allow users to collect many episodes consecutively without having to interact with the control computer.</p>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h3>
+<p>This script, whose <a class="reference external" href="https://github.com/Interbotix/aloha/blob/main/scripts/auto_record.sh" rel="noopener noreferrer" target="_blank">source</a> can be found on the ALOHA GitHub repository, has a few configuration options that should be verified or set before running.</p>
+<div class="section" id="ros-distro">
+<h4><code class="docutils literal notranslate"><span class="pre">ROS_DISTRO</span></code><a class="headerlink" href="#ros-distro" title="Permalink to this headline"></a></h4>
+<p>Set the codename of the ROS distribution used on the control computer.
+This value is used to set the path to the <code class="docutils literal notranslate"><span class="pre">ROS_SETUP_PATH</span></code> variable used later in the script.
+<code class="docutils literal notranslate"><span class="pre">ROS_DISTRO</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">humble</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ROS_DISTRO</span><span class="o">=</span>humble
+</pre></div>
+</div>
+</div>
+<div class="section" id="venv-activate-path">
+<h4><code class="docutils literal notranslate"><span class="pre">VENV_ACTIVATE_PATH</span></code><a class="headerlink" href="#venv-activate-path" title="Permalink to this headline"></a></h4>
+<p>Set the path to the virtual environment’s activate file.
+This value is used when setting up the Python virtual environment.
+<code class="docutils literal notranslate"><span class="pre">VENV_ACTIVATE_PATH</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">&quot;$HOME/act/bin/activate&quot;</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">VENV_ACTIVATE_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/act/bin/activate&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ros-setup-path">
+<h4><code class="docutils literal notranslate"><span class="pre">ROS_SETUP_PATH</span></code><a class="headerlink" href="#ros-setup-path" title="Permalink to this headline"></a></h4>
+<p>Set the path to the ROS distribution’s setup script.
+This value is used when setting up the system-installed ROS environment.
+Setting the <code class="docutils literal notranslate"><span class="pre">ROS_DISTRO</span></code> variable from before should be sufficient to configure this variable.
+<code class="docutils literal notranslate"><span class="pre">ROS_SETUP_PATH</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">&quot;/opt/ros/$ROS_DISTRO/setup.bash&quot;</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ROS_SETUP_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/ros/</span><span class="nv">$ROS_DISTRO</span><span class="s2">/setup.bash&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="workspace-setup-path">
+<h4><code class="docutils literal notranslate"><span class="pre">WORKSPACE_SETUP_PATH</span></code><a class="headerlink" href="#workspace-setup-path" title="Permalink to this headline"></a></h4>
+<p>Set the path to the Interbotix workspace’s setup script.
+This value is used when setting up the Interbotix workspace’s ROS environment.
+<code class="docutils literal notranslate"><span class="pre">WORKSPACE_SETUP_PATH</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">&quot;$HOME/interbotix_ws/install/setup.bash&quot;</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">WORKSPACE_SETUP_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/interbotix_ws/install/setup.bash&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="record-episodes">
+<h4><code class="docutils literal notranslate"><span class="pre">RECORD_EPISODES</span></code><a class="headerlink" href="#record-episodes" title="Permalink to this headline"></a></h4>
+<p>Set the path to the <code class="docutils literal notranslate"><span class="pre">record_episodes.py</span></code> script.
+This value is used when calling the record_episodes script.
+<code class="docutils literal notranslate"><span class="pre">RECORD_EPISODES</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">&quot;$HOME/interbotix_ws/src/aloha/scripts/record_episodes.py&quot;</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">RECORD_EPISODES</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/interbotix_ws/src/aloha/scripts/record_episodes.py&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h3>
+<p>Once configured, the auto_record script is now ready to use. To auto-record a specific amount of episodes, follow the steps below:</p>
+<ol class="arabic">
+<li><p class="first">Bring up the ALOHA control stack according to your platform</p>
+<ul class="simple">
+<li>Stationary: <a class="reference internal" href="stationary.html#running-aloha-bringup"><span class="std std-ref">Running ALOHA Bringup</span></a></li>
+<li>Mobile: <a class="reference internal" href="mobile.html#running-aloha-bringup"><span class="std std-ref">Running ALOHA Bringup</span></a></li>
+</ul>
+</li>
+<li><p class="first">In a new terminal, navigate to the directory storing the auto_record script and run the command below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ auto_record.sh &lt;task_name&gt; &lt;num_episodes&gt;
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>An example for auto-recording 50 episodes of the dummy Mobile ALOHA task would look like:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>auto_record.sh<span class="w"> </span>aloha_mobile_dummy<span class="w"> </span><span class="m">50</span>
+</pre></div>
+</div>
+</div>
+<p>The auto_record script will then call the record_episodes Python script the specified number of times.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If episodes of the specified task already exist, episode indices will be automatically calculated as one greater than the number of tasks in the episode save directory.</p>
+</div>
+</li>
+</ol>
+</div>
 </div>
 <div class="section" id="dataset-format">
 <h2>Dataset Format<a class="headerlink" href="#dataset-format" title="Permalink to this headline"></a></h2>
