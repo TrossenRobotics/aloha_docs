@@ -1,210 +1,237 @@
-===============
-Data Collection
-===============
+========================
+Training and Evaluation
+========================
 
-Task Creation
+
+
+Virtual Environment Setup
+=========================
+
+Effective containerization is important when it comes to running machine learning models as there can be conflicting dependencies. You can either use a Virtual Environment or Conda.
+
+Virtual Environment Installation and Setup
+----------------------------------------------
+
+#. Install the virtual environment package:
+
+.. code-block:: bash
+
+    sudo apt-get install python3-venv
+
+#. Create a virtual environment:
+
+.. code-block:: bash
+
+    python3 -m venv ~/act  # Creates a venv "act" in the home directory, can be created anywhere
+
+#. Activate the virtual environment:
+
+.. code-block:: bash
+
+    source ~/act/bin/activate
+
+Conda Setup
+----------------------------------------------
+
+#. Create a virtual environment:
+
+.. code-block:: bash
+
+    conda create -n aloha python=3.8.10
+
+#. Activate the virtual environment:
+
+.. code-block:: bash
+
+    conda activate aloha
+
+Install Dependencies
+===============================================
+
+Install the necessary dependencies inside your containerized environment:
+
+.. code-block:: bash
+
+    pip install dm_control==1.0.14
+    pip install einops
+    pip install h5py
+    pip install ipython
+    pip install matplotlib
+    pip install mujoco==2.3.7
+    pip install opencv-python
+    pip install packaging
+    pip install pexpect
+    pip install pyquaternion
+    pip install pyyaml
+    pip install rospkg
+    pip install torch
+    pip install torchvision
+
+Clone Repository
+=========================
+
+Clone ACT if using Aloha Stationary
+
+.. code-block:: bash
+
+    git clone https://github.com/shantanuparab-tr/act.git act_training_evaluation
+
+
+Clone ACT++ if using Aloha Mobile
+
+.. code-block:: bash
+
+    git clone https://github.com/shantanuparab-tr/act_plus_plus.git act_training_evaluation
+
+
+Build and Install ACT Models
+===================================
+
+.. code-block:: bash
+   :emphasize-lines: 4
+
+    ├── act
+    │   ├── assets
+    │   ├── constants.py
+    │   ├── detr
+    │   ├── ee_sim_env.py
+    │   ├── imitate_episodes.py
+    │   ├── __init__.py
+    │   ├── policy.py
+    │   ├── record_sim_episodes.py
+    │   ├── scripted_policy.py
+    │   ├── sim_env.py
+    │   ├── utils.py
+    │   └── visualize_episodes.py
+    ├── COLCON_IGNORE
+    ├── conda_env.yaml
+    ├── LICENSE
+    └── README.md
+
+
+Navigate to the ``detr`` directory inside the repository and install the detr module whihc contains the model definitions using the below command:
+
+.. code-block:: bash
+
+    cd /path/to/act/detr && pip install -e .
+
+Training
 =============
 
-Task configuration can be found in the ALOHA package's aloha module under ``constants.py`` in the ``TASK_CONFIGS`` dictionary.
-A template task (``aloha_template``) is provided containing all possible fields and some placeholder values.
-Here, we will focus only on the task name, the dataset directory, the episode length, and the observation cameras.
+To start the training, follow the steps below:
+
+1. **Sanity Check**: 
+
+Ensure you have all the hdf5 episodes located in the correct folder after following the data collection steps :ref:`operation/data_collection:Task Creation`.
+
+2. **Source ROS Environment**:
+
+   .. code-block:: bash
+
+       source /opt/ros/humble/setup.bash
+       source interbotix_ws/install/setup.bash
+
+3. **Activate Virtual Environment**:
+
+   .. code-block:: bash
+
+       source act/bin/activate
+
+4. **Start Training**:
+
+   .. code-block:: bash
+
+       cd repo/act/
+       python3 imitate_episodes.py \
+       --task_name aloha_stationary_dummy \
+       --ckpt_dir <ckpt dir> \
+       --policy_class ACT \
+       --kl_weight 10 \
+       --chunk_size 100 \
+       --hidden_dim 512 \
+       --batch_size 8 \
+       --dim_feedforward 3200 \
+       --num_epochs 2000 \
+       --lr 1e-5 \
+       --seed 0
+
+.. note::
+
+   - ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
+   - ``ckpt_dir``: The relative location where the checkpoints and best policy will be stored.
+   - ``policy_class``: Determines the choice of policy 'ACT'/'CNNMLP'.
+   - ``kl_weight``: Controls the balance between exploration and exploitation.
+   - ``chunk_size``: Determines the length of the action sequence. K=1 is no action chunking and K=episode length is full open loop control.
+   - ``batch_size``: Low batch size leads to better generalization and high batch size results in slower convergence but faster training time.
+   - ``num_epochs``: Too many epochs lead to overfitting; too few epochs may not allow the model to learn.
+   - ``lr``: Higher learning rate can lead to faster convergence but may overshoot the optima, while lower learning rate might lead to slower but stable optimization.
+
+We recommend the following parameters:
 
 .. list-table::
-  :align: center
-  :widths: 25 75
-  :header-rows: 1
-  :width: 60%
-
-  * - Configuration Field
-    - Description
-  * - Task Name
-    - The task name should accurately describe the task that the ALOHA is performing.
-  * - Dataset Directory
-    - The ``dataset_dir`` field sets the directory episodes will saved to.
-  * - Episode Length
-    - The ``episode_len`` field sets the length of the episode in number of timesteps.
-  * - Camera Names
-    - The ``camera_names`` field takes in a list of strings corresponding to camera names.
-      These camera names will be used as observation sources during dataset collection.
-
-Recording Episodes
-==================
-
-To record an episode, follow the steps below:
-
-#.  Bring up the ALOHA control stack according to your platform
-
-    * Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
-    * Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
-
-#.  Configure the environment and run the episode recording script as follows:
-
-  .. code-block:: bash
-
-    $ source /opt/ros/humble/setup.bash # configure ROS system install environment
-    $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-    $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
-    $ cd ~/interbotix_ws/src/aloha/scripts/
-    $ python3 record_episodes.py --task_name <task_name> --episode_idx <episode_idx>
-
-  .. note::
-
-    The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
-
-  .. tip::
-
-    Each platform has a "dummy" task that can be used to test basic data collection and playback.
-    For the Stationary variant, use the ``aloha_stationary_dummy`` task.
-    For the Mobile variant, use the ``aloha_mobile_dummy`` task.
-
-    An example for the Mobile variant would look like:
-
-    .. code-block:: bash
-
-      $ python3 record_episodes.py --task_name aloha_mobile_dummy --episode_idx 0
-
-Episode Playback
-================
-
-To play back a previously-recorded episode, follow the steps below:
-
-#.  Bring up the ALOHA control stack according to your platform
-
-    * Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
-    * Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
-
-#.  Configure the environment and run the episode playback script as follows:
-
-  .. code-block:: bash
-
-    $ source /opt/ros/humble/setup.bash # configure ROS system install environment
-    $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-    $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
-    $ cd ~/interbotix_ws/src/aloha/scripts/
-    $ python3 replay_episodes.py --dataset_dir </path/to/dataset> --episode_idx <episode_idx>
-
-  .. tip::
-
-    An example for replaying the dummy Mobile episode recorded above would look like:
-
-    .. code-block:: bash
-
-      $ python3 replay_episodes.py --dataset_dir ~/aloha_data/aloha_mobile_dummy/ --episode_idx 0
-
-Episode Auto-Recording
-======================
-
-A helpful bash script, ``auto_record.sh``, is provided to allow users to collect many episodes consecutively without having to interact with the control computer.
-
-Configuration
--------------
-
-This script, whose `source`_ can be found on the ALOHA GitHub repository, has a few configuration options that should be verified or set before running.
-
-.. _`source`: https://github.com/Interbotix/aloha/blob/main/scripts/auto_record.sh
-
-``ROS_DISTRO``
-^^^^^^^^^^^^^^
-
-Set the codename of the ROS distribution used on the control computer.
-This value is used to set the path to the ``ROS_SETUP_PATH`` variable used later in the script.
-``ROS_DISTRO`` defaults to ``humble``.
-
-.. code-block:: bash
-
-  ROS_DISTRO=humble
-
-``VENV_ACTIVATE_PATH``
-^^^^^^^^^^^^^^^^^^^^^^
-
-Set the path to the virtual environment's activate file.
-This value is used when setting up the Python virtual environment.
-``VENV_ACTIVATE_PATH`` defaults to ``"$HOME/act/bin/activate"``.
-
-.. code-block:: bash
-
-  VENV_ACTIVATE_PATH="$HOME/act/bin/activate"
-
-``ROS_SETUP_PATH``
-^^^^^^^^^^^^^^^^^^
-
-Set the path to the ROS distribution's setup script.
-This value is used when setting up the system-installed ROS environment.
-Setting the ``ROS_DISTRO`` variable from before should be sufficient to configure this variable.
-``ROS_SETUP_PATH`` defaults to ``"/opt/ros/$ROS_DISTRO/setup.bash"``.
-
-.. code-block:: bash
-
-  ROS_SETUP_PATH="/opt/ros/$ROS_DISTRO/setup.bash"
-
-``WORKSPACE_SETUP_PATH``
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Set the path to the Interbotix workspace's setup script.
-This value is used when setting up the Interbotix workspace's ROS environment.
-``WORKSPACE_SETUP_PATH`` defaults to ``"$HOME/interbotix_ws/install/setup.bash"``.
-
-.. code-block:: bash
-
-  WORKSPACE_SETUP_PATH="$HOME/interbotix_ws/install/setup.bash"
-
-``RECORD_EPISODES``
-^^^^^^^^^^^^^^^^^^^
-
-Set the path to the ``record_episodes.py`` script.
-This value is used when calling the record_episodes script.
-``RECORD_EPISODES`` defaults to ``"$HOME/interbotix_ws/src/aloha/scripts/record_episodes.py"``.
-
-.. code-block:: bash
-
-  RECORD_EPISODES="$HOME/interbotix_ws/src/aloha/scripts/record_episodes.py"
-
-Usage
------
-
-Once configured, the auto_record script is now ready to use. To auto-record a specific amount of episodes, follow the steps below:
-
-#.  Bring up the ALOHA control stack according to your platform
-
-    * Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
-    * Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
-
-#.  In a new terminal, navigate to the directory storing the auto_record script and run the command below:
-
-    .. code-block::
-
-      $ auto_record.sh <task_name> <num_episodes>
-
-    .. tip::
-
-      An example for auto-recording 50 episodes of the dummy Mobile ALOHA task would look like:
-
-      .. code-block:: bash
-
-        $ auto_record.sh aloha_mobile_dummy 50
-
-    The auto_record script will then call the record_episodes Python script the specified number of times.
-
-    .. note::
-
-      If episodes of the specified task already exist, episode indices will be automatically calculated as one greater than the number of tasks in the episode save directory.
-
-Dataset Format
-==============
-
-ALOHA saves its episodes in the `hdf5 format`_ with the following format:
-
-.. _`hdf5 format`: https://en.wikipedia.org/wiki/Hierarchical_Data_Format#HDF5
-
-.. code-block::
-
-    - images
-        - cam_high          (480, 640, 3) 'uint8'
-        - cam_low           (480, 640, 3) 'uint8'   (on Stationary)
-        - cam_left_wrist    (480, 640, 3) 'uint8'
-        - cam_right_wrist   (480, 640, 3) 'uint8'
-    - qpos                  (14,)         'float64'
-    - qvel                  (14,)         'float64'
-
-    action                  (14,)         'float64'
-    base_action             (2,)          'float64' (on Mobile)
+   :align: center
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Parameter
+     - Value
+   * - Policy Class
+     - ACT
+   * - KL Weight
+     - 10
+   * - Chunk Size
+     - 100
+   * - Batch Size
+     - 2
+   * - Num of Epochs
+     - 3000
+   * - Learning Rate
+     - 1e-5
+
+Evaluation
+=====================
+
+To evaluate a trained model, follow the steps below:
+
+1. **Bring up the ALOHA control stack** according to your platform:
+
+   - Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
+   - Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
+
+
+2. **Configure the environment**:
+
+   .. code-block:: bash
+
+       source /opt/ros/humble/setup.bash  # Configure ROS system install environment
+       source ~/interbotix_ws/install/setup.bash  # Configure ROS workspace environment
+       source /<path_to_aloha_venv>/bin/activate  # Configure ALOHA Python environment
+       cd ~/<act_repository>/act/
+
+
+3. **Run the evaluation script**
+
+   .. code-block:: bash   
+      :emphasize-lines: 13-14
+
+       python3 imitate_episodes.py \
+       --task_name aloha_stationary_dummy \
+       --ckpt_dir <ckpt dir> \
+       --policy_class ACT \
+       --kl_weight 10 \
+       --chunk_size 100 \
+       --hidden_dim 512 \
+       --batch_size 8 \
+       --dim_feedforward 3200 \
+       --num_epochs 2000 \
+       --lr 1e-5 \
+       --seed 0 \
+       --eval \
+       --temporal_agg
+
+.. note::
+
+   - The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
+   - The ``ckpt_dir`` argument should match the correct relative directory location of the trained policy.
+   - The ``eval`` flag will set the script into evaluation mode.
+   - The ``temporal_agg`` is not required, but helps to smoothen the trajectory of the robots.
