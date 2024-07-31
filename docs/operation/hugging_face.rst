@@ -119,7 +119,7 @@ Additional Information
 ----------------------
 
 - **Repository Management**: Utilize the `Hugging Face Hub documentation <https://huggingface.co/docs/hub/repositories>`_ for detailed instructions on managing repositories, handling versions, and setting permissions.
-- **Dataset Formats**: Hugging Face supports various dataset formats. For this guide, we specifically use the ``.hdf5`` format.
+- **Dataset Formats**: Hugging Face supports various dataset formats. For this guide, we specifically use the Aloha's native ``.hdf5`` format.
 - **Community Support**: If you encounter any issues, refer to the `Hugging Face community forums <https://discuss.huggingface.co>`_ for additional support.
 
 By following this guide, you should be able to seamlessly upload and download datasets using the Hugging Face platform. For more detailed guides and examples, refer to the `Hugging Face Documentation <https://huggingface.co/docs>`_.
