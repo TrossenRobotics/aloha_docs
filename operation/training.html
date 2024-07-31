@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training and Evaluation &mdash; ALOHA Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tr_style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hugging Face Guide" href="hugging_face.html" />
+    <link rel="prev" title="Data Collection" href="data_collection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <div class="sidebartitle-docs-home">
+    <a href="https://docs.trossenrobotics.com/" target="_blank" class="icon icon-home">
+      &nbsp;Trossen Robotics Docs Home
+    </a>
+    <div class="sidebartitle-docs-home-hr">
+      <hr>
+    </div>
+  </div>
+  
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../operation.html">Operation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">Mobile Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationary.html">Stationary Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_collection.html">Data Collection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Training and Evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#virtual-environment-setup">Virtual Environment Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#virtual-environment-installation-and-setup">Virtual Environment Installation and Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conda-setup">Conda Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-dependencies">Install Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-repository">Clone Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-and-install-act-models">Build and Install ACT Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hugging_face.html">Hugging Face Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ALOHA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../operation.html">Operation</a></li>
+      <li class="breadcrumb-item active">Training and Evaluation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/TrossenRobotics/aloha_docs/blob/main/docs/operation/training.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="training-and-evaluation">
+<h1>Training and Evaluation<a class="headerlink" href="#training-and-evaluation" title="Permalink to this headline"></a></h1>
+<div class="section" id="virtual-environment-setup">
+<h2>Virtual Environment Setup<a class="headerlink" href="#virtual-environment-setup" title="Permalink to this headline"></a></h2>
+<p>Effective containerization is important when it comes to running machine learning models as there can be conflicting dependencies.
+You can either use a Virtual Environment or Conda.</p>
+<div class="section" id="virtual-environment-installation-and-setup">
+<h3>Virtual Environment Installation and Setup<a class="headerlink" href="#virtual-environment-installation-and-setup" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li>Install the virtual environment package:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-venv
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Create a virtual environment:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/act<span class="w">  </span><span class="c1"># Creates a venv &quot;act&quot; in the home directory, can be created anywhere</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Activate the virtual environment:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>act/bin/activate
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="conda-setup">
+<h3>Conda Setup<a class="headerlink" href="#conda-setup" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li>Create a virtual environment:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>aloha<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8.10
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Activate the virtual environment:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>aloha
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="install-dependencies">
+<h3>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline"></a></h3>
+<p>Install the necessary dependencies inside your containerized environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">dm_control</span><span class="o">==</span><span class="m">1</span>.0.14
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>einops
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>h5py
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ipython
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">mujoco</span><span class="o">==</span><span class="m">2</span>.3.7
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>opencv-python
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>packaging
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pexpect
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pyquaternion
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pyyaml
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>rospkg
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>torch
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>torchvision
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="clone-repository">
+<h2>Clone Repository<a class="headerlink" href="#clone-repository" title="Permalink to this headline"></a></h2>
+<p>Clone ACT if using Aloha Stationary</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Interbotix/act.git<span class="w"> </span>act_training_evaluation
+</pre></div>
+</div>
+<p>Clone ACT++ if using Aloha Mobile</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Interbotix/act_plus_plus.git<span class="w"> </span>act_training_evaluation
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-and-install-act-models">
+<h2>Build and Install ACT Models<a class="headerlink" href="#build-and-install-act-models" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>├──<span class="w"> </span>act
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>assets
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>constants.py
+<span class="hll"><span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>detr
+</span><span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>ee_sim_env.py
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>imitate_episodes.py
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>policy.py
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>record_sim_episodes.py
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>scripted_policy.py
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>sim_env.py
+<span class="w"> </span>│<span class="w">   </span>├──<span class="w"> </span>utils.py
+<span class="w"> </span>│<span class="w">   </span>└──<span class="w"> </span>visualize_episodes.py
+<span class="w"> </span>├──<span class="w"> </span>COLCON_IGNORE
+<span class="w"> </span>├──<span class="w"> </span>conda_env.yaml
+<span class="w"> </span>├──<span class="w"> </span>LICENSE
+<span class="w"> </span>└──<span class="w"> </span>README.md
+</pre></div>
+</div>
+<p>Navigate to the <code class="docutils literal notranslate"><span class="pre">detr</span></code> directory inside the repository and install the detr module whihc contains the model definitions using the below command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/path/to/act/detr<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</div>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline"></a></h2>
+<p>To start the training, follow the steps below:</p>
+<ol class="arabic">
+<li><p class="first">Sanity Check:</p>
+<blockquote>
+<div><p>Ensure you have all the hdf5 episodes located in the correct folder after following the data collection steps <a class="reference internal" href="data_collection.html#task-creation"><span class="std std-ref">Task Creation</span></a>.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Source ROS Environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>interbotix_ws/install/setup.bash
+</pre></div>
+</div>
+</li>
+<li><p class="first">Activate Virtual Environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>act/bin/activate
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start Training</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/path/to/act/repository/
+$<span class="w"> </span>python3<span class="w"> </span>imitate_episodes.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--task_name<span class="w"> </span>aloha_stationary_dummy<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ckpt_dir<span class="w"> </span>&lt;ckpt<span class="w"> </span>dir&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--policy_class<span class="w"> </span>ACT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--kl_weight<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--chunk_size<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hidden_dim<span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--batch_size<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dim_feedforward<span class="w"> </span><span class="m">3200</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num_epochs<span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--lr<span class="w"> </span>1e-5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--seed<span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><code class="docutils literal notranslate"><span class="pre">task_name</span></code> argument should match one of the task names in the <code class="docutils literal notranslate"><span class="pre">TASK_CONFIGS</span></code>, as configured in the <a class="reference internal" href="data_collection.html#task-creation"><span class="std std-ref">Task Creation</span></a> section.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ckpt_dir</span></code>: The relative location where the checkpoints and best policy will be stored.</li>
+<li><code class="docutils literal notranslate"><span class="pre">policy_class</span></code>: Determines the choice of policy ‘ACT’/’CNNMLP’.</li>
+<li><code class="docutils literal notranslate"><span class="pre">kl_weight</span></code>: Controls the balance between exploration and exploitation.</li>
+<li><code class="docutils literal notranslate"><span class="pre">chunk_size</span></code>: Determines the length of the action sequence. K=1 is no action chunking and K=episode length is full open loop control.</li>
+<li><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>: Low batch size leads to better generalization and high batch size results in slower convergence but faster training time.</li>
+<li><code class="docutils literal notranslate"><span class="pre">num_epochs</span></code>: Too many epochs lead to overfitting; too few epochs may not allow the model to learn.</li>
+<li><code class="docutils literal notranslate"><span class="pre">lr</span></code>: Higher learning rate can lead to faster convergence but may overshoot the optima, while lower learning rate might lead to slower but stable optimization.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>We recommend the following parameters:</p>
+<table border="1" class="colwidths-given last docutils align-center">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Policy Class</td>
+<td>ACT</td>
+</tr>
+<tr class="row-odd"><td>KL Weight</td>
+<td>10</td>
+</tr>
+<tr class="row-even"><td>Chunk Size</td>
+<td>100</td>
+</tr>
+<tr class="row-odd"><td>Batch Size</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>Num of Epochs</td>
+<td>3000</td>
+</tr>
+<tr class="row-odd"><td>Learning Rate</td>
+<td>1e-5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline"></a></h2>
+<p>To evaluate a trained model, follow the steps below:</p>
+<ol class="arabic">
+<li><p class="first">Bring up the ALOHA</p>
+<ul class="simple">
+<li>Stationary: <a class="reference internal" href="stationary.html#running-aloha-bringup"><span class="std std-ref">Running ALOHA Bringup</span></a></li>
+<li>Mobile: <a class="reference internal" href="mobile.html#running-aloha-bringup"><span class="std std-ref">Running ALOHA Bringup</span></a></li>
+</ul>
+</li>
+<li><p class="first">Configure the environment</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Configure ROS system install environment</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>interbotix_ws/install/setup.bash<span class="w">  </span><span class="c1"># Configure ROS workspace environment</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/&lt;path_to_aloha_venv&gt;/bin/activate<span class="w">  </span><span class="c1"># Configure ALOHA Python environment</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/&lt;act_repository&gt;/act/
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the evaluation script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>python3<span class="w"> </span>imitate_episodes.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--task_name<span class="w"> </span>aloha_stationary_dummy<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ckpt_dir<span class="w"> </span>&lt;ckpt<span class="w"> </span>dir&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--policy_class<span class="w"> </span>ACT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--kl_weight<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--chunk_size<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hidden_dim<span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--batch_size<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dim_feedforward<span class="w"> </span><span class="m">3200</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num_epochs<span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--lr<span class="w"> </span>1e-5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--seed<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">  </span>--eval<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">  </span>--temporal_agg
+</span></pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">task_name</span></code> argument should match one of the task names in the <code class="docutils literal notranslate"><span class="pre">TASK_CONFIGS</span></code>, as configured in the <a class="reference internal" href="data_collection.html#task-creation"><span class="std std-ref">Task Creation</span></a> section.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">ckpt_dir</span></code> argument should match the correct relative directory location of the trained policy.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">eval</span></code> flag will set the script into evaluation mode.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">temporal_agg</span></code> is not required, but helps to smoothen the trajectory of the robots.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_collection.html" class="btn btn-neutral float-left" title="Data Collection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hugging_face.html" class="btn btn-neutral float-right" title="Hugging Face Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Trossen Robotics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+     
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
