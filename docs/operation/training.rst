@@ -143,17 +143,17 @@ To start the training, follow the steps below:
 
       $ cd /path/to/act/repository/
       $ python3 imitate_episodes.py \
-      --task_name aloha_stationary_dummy \
-      --ckpt_dir <ckpt dir> \
-      --policy_class ACT \
-      --kl_weight 10 \
-      --chunk_size 100 \
-      --hidden_dim 512 \
-      --batch_size 8 \
-      --dim_feedforward 3200 \
-      --num_epochs 2000 \
-      --lr 1e-5 \
-      --seed 0
+        --task_name aloha_stationary_dummy \
+        --ckpt_dir <ckpt dir> \
+        --policy_class ACT \
+        --kl_weight 10 \
+        --chunk_size 100 \
+        --hidden_dim 512 \
+        --batch_size 8 \
+        --dim_feedforward 3200 \
+        --num_epochs 2000 \
+        --lr 1e-5 \
+        --seed 0
 
 .. tip::
 
@@ -213,19 +213,19 @@ To evaluate a trained model, follow the steps below:
       :emphasize-lines: 13-14
 
        python3 imitate_episodes.py \
-       --task_name aloha_stationary_dummy \
-       --ckpt_dir <ckpt dir> \
-       --policy_class ACT \
-       --kl_weight 10 \
-       --chunk_size 100 \
-       --hidden_dim 512 \
-       --batch_size 8 \
-       --dim_feedforward 3200 \
-       --num_epochs 2000 \
-       --lr 1e-5 \
-       --seed 0 \
-       --eval \
-       --temporal_agg
+        --task_name aloha_stationary_dummy \
+        --ckpt_dir <ckpt dir> \
+        --policy_class ACT \
+        --kl_weight 10 \
+        --chunk_size 100 \
+        --hidden_dim 512 \
+        --batch_size 8 \
+        --dim_feedforward 3200 \
+        --num_epochs 2000 \
+        --lr 1e-5 \
+        --seed 0 \
+        --eval \
+        --temporal_agg
 
 .. note::
 
