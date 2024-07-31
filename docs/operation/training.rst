@@ -1,6 +1,6 @@
-========================
+=======================
 Training and Evaluation
-========================
+=======================
 
 
 
@@ -10,82 +10,82 @@ Virtual Environment Setup
 Effective containerization is important when it comes to running machine learning models as there can be conflicting dependencies. You can either use a Virtual Environment or Conda.
 
 Virtual Environment Installation and Setup
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Install the virtual environment package:
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    sudo apt-get install python3-venv
+      $ sudo apt-get install python3-venv
 
 #. Create a virtual environment:
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    python3 -m venv ~/act  # Creates a venv "act" in the home directory, can be created anywhere
+      $ python3 -m venv ~/act  # Creates a venv "act" in the home directory, can be created anywhere
 
 #. Activate the virtual environment:
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    source ~/act/bin/activate
+      $ source act/bin/activate
 
 Conda Setup
-----------------------------------------------
+^^^^^^^^^^^
 
 #. Create a virtual environment:
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    conda create -n aloha python=3.8.10
+    $ conda create -n aloha python=3.8.10
 
 #. Activate the virtual environment:
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    conda activate aloha
+    $ conda activate aloha
 
 Install Dependencies
-===============================================
+^^^^^^^^^^^^^^^^^^^^
 
 Install the necessary dependencies inside your containerized environment:
 
 .. code-block:: bash
 
-    pip install dm_control==1.0.14
-    pip install einops
-    pip install h5py
-    pip install ipython
-    pip install matplotlib
-    pip install mujoco==2.3.7
-    pip install opencv-python
-    pip install packaging
-    pip install pexpect
-    pip install pyquaternion
-    pip install pyyaml
-    pip install rospkg
-    pip install torch
-    pip install torchvision
+  $  pip install dm_control==1.0.14
+  $  pip install einops
+  $  pip install h5py
+  $  pip install ipython
+  $  pip install matplotlib
+  $  pip install mujoco==2.3.7
+  $  pip install opencv-python
+  $  pip install packaging
+  $  pip install pexpect
+  $  pip install pyquaternion
+  $  pip install pyyaml
+  $  pip install rospkg
+  $  pip install torch
+  $  pip install torchvision
 
 Clone Repository
-=========================
+================
 
 Clone ACT if using Aloha Stationary
 
 .. code-block:: bash
 
-    git clone https://github.com/shantanuparab-tr/act.git act_training_evaluation
+    $ git clone https://github.com/Interbotix/act.git act_training_evaluation
 
 
 Clone ACT++ if using Aloha Mobile
 
 .. code-block:: bash
 
-    git clone https://github.com/shantanuparab-tr/act_plus_plus.git act_training_evaluation
+    $ git clone https://github.com/Interbotix/act_plus_plus.git act_training_evaluation
 
 
 Build and Install ACT Models
-===================================
+============================
 
 .. code-block:: bash
    :emphasize-lines: 4
@@ -113,49 +113,49 @@ Navigate to the ``detr`` directory inside the repository and install the detr mo
 
 .. code-block:: bash
 
-    cd /path/to/act/detr && pip install -e .
+    $ cd /path/to/act/detr && pip install -e .
 
 Training
-=============
+========
 
 To start the training, follow the steps below:
 
-1. **Sanity Check**: 
+#. Sanity Check: 
 
-Ensure you have all the hdf5 episodes located in the correct folder after following the data collection steps :ref:`operation/data_collection:Task Creation`.
+    Ensure you have all the hdf5 episodes located in the correct folder after following the data collection steps :ref:`operation/data_collection:Task Creation`.
 
-2. **Source ROS Environment**:
-
-   .. code-block:: bash
-
-       source /opt/ros/humble/setup.bash
-       source interbotix_ws/install/setup.bash
-
-3. **Activate Virtual Environment**:
+#. Source ROS Environment:
 
    .. code-block:: bash
 
-       source act/bin/activate
+      $ source /opt/ros/humble/setup.bash
+      $ source interbotix_ws/install/setup.bash
 
-4. **Start Training**:
+#. Activate Virtual Environment:
 
    .. code-block:: bash
 
-       cd repo/act/
-       python3 imitate_episodes.py \
-       --task_name aloha_stationary_dummy \
-       --ckpt_dir <ckpt dir> \
-       --policy_class ACT \
-       --kl_weight 10 \
-       --chunk_size 100 \
-       --hidden_dim 512 \
-       --batch_size 8 \
-       --dim_feedforward 3200 \
-       --num_epochs 2000 \
-       --lr 1e-5 \
-       --seed 0
+      $ source act/bin/activate
 
-.. note::
+#. Start Training
+
+   .. code-block:: bash
+
+      $ cd /path/to/act/repository/
+      $ python3 imitate_episodes.py \
+      --task_name aloha_stationary_dummy \
+      --ckpt_dir <ckpt dir> \
+      --policy_class ACT \
+      --kl_weight 10 \
+      --chunk_size 100 \
+      --hidden_dim 512 \
+      --batch_size 8 \
+      --dim_feedforward 3200 \
+      --num_epochs 2000 \
+      --lr 1e-5 \
+      --seed 0
+
+.. tip::
 
    - ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
    - ``ckpt_dir``: The relative location where the checkpoints and best policy will be stored.
@@ -189,27 +189,25 @@ We recommend the following parameters:
      - 1e-5
 
 Evaluation
-=====================
+==========
 
 To evaluate a trained model, follow the steps below:
 
-1. **Bring up the ALOHA control stack** according to your platform:
+#. Bring up the ALOHA 
 
    - Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
    - Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
 
-
-2. **Configure the environment**:
+#. Configure the environment
 
    .. code-block:: bash
 
-       source /opt/ros/humble/setup.bash  # Configure ROS system install environment
-       source ~/interbotix_ws/install/setup.bash  # Configure ROS workspace environment
-       source /<path_to_aloha_venv>/bin/activate  # Configure ALOHA Python environment
-       cd ~/<act_repository>/act/
+       $ source /opt/ros/humble/setup.bash  # Configure ROS system install environment
+       $ source interbotix_ws/install/setup.bash  # Configure ROS workspace environment
+       $ source /<path_to_aloha_venv>/bin/activate  # Configure ALOHA Python environment
+       $ cd ~/<act_repository>/act/
 
-
-3. **Run the evaluation script**
+#. Run the evaluation script
 
    .. code-block:: bash   
       :emphasize-lines: 13-14
