@@ -15,6 +15,7 @@ Creating a New Dataset Repository
 
 Web Interface
 ^^^^^^^^^^^^^
+
 #. Navigate to the `Hugging Face website <https://huggingface.co>`_.
 #. Log in to your account.
 #. Click on your profile picture in the top-right corner and select "New dataset."
@@ -22,8 +23,9 @@ Web Interface
 
 Command Line Interface (CLI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   #. Ensure you have the `huggingface_hub <https://huggingface.co/docs/huggingface_hub/index>`_ library installed.
-   #. Use the following Python script to create a new repository:
+
+#. Ensure you have the `huggingface_hub <https://huggingface.co/docs/huggingface_hub/index>`_ library installed.
+#. Use the following Python script to create a new repository:
 
     .. code-block:: python
 
@@ -52,29 +54,29 @@ Python API
 
 You can use the following Python script to upload your dataset:
 
-    .. code-block:: python
+.. code-block:: python
 
-        from huggingface_hub import HfApi
-        api = HfApi()
+    from huggingface_hub import HfApi
+    api = HfApi()
 
-        api.upload_folder(
-            folder_path="path/to/dataset",
-            repo_id="username/repository_name",
-            repo_type="dataset",
-        )
+    api.upload_folder(
+        folder_path="path/to/dataset",
+        repo_id="username/repository_name",
+        repo_type="dataset",
+    )
 
 **Example**:
 
-    .. code-block:: python
+.. code-block:: python
 
-        from huggingface_hub import HfApi
-        api = HfApi()
+    from huggingface_hub import HfApi
+    api = HfApi()
 
-        api.upload_folder(
-            folder_path="~/aloha_data/aloha_stationary_block_pickup",
-            repo_id="TrossenRoboticsCommunity/aloha_static_datasets",
-            repo_type="dataset",
-        )
+    api.upload_folder(
+        folder_path="~/aloha_data/aloha_stationary_block_pickup",
+        repo_id="TrossenRoboticsCommunity/aloha_static_datasets",
+        repo_type="dataset",
+    )
 
 For more information on uploading datasets, refer to the `Hugging Face Uploading <https://huggingface.co/docs/hub/upload>`_.
 
@@ -88,26 +90,26 @@ Cloning the Repository
 
 To clone the repository, use the following command:
 
-    .. code-block:: bash
+.. code-block:: bash
 
-        $ git clone https://huggingface.co/datasets/username/repository_name
+    $ git clone https://huggingface.co/datasets/username/repository_name
 
 Using the Hugging Face CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can also use the Hugging Face CLI to download datasets with the following Python script:
 
-    .. code-block:: python
+ .. code-block:: python
 
-        from huggingface_hub import snapshot_download
+    from huggingface_hub import snapshot_download
 
-        # Download the dataset
-        snapshot_download(
-            repo_id="username/repository_name",
-            repo_type="dataset",
-            local_dir="path/to/local/directory",
-            allow_patterns="*.hdf5"
-        )
+    # Download the dataset
+    snapshot_download(
+        repo_id="username/repository_name",
+        repo_type="dataset",
+        local_dir="path/to/local/directory",
+        allow_patterns="*.hdf5"
+    )
 
 .. note::
 

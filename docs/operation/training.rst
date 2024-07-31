@@ -7,7 +7,8 @@ Training and Evaluation
 Virtual Environment Setup
 =========================
 
-Effective containerization is important when it comes to running machine learning models as there can be conflicting dependencies. You can either use a Virtual Environment or Conda.
+Effective containerization is important when it comes to running machine learning models as there can be conflicting dependencies.
+You can either use a Virtual Environment or Conda.
 
 Virtual Environment Installation and Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -52,20 +53,20 @@ Install the necessary dependencies inside your containerized environment:
 
 .. code-block:: bash
 
-  $  pip install dm_control==1.0.14
-  $  pip install einops
-  $  pip install h5py
-  $  pip install ipython
-  $  pip install matplotlib
-  $  pip install mujoco==2.3.7
-  $  pip install opencv-python
-  $  pip install packaging
-  $  pip install pexpect
-  $  pip install pyquaternion
-  $  pip install pyyaml
-  $  pip install rospkg
-  $  pip install torch
-  $  pip install torchvision
+    $ pip install dm_control==1.0.14
+    $ pip install einops
+    $ pip install h5py
+    $ pip install ipython
+    $ pip install matplotlib
+    $ pip install mujoco==2.3.7
+    $ pip install opencv-python
+    $ pip install packaging
+    $ pip install pexpect
+    $ pip install pyquaternion
+    $ pip install pyyaml
+    $ pip install rospkg
+    $ pip install torch
+    $ pip install torchvision
 
 Clone Repository
 ================
@@ -74,6 +75,7 @@ Clone ACT if using Aloha Stationary
 
 .. code-block:: bash
 
+    $ cd ~
     $ git clone https://github.com/Interbotix/act.git act_training_evaluation
 
 
@@ -81,8 +83,8 @@ Clone ACT++ if using Aloha Mobile
 
 .. code-block:: bash
 
+    $ cd ~
     $ git clone https://github.com/Interbotix/act_plus_plus.git act_training_evaluation
-
 
 Build and Install ACT Models
 ============================
@@ -155,7 +157,7 @@ To start the training, follow the steps below:
         --lr 1e-5 \
         --seed 0
 
-.. tip::
+.. note::
 
    - ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
    - ``ckpt_dir``: The relative location where the checkpoints and best policy will be stored.
@@ -166,27 +168,30 @@ To start the training, follow the steps below:
    - ``num_epochs``: Too many epochs lead to overfitting; too few epochs may not allow the model to learn.
    - ``lr``: Higher learning rate can lead to faster convergence but may overshoot the optima, while lower learning rate might lead to slower but stable optimization.
 
-We recommend the following parameters:
 
-.. list-table::
-   :align: center
-   :widths: 25 75
-   :header-rows: 1
+.. tip::
 
-   * - Parameter
-     - Value
-   * - Policy Class
-     - ACT
-   * - KL Weight
-     - 10
-   * - Chunk Size
-     - 100
-   * - Batch Size
-     - 2
-   * - Num of Epochs
-     - 3000
-   * - Learning Rate
-     - 1e-5
+  We recommend the following parameters:
+
+  .. list-table::
+    :align: center
+    :widths: 25 75
+    :header-rows: 1
+
+    * - Parameter
+      - Value
+    * - Policy Class
+      - ACT
+    * - KL Weight
+      - 10
+    * - Chunk Size
+      - 100
+    * - Batch Size
+      - 2
+    * - Num of Epochs
+      - 3000
+    * - Learning Rate
+      - 1e-5
 
 Evaluation
 ==========
