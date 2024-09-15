@@ -10,3 +10,4 @@ Operation
   ./operation/data_collection.rst
   ./operation/training.rst
   ./operation/hugging_face.rst
+  ./operation/lerobot_guide.rst
