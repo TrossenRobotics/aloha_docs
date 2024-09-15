@@ -2,8 +2,6 @@
 Training and Evaluation
 =======================
 
-
-
 Virtual Environment Setup
 =========================
 
@@ -77,7 +75,6 @@ Clone ACT if using Aloha Stationary
 
     $ cd ~
     $ git clone https://github.com/Interbotix/act.git act_training_evaluation
-
 
 Clone ACT++ if using Aloha Mobile
 
