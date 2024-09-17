@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinxcontrib.youtube',
     "sphinx.ext.autosectionlabel",
+    'sphinxcontrib.video',
 ]
 
 # True to prefix each section label with the name of the document it is in, followed by a colon.
