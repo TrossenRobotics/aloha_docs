@@ -176,7 +176,6 @@ Visualizing Datasets
    :width: 1280
    :height: 720
 
-
 To visualize all the episodes recorded in your dataset, run:
 
 .. code-block:: bash
@@ -221,7 +220,6 @@ To replay the first episode of your recorded dataset:
    Use different :guilabel:`--fps` values to adjust the frequency of the robot actions.
 
 
-
 Training 
 ========
 
@@ -236,7 +234,7 @@ To train a policy for controlling your robot, use the following command:
       hydra.run.dir=outputs/train/act_aloha_test \
       hydra.job.name=act_aloha_test \
       device=cuda \
-      wandb.enable=true
+      wandb.enable=false
 
 .. note::
 
@@ -288,14 +286,12 @@ To control your robot with the trained policy and record evaluation episodes:
       --num-episodes 10 \
       -p outputs/train/act_aloha_test/checkpoints/last/pretrained_model
 
-
 This command is similar to the one used for recording training datasets, with a couple of key changes:
 
 #. The :guilabel:`-p` argument is now included, which specifies the path to your policy checkpoint (e.g., :guilabel:`-p outputs/train/eval_aloha_test/checkpoints/last/pretrained_model`).
    You can also refer to the model repository on Hugging Face if you have uploaded a model checkpoint there (e.g., :guilabel:`-p ${HF_USER}/act_aloha_test`).
 
 #. The dataset name begins with :guilabel:`eval`, reflecting that you are running inference (e.g., :guilabel:`--repo-id ${HF_USER}/eval_aloha_test`).
-
 
 You can visualize the evaluation dataset afterward using:
 
@@ -304,7 +300,6 @@ You can visualize the evaluation dataset afterward using:
    $ python lerobot/scripts/visualize_dataset.py \
       --root data \
       --repo-id ${HF_USER}/eval_aloha_test
-
 
 Trossen Robotics Community
 ==========================
@@ -317,7 +312,7 @@ To run evaluation on the pretrained models, use the following command:
 
 .. code-block:: bash
 
-   python lerobot/scripts/control_robot.py record \
+   $ python lerobot/scripts/control_robot.py record \
      --robot-path lerobot/configs/robot/aloha.yaml \
      --fps 30 \
      --root data \
@@ -329,7 +324,6 @@ To run evaluation on the pretrained models, use the following command:
      --num-episodes 10 \
      -p ${HF_USER}/act_aloha_test
 
-
 Datasets for Training and Augmentation
 --------------------------------------
 
@@ -340,8 +334,6 @@ Instructions for downloading and using these datasets can be found at the follow
 `Dataset Download and Upload Instructions <https://docs.trossenrobotics.com/aloha_docs/operation/hugging_face.html>`_
 
 `Trossen Robotics Community <https://huggingface.co/TrossenRoboticsCommunity>`_
-
-
 
 Troubleshooting
 ===============
@@ -355,8 +347,8 @@ Troubleshooting
 
    .. code-block:: bash
 
-      pip uninstall opencv-python
-      conda install -c conda-forge opencv=4.10.0
+      $ pip uninstall opencv-python
+      $ conda install -c conda-forge opencv=4.10.0
 
 #. **FFmpeg Encoding Error (`unknown encoder libsvtav1`)**
 
@@ -375,7 +367,6 @@ Troubleshooting
 #. **Arrow Keys Not Working During Data Recording (Linux)**
 
    Ensure that the :guilabel:`$DISPLAY` environment variable is set correctly.
-
 
 #. Checkout LeRobot Documentation for further help and details.
 
