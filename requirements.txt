@@ -3,6 +3,7 @@ docutils==0.16
 sphinx==4.3.2
 sphinx-rtd-theme
 sphinxcontrib-youtube
+sphinxcontrib-video
 sphinx-copybutton
 sphinx-collapse
 sphinx-tabs
