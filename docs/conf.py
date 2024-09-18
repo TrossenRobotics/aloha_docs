@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinxcontrib.youtube',
     "sphinx.ext.autosectionlabel",
+    'sphinxcontrib.video',
 ]
 
 # True to prefix each section label with the name of the document it is in, followed by a colon.
@@ -48,6 +49,7 @@ autosectionlabel_prefix_document = True
 # Used by the sphinx_copybutton extension - Define the prompt text that should be removed from
 # copied text in code blocks.
 copybutton_prompt_text = "$ "
+copybutton_line_continuation_character = "\\"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = [
