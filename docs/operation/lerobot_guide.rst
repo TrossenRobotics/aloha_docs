@@ -153,7 +153,6 @@ The system supports episode-based data collection, where episodes are time-bound
       Therefore it will check the existing output directories for any previously recorded episodes and will start recording from the last recorded episode.
    
    #. The recorded data is pushed to hugging face hub by default you can set this false by using :guilabel:`--push_to_hub 0`.
-   
 
 .. note::
 
@@ -218,7 +217,6 @@ To replay the first episode of your recorded dataset:
 .. tip::
 
    Use different :guilabel:`--fps` values to adjust the frequency of the robot actions.
-
 
 Training 
 ========
