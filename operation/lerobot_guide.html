@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeRobot X Aloha User Guide &mdash; ALOHA Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tr_style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Troubleshooting" href="../troubleshooting.html" />
+    <link rel="prev" title="Hugging Face Guide" href="hugging_face.html" />
+   
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nglikgkapv");
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <div class="sidebartitle-docs-home">
+    <a href="https://docs.trossenrobotics.com/" target="_blank" class="icon icon-home">
+      &nbsp;Trossen Robotics Docs Home
+    </a>
+    <div class="sidebartitle-docs-home-hr">
+      <hr>
+    </div>
+  </div>
+  
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../operation.html">Operation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">Mobile Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationary.html">Stationary Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_collection.html">Data Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training.html">Training and Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hugging_face.html">Hugging Face Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LeRobot X Aloha User Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#virtual-environment-setup">Virtual Environment Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-virtual-environment-venv">Using Virtual Environment (venv)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-conda">Using Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-repository">Clone Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-and-install-lerobot-models">Build and Install LeRobot Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teleoperation">Teleoperation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-teleoperation-with-hydra">Customizing Teleoperation with Hydra</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recording-data-episodes">Recording Data Episodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualizing-datasets">Visualizing Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#replay-recorded-episodes">Replay Recorded Episodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upload-policy-checkpoints">Upload Policy Checkpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trossen-robotics-community">Trossen Robotics Community</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pretrained-models">Pretrained Models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datasets-for-training-and-augmentation">Datasets for Training and Augmentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ALOHA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../operation.html">Operation</a></li>
+      <li class="breadcrumb-item active">LeRobot X Aloha User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/TrossenRobotics/aloha_docs/blob/main/docs/operation/lerobot_guide.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="lerobot-x-aloha-user-guide">
+<h1>LeRobot X Aloha User Guide<a class="headerlink" href="#lerobot-x-aloha-user-guide" title="Permalink to this headline"></a></h1>
+<div class="section" id="virtual-environment-setup">
+<h2>Virtual Environment Setup<a class="headerlink" href="#virtual-environment-setup" title="Permalink to this headline"></a></h2>
+<p>Containerization is crucial for running machine learning models to avoid dependency conflicts.
+You can either use a Virtual Environment (venv) or Conda for this purpose.</p>
+<div class="section" id="using-virtual-environment-venv">
+<h3>Using Virtual Environment (venv)<a class="headerlink" href="#using-virtual-environment-venv" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p class="first">Install the virtual environment package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-venv
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/lerobot<span class="w">  </span><span class="c1"># Creates a venv &quot;lerobot&quot; in the home directory</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Activate the virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/lerobot/bin/activate
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="using-conda">
+<h3>Using Conda<a class="headerlink" href="#using-conda" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p class="first">Create a virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>lerobot<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+</pre></div>
+</div>
+</li>
+<li><p class="first">Activate the virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>lerobot
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use either <cite>venv</cite> or <cite>Conda</cite> based on your preference, but <strong>do not</strong> mix them to avoid dependency issues.</p>
+</div>
+</div>
+</div>
+<div class="section" id="clone-repository">
+<h2>Clone Repository<a class="headerlink" href="#clone-repository" title="Permalink to this headline"></a></h2>
+<p>For users of Aloha Stationary:</p>
+<ol class="arabic">
+<li><p class="first">Clone the LeRobot repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/huggingface/lerobot.git
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="build-and-install-lerobot-models">
+<h2>Build and Install LeRobot Models<a class="headerlink" href="#build-and-install-lerobot-models" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p class="first">Build and install the LeRobot models from source:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>lerobot<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="teleoperation">
+<h2>Teleoperation<a class="headerlink" href="#teleoperation" title="Permalink to this headline"></a></h2>
+<p>To teleoperate your robot, follow these steps:</p>
+<ol class="arabic">
+<li><p class="first">Find the serial numbers of your robot’s arms and cameras as described in the following documentation:</p>
+<ul class="simple">
+<li>Arm Symlink Setup: <a class="reference external" href="https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#arm-symlink-setup" rel="noopener noreferrer" target="_blank">Aloha Post Install Arm Setup</a></li>
+<li>Camera Setup: <a class="reference external" href="https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#camera-setup" rel="noopener noreferrer" target="_blank">Aloha Post Install Camera Setup</a></li>
+</ul>
+</li>
+<li><p class="first">Update the serial numbers in the configuration file: <code class="file docutils literal notranslate"><span class="pre">lerobot/common/configs/robot/aloha.yaml</span></code></p>
+</li>
+<li><p class="first">Run the teleoperation script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>teleoperate<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml
+</pre></div>
+</div>
+<p>You will see logs that include information such as delta time (dt), frequency, and read/write times for the robot arms.</p>
+</li>
+<li><p class="first">You can control the teleoperation frequency using the <span class="guilabel">–fps</span> argument. For example, to set it to 30 FPS:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>teleoperate<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml<span class="w"> </span>--fps<span class="w"> </span><span class="m">30</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="section" id="customizing-teleoperation-with-hydra">
+<h3>Customizing Teleoperation with Hydra<a class="headerlink" href="#customizing-teleoperation-with-hydra" title="Permalink to this headline"></a></h3>
+<p>You can override the default YAML configurations dynamically using Hydra syntax.
+For example, to change the USB ports of the leader and follower arms:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>teleoperate<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-overrides<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>leader_arms.main.port<span class="o">=</span>/dev/tty.usbmodem575E0031751<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>follower_arms.main.port<span class="o">=</span>/dev/tty.usbmodem575E0032081
+</pre></div>
+</div>
+<p>If you don’t have any cameras connected, you can exclude them using Hydra’s syntax:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>teleoperate<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-overrides<span class="w"> </span><span class="s1">&#39;~cameras&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="recording-data-episodes">
+<h2>Recording Data Episodes<a class="headerlink" href="#recording-data-episodes" title="Permalink to this headline"></a></h2>
+<p>The system supports episode-based data collection, where episodes are time-bounded sequences of robot actions.</p>
+<ol class="arabic">
+<li><p class="first">Control the recording flow with these arguments:</p>
+<ul class="simple">
+<li><span class="guilabel">–warmup-time-s</span>: Number of seconds for device warmup (default: 10s)</li>
+<li><span class="guilabel">–episode-time-s</span>: Number of seconds per episode (default: 60s)</li>
+<li><span class="guilabel">–reset-time-s</span>: Time for resetting after each episode (default: 60s)</li>
+<li><span class="guilabel">–num-episodes</span>: Number of episodes to record (default: 50)</li>
+</ul>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>record<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--fps<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--root<span class="w"> </span>data<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--tags<span class="w"> </span>tutorial<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--warmup-time-s<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--episode-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--reset-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--num-episodes<span class="w"> </span><span class="m">2</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li>The <span class="guilabel">–num-episodes</span> defines the total number of episodes to be collected.
+Therefore it will check the existing output directories for any previously recorded episodes and will start recording from the last recorded episode.</li>
+<li>The recorded data is pushed to hugging face hub by default you can set this false by using <span class="guilabel">–push_to_hub 0</span>.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic">
+<li><p class="first">To push your dataset to Hugging Face’s Hub, log in with a write-access token:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>huggingface-cli<span class="w"> </span>login<span class="w"> </span>--token<span class="w"> </span><span class="si">${</span><span class="nv">HUGGINGFACE_TOKEN</span><span class="si">}</span><span class="w"> </span>--add-to-git-credential
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set your Hugging Face username as a variable for ease:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">HF_USER</span><span class="o">=</span><span class="k">$(</span>huggingface-cli<span class="w"> </span>whoami<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="visualizing-datasets">
+<h2>Visualizing Datasets<a class="headerlink" href="#visualizing-datasets" title="Permalink to this headline"></a></h2>
+<video controls="True" height="720" preload="auto" width="1280"><source src="../_images/visualize_dataset.mp4" type="video/mp4"></video><p>To visualize all the episodes recorded in your dataset, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/visualize_dataset_html.py<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--root<span class="w"> </span>data<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/aloha_test
+</pre></div>
+</div>
+<p>To visualize a single dataset episode from the Hugging Face Hub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/visualize_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/aloha_static_block_pickup<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--episode-index<span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p>To visualize a single dataset episode stored locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">DATA_DIR</span><span class="o">=</span><span class="s1">&#39;./my_local_data_dir&#39;</span><span class="w"> </span>python<span class="w"> </span>lerobot/scripts/visualize_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--repo-id<span class="w"> </span>TrossenRoboticsCommunity/aloha_static_block_pickup<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--episode-index<span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="replay-recorded-episodes">
+<h2>Replay Recorded Episodes<a class="headerlink" href="#replay-recorded-episodes" title="Permalink to this headline"></a></h2>
+<p>Replaying episodes allows you to test the repeatability of the robot’s actions.
+To replay the first episode of your recorded dataset:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>replay<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--fps<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--root<span class="w"> </span>data<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--episode<span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use different <span class="guilabel">–fps</span> values to adjust the frequency of the robot actions.</p>
+</div>
+</div>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline"></a></h2>
+<p>To train a policy for controlling your robot, use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">DATA_DIR</span><span class="o">=</span>data<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/train.py<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="nv">dataset_repo_id</span><span class="o">=</span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="nv">policy</span><span class="o">=</span>act_aloha_real<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="nv">env</span><span class="o">=</span>aloha_real<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>hydra.run.dir<span class="o">=</span>outputs/train/act_aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>hydra.job.name<span class="o">=</span>act_aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="nv">device</span><span class="o">=</span>cuda<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>wandb.enable<span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The arguments are explained below:</p>
+<ol class="last arabic simple">
+<li>We provided the dataset with <span class="guilabel">dataset_repo_id=${HF_USER}/aloha_test</span>.</li>
+<li>The policy is specified with <span class="guilabel">policy=act_aloha_real</span>.
+This configuration is loaded from <code class="file docutils literal notranslate"><span class="pre">lerobot/configs/policy/act_aloha_real.yaml</span></code>.</li>
+<li>The environment is set with <span class="guilabel">env=aloha_real</span>.
+This configuration is loaded from <code class="file docutils literal notranslate"><span class="pre">lerobot/configs/env/aloha_real.yaml</span></code>.</li>
+<li>The device is set to <span class="guilabel">cuda</span> to utilize an NVIDIA GPU for training.</li>
+<li><span class="guilabel">wandb.enable=true</span> is used for visualizing training plots via [Weights and Biases](<a class="reference external" href="https://docs.wandb.ai/quickstart" rel="noopener noreferrer" target="_blank">https://docs.wandb.ai/quickstart</a>).
+Ensure you are logged in by running <cite>wandb login</cite>.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="upload-policy-checkpoints">
+<h2>Upload Policy Checkpoints<a class="headerlink" href="#upload-policy-checkpoints" title="Permalink to this headline"></a></h2>
+<p>Once training is complete, upload the latest checkpoint with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>huggingface-cli<span class="w"> </span>upload<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/act_aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>outputs/train/act_aloha_test/checkpoints/last/pretrained_model
+</pre></div>
+</div>
+<p>To upload intermediate checkpoints:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">CKPT</span><span class="o">=</span><span class="m">010000</span>
+$<span class="w"> </span>huggingface-cli<span class="w"> </span>upload<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/act_aloha_test_<span class="si">${</span><span class="nv">CKPT</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>outputs/train/act_aloha_test/checkpoints/<span class="si">${</span><span class="nv">CKPT</span><span class="si">}</span>/pretrained_model
+</pre></div>
+</div>
+</div>
+<div class="section" id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline"></a></h2>
+<p>To control your robot with the trained policy and record evaluation episodes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>record<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--fps<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--root<span class="w"> </span>data<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/eval_aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--tags<span class="w"> </span>tutorial<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--warmup-time-s<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--episode-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--reset-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--num-episodes<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span>outputs/train/act_aloha_test/checkpoints/last/pretrained_model
+</pre></div>
+</div>
+<p>This command is similar to the one used for recording training datasets, with a couple of key changes:</p>
+<ol class="arabic simple">
+<li>The <span class="guilabel">-p</span> argument is now included, which specifies the path to your policy checkpoint (e.g., <span class="guilabel">-p outputs/train/eval_aloha_test/checkpoints/last/pretrained_model</span>).
+You can also refer to the model repository on Hugging Face if you have uploaded a model checkpoint there (e.g., <span class="guilabel">-p ${HF_USER}/act_aloha_test</span>).</li>
+<li>The dataset name begins with <span class="guilabel">eval</span>, reflecting that you are running inference (e.g., <span class="guilabel">–repo-id ${HF_USER}/eval_aloha_test</span>).</li>
+</ol>
+<p>You can visualize the evaluation dataset afterward using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/visualize_dataset.py<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--root<span class="w"> </span>data<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/eval_aloha_test
+</pre></div>
+</div>
+</div>
+<div class="section" id="trossen-robotics-community">
+<h2>Trossen Robotics Community<a class="headerlink" href="#trossen-robotics-community" title="Permalink to this headline"></a></h2>
+<div class="section" id="pretrained-models">
+<h3>Pretrained Models<a class="headerlink" href="#pretrained-models" title="Permalink to this headline"></a></h3>
+<p>You can download pretrained models from the Trossen Robotics Community on Hugging Face and use them for evaluation purposes.
+To run evaluation on the pretrained models, use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> </span>record<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--robot-path<span class="w"> </span>lerobot/configs/robot/aloha.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--fps<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--root<span class="w"> </span>data<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/eval_aloha_test<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tags<span class="w"> </span>tutorial<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--warmup-time-s<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--episode-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--reset-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num-episodes<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/act_aloha_test
+</pre></div>
+</div>
+</div>
+<div class="section" id="datasets-for-training-and-augmentation">
+<h3>Datasets for Training and Augmentation<a class="headerlink" href="#datasets-for-training-and-augmentation" title="Permalink to this headline"></a></h3>
+<p>Datasets can also be downloaded from the Trossen Robotics Community on Hugging Face for further training or data augmentation.
+These datasets can be used with your preferred network architectures.
+Instructions for downloading and using these datasets can be found at the following link:</p>
+<p><a class="reference external" href="https://docs.trossenrobotics.com/aloha_docs/operation/hugging_face.html" rel="noopener noreferrer" target="_blank">Dataset Download and Upload Instructions</a></p>
+<p><a class="reference external" href="https://huggingface.co/TrossenRoboticsCommunity" rel="noopener noreferrer" target="_blank">Trossen Robotics Community</a></p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline"></a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you encounter issues, follow these troubleshooting steps:</p>
+</div>
+<ol class="arabic">
+<li><p class="first"><strong>OpenCV Installation Issues (Linux)</strong></p>
+<p>If you encounter OpenCV installation issues, uninstall it via <span class="guilabel">pip</span> and reinstall using Conda:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>opencv-python
+$<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">opencv</span><span class="o">=</span><span class="m">4</span>.10.0
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>FFmpeg Encoding Error (`unknown encoder libsvtav1`)</strong></p>
+<p>Install FFmpeg with <span class="guilabel">libsvtav1</span> support via Conda-Forge or Homebrew:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>ffmpeg
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>ffmpeg
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Arrow Keys Not Working During Data Recording (Linux)</strong></p>
+<p>Ensure that the <span class="guilabel">$DISPLAY</span> environment variable is set correctly.</p>
+</li>
+<li><p class="first">Checkout LeRobot Documentation for further help and details.</p>
+<p><a class="reference external" href="https://github.com/huggingface/lerobot" rel="noopener noreferrer" target="_blank">LeRobot Github</a></p>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hugging_face.html" class="btn btn-neutral float-left" title="Hugging Face Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Trossen Robotics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+     
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
