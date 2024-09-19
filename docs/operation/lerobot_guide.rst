@@ -69,6 +69,12 @@ Build and Install LeRobot Models
 
       $ cd lerobot && pip install -e .
 
+#. As we are working with real robots we will require to install dependencies for :guilabel:`intelrealsense` camera's and :guilabel:`dynamixel` servos.
+
+   .. code-block:: bash
+
+      $ cd lerobot && pip install .[intelrealsense,dynamixel]
+
 Teleoperation
 =============
 
@@ -339,7 +345,8 @@ Troubleshooting
 .. warning::
    If you encounter issues, follow these troubleshooting steps:
 
-#. **OpenCV Installation Issues (Linux)**
+OpenCV Installation Issues (Linux)
+--------------------------------------
 
    If you encounter OpenCV installation issues, uninstall it via :guilabel:`pip` and reinstall using Conda:
 
@@ -348,7 +355,8 @@ Troubleshooting
       $ pip uninstall opencv-python
       $ conda install -c conda-forge opencv=4.10.0
 
-#. **FFmpeg Encoding Error (`unknown encoder libsvtav1`)**
+FFmpeg Encoding Error (:guilabel:`unknown encoder libsvtav1`)
+---------------------------------------------------
 
    Install FFmpeg with :guilabel:`libsvtav1` support via Conda-Forge or Homebrew:
 
@@ -362,10 +370,27 @@ Troubleshooting
 
       $ brew install ffmpeg
 
-#. **Arrow Keys Not Working During Data Recording (Linux)**
+Arrow Keys Not Working During Data Recording (Linux)
+----------------------------------------------------
 
    Ensure that the :guilabel:`$DISPLAY` environment variable is set correctly.
 
-#. Checkout LeRobot Documentation for further help and details.
+Frequency drops during evaluation
+---------------------------------
+  
+   This happens on low-performance systems due to their inability to handle multi-threaded I/O operations.
+   Checkout the following version for a smoother operation. 
+   Changes will be integrated soon in the newer version of the repository.
+   `Low Frequency Fix <https://github.com/Interbotix/lerobot/pull/3>`_
+
+Compute Dataset Statistic Failure
+---------------------------------
+
+   It is noticed that on low-performance systems the compute statistic fails due to high batch size and number of workers.
+   Checkout the following version with lower batch size and number of workers.
+   `Compute Statistic Fix <https://github.com/Interbotix/lerobot/pull/4>`_
+
+Checkout LeRobot Documentation for further help and details
+-----------------------------------------------------------
 
    `LeRobot Github <https://github.com/huggingface/lerobot>`_
