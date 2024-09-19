@@ -366,6 +366,19 @@ Troubleshooting
 
    Ensure that the :guilabel:`$DISPLAY` environment variable is set correctly.
 
-#. Checkout LeRobot Documentation for further help and details.
+#. **Frequency drops during evaluation**
+  
+   This happens on low-performance systems due to their inability to handle multi-threaded I/O operations.
+   Checkout the following version for a smoother operation. 
+   Changes will be integrated soon in the newer version of the repository.
+   `Low Frequency Fix <https://github.com/Interbotix/lerobot/pull/3>`_
+
+#. **Compute Dataset Statistic Failure**
+
+   It is noticed that on low-performance systems the compute statistic fails due to high batch size and number of workers.
+   Checkout the following version with lower batch size and number of workers.
+   `Compute Statistic Fix <https://github.com/Interbotix/lerobot/pull/4>`_
+
+#. **Checkout LeRobot Documentation for further help and details.**
 
    `LeRobot Github <https://github.com/huggingface/lerobot>`_
