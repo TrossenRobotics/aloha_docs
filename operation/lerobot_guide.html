@@ -100,7 +100,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#datasets-for-training-and-augmentation">Datasets for Training and Augmentation</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opencv-installation-issues-linux">OpenCV Installation Issues (Linux)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ffmpeg-encoding-error-unknown-encoder-libsvtav1">FFmpeg Encoding Error (<span class="guilabel">unknown encoder libsvtav1</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arrow-keys-not-working-during-data-recording-linux">Arrow Keys Not Working During Data Recording (Linux)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frequency-drops-during-evaluation">Frequency drops during evaluation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compute-dataset-statistic-failure">Compute Dataset Statistic Failure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checkout-lerobot-documentation-for-further-help-and-details">Checkout LeRobot Documentation for further help and details</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -196,6 +204,11 @@ $<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span
 <ol class="arabic">
 <li><p class="first">Build and install the LeRobot models from source:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>lerobot<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p class="first">As we are working with real robots we will require to install dependencies for <span class="guilabel">intelrealsense</span> camera’s and <span class="guilabel">dynamixel</span> servos.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>lerobot<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="o">[</span>intelrealsense,dynamixel<span class="o">]</span>
 </pre></div>
 </div>
 </li>
@@ -440,16 +453,20 @@ Instructions for downloading and using these datasets can be found at the follow
 <p class="first admonition-title">Warning</p>
 <p class="last">If you encounter issues, follow these troubleshooting steps:</p>
 </div>
-<ol class="arabic">
-<li><p class="first"><strong>OpenCV Installation Issues (Linux)</strong></p>
-<p>If you encounter OpenCV installation issues, uninstall it via <span class="guilabel">pip</span> and reinstall using Conda:</p>
+<div class="section" id="opencv-installation-issues-linux">
+<h3>OpenCV Installation Issues (Linux)<a class="headerlink" href="#opencv-installation-issues-linux" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>If you encounter OpenCV installation issues, uninstall it via <span class="guilabel">pip</span> and reinstall using Conda:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>opencv-python
 $<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">opencv</span><span class="o">=</span><span class="m">4</span>.10.0
 </pre></div>
 </div>
-</li>
-<li><p class="first"><strong>FFmpeg Encoding Error (`unknown encoder libsvtav1`)</strong></p>
-<p>Install FFmpeg with <span class="guilabel">libsvtav1</span> support via Conda-Forge or Homebrew:</p>
+</div></blockquote>
+</div>
+<div class="section" id="ffmpeg-encoding-error-unknown-encoder-libsvtav1">
+<h3>FFmpeg Encoding Error (<span class="guilabel">unknown encoder libsvtav1</span>)<a class="headerlink" href="#ffmpeg-encoding-error-unknown-encoder-libsvtav1" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>Install FFmpeg with <span class="guilabel">libsvtav1</span> support via Conda-Forge or Homebrew:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>ffmpeg
 </pre></div>
 </div>
@@ -457,14 +474,33 @@ $<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>ffmpeg
 </pre></div>
 </div>
-</li>
-<li><p class="first"><strong>Arrow Keys Not Working During Data Recording (Linux)</strong></p>
-<p>Ensure that the <span class="guilabel">$DISPLAY</span> environment variable is set correctly.</p>
-</li>
-<li><p class="first">Checkout LeRobot Documentation for further help and details.</p>
-<p><a class="reference external" href="https://github.com/huggingface/lerobot" rel="noopener noreferrer" target="_blank">LeRobot Github</a></p>
-</li>
-</ol>
+</div></blockquote>
+</div>
+<div class="section" id="arrow-keys-not-working-during-data-recording-linux">
+<h3>Arrow Keys Not Working During Data Recording (Linux)<a class="headerlink" href="#arrow-keys-not-working-during-data-recording-linux" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div>Ensure that the <span class="guilabel">$DISPLAY</span> environment variable is set correctly.</div></blockquote>
+</div>
+<div class="section" id="frequency-drops-during-evaluation">
+<h3>Frequency drops during evaluation<a class="headerlink" href="#frequency-drops-during-evaluation" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div>This happens on low-performance systems due to their inability to handle multi-threaded I/O operations.
+Checkout the following version for a smoother operation.
+Changes will be integrated soon in the newer version of the repository.
+<a class="reference external" href="https://github.com/Interbotix/lerobot/pull/3" rel="noopener noreferrer" target="_blank">Low Frequency Fix</a></div></blockquote>
+</div>
+<div class="section" id="compute-dataset-statistic-failure">
+<h3>Compute Dataset Statistic Failure<a class="headerlink" href="#compute-dataset-statistic-failure" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div>It is noticed that on low-performance systems the compute statistic fails due to high batch size and number of workers.
+Checkout the following version with lower batch size and number of workers.
+<a class="reference external" href="https://github.com/Interbotix/lerobot/pull/4" rel="noopener noreferrer" target="_blank">Compute Statistic Fix</a></div></blockquote>
+</div>
+<div class="section" id="checkout-lerobot-documentation-for-further-help-and-details">
+<h3>Checkout LeRobot Documentation for further help and details<a class="headerlink" href="#checkout-lerobot-documentation-for-further-help-and-details" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><a class="reference external" href="https://github.com/huggingface/lerobot" rel="noopener noreferrer" target="_blank">LeRobot Github</a></div></blockquote>
+</div>
 </div>
 </div>
 
