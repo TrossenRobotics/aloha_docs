@@ -69,6 +69,12 @@ Build and Install LeRobot Models
 
       $ cd lerobot && pip install -e .
 
+#. As we are working with real robots we will require to install dependencies for :guilabel:`intelrealsense` camera's and :guilabel:`dynamixel` servos.
+
+   .. code-block:: bash
+
+      $ cd lerobot && pip install .[intelrealsense,dynamixel]
+
 Teleoperation
 =============
 
