@@ -2,51 +2,30 @@
 LeRobot X Aloha User Guide
 ==========================
 
-Virtual Environment Setup
-=========================
 
-Containerization is crucial for running machine learning models to avoid dependency conflicts.
-You can either use a Virtual Environment (venv) or Conda for this purpose.
+Setting up Conda Environment
+============================
 
-Using Virtual Environment (venv)
---------------------------------
+Download and Install Miniconda
+------------------------------
 
-#. Install the virtual environment package:
+To begin, follow the official `Miniconda Installation Guide <https://docs.anaconda.com/miniconda/miniconda-install/>`_ 
+to download and install Miniconda on your system.
 
-   .. code-block:: bash
-
-      $ sudo apt-get install python3-venv
+Environment Setup
+-----------------
 
 #. Create a virtual environment:
 
    .. code-block:: bash
 
-      $ python3 -m venv ~/lerobot  # Creates a venv "lerobot" in the home directory
+      conda create -n lerobot python=3.10
 
 #. Activate the virtual environment:
 
    .. code-block:: bash
 
-      $ source ~/lerobot/bin/activate
-
-Using Conda
------------
-
-#. Create a virtual environment:
-
-   .. code-block:: bash
-
-      $ conda create -n lerobot python=3.10
-
-#. Activate the virtual environment:
-
-   .. code-block:: bash
-
-      $ conda activate lerobot
-
-.. note::
-
-   Use either `venv` or `Conda` based on your preference, but **do not** mix them to avoid dependency issues.
+      conda activate lerobot
 
 Clone Repository
 ================
@@ -158,7 +137,7 @@ The system supports episode-based data collection, where episodes are time-bound
    #. The :guilabel:`--num-episodes` defines the total number of episodes to be collected.
       Therefore it will check the existing output directories for any previously recorded episodes and will start recording from the last recorded episode.
    
-   #. The recorded data is pushed to hugging face hub by default you can set this false by using :guilabel:`--push_to_hub 0`.
+   #. The recorded data is pushed to hugging face hub by default you can set this false by using :guilabel:`--push-to-hub 0`.
 
 .. note::
 
@@ -346,7 +325,7 @@ Troubleshooting
    If you encounter issues, follow these troubleshooting steps:
 
 OpenCV Installation Issues (Linux)
---------------------------------------
+----------------------------------
 
    If you encounter OpenCV installation issues, uninstall it via :guilabel:`pip` and reinstall using Conda:
 
@@ -356,7 +335,7 @@ OpenCV Installation Issues (Linux)
       $ conda install -c conda-forge opencv=4.10.0
 
 FFmpeg Encoding Error (:guilabel:`unknown encoder libsvtav1`)
----------------------------------------------------
+-------------------------------------------------------------
 
    Install FFmpeg with :guilabel:`libsvtav1` support via Conda-Forge or Homebrew:
 
