@@ -2,51 +2,31 @@
 LeRobot X Aloha User Guide
 ==========================
 
-Virtual Environment Setup
-=========================
+Setting up Conda Environment
+============================
 
-Containerization is crucial for running machine learning models to avoid dependency conflicts.
-You can either use a Virtual Environment (venv) or Conda for this purpose.
+Download and Install Miniconda
+------------------------------
 
-Using Virtual Environment (venv)
---------------------------------
+To begin, follow the official `Miniconda Installation Guide <https://docs.anaconda.com/miniconda/miniconda-install/>`_ 
+to download and install Miniconda on your system.
 
-#. Install the virtual environment package:
+Environment Setup
+-----------------
 
-   .. code-block:: bash
-
-      $ sudo apt-get install python3-venv
-
-#. Create a virtual environment:
+1. Create a virtual environment:
 
    .. code-block:: bash
 
-      $ python3 -m venv ~/lerobot  # Creates a venv "lerobot" in the home directory
+      conda create -n lerobot python=3.10
 
-#. Activate the virtual environment:
-
-   .. code-block:: bash
-
-      $ source ~/lerobot/bin/activate
-
-Using Conda
------------
-
-#. Create a virtual environment:
+2. Activate the virtual environment:
 
    .. code-block:: bash
 
-      $ conda create -n lerobot python=3.10
+      conda activate lerobot
 
-#. Activate the virtual environment:
 
-   .. code-block:: bash
-
-      $ conda activate lerobot
-
-.. note::
-
-   Use either `venv` or `Conda` based on your preference, but **do not** mix them to avoid dependency issues.
 
 Clone Repository
 ================
@@ -158,7 +138,7 @@ The system supports episode-based data collection, where episodes are time-bound
    #. The :guilabel:`--num-episodes` defines the total number of episodes to be collected.
       Therefore it will check the existing output directories for any previously recorded episodes and will start recording from the last recorded episode.
    
-   #. The recorded data is pushed to hugging face hub by default you can set this false by using :guilabel:`--push_to_hub 0`.
+   #. The recorded data is pushed to hugging face hub by default you can set this false by using :guilabel:`--push-to-hub 0`.
 
 .. note::
 
