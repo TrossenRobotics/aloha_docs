@@ -14,13 +14,13 @@ to download and install Miniconda on your system.
 Environment Setup
 -----------------
 
-1. Create a virtual environment:
+#. Create a virtual environment:
 
    .. code-block:: bash
 
       conda create -n lerobot python=3.10
 
-2. Activate the virtual environment:
+#. Activate the virtual environment:
 
    .. code-block:: bash
 
@@ -326,7 +326,7 @@ Troubleshooting
    If you encounter issues, follow these troubleshooting steps:
 
 OpenCV Installation Issues (Linux)
---------------------------------------
+----------------------------------
 
    If you encounter OpenCV installation issues, uninstall it via :guilabel:`pip` and reinstall using Conda:
 
@@ -336,7 +336,7 @@ OpenCV Installation Issues (Linux)
       $ conda install -c conda-forge opencv=4.10.0
 
 FFmpeg Encoding Error (:guilabel:`unknown encoder libsvtav1`)
----------------------------------------------------
+-------------------------------------------------------------
 
    Install FFmpeg with :guilabel:`libsvtav1` support via Conda-Forge or Homebrew:
 
