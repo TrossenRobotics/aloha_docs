@@ -324,6 +324,40 @@ Troubleshooting
 .. warning::
    If you encounter issues, follow these troubleshooting steps:
 
+
+Lag Observed in Follower Arms
+-----------------------------
+
+If you notice lag in the follower arms, it's due to the safety settings, which are in place to prevent overshooting that could harm the robot. These are designed to ensure safety for new users or when using untested policies.
+
+Once you are comfortable with the kit and the trained policy, you can adjust or disable these safety settings by modifying the configuration.
+
+Follow these steps:
+
+1. Open the configuration file located at:
+
+   ``lerobot/configs/robots/aloha.yaml``
+
+2. Locate the following line in the configuration file:
+
+   .. code-block:: yaml
+
+      max_relative_target: 5  # Original value
+
+3. Change the value of `max_relative_target` from `5` to `null` to disable the safety limit:
+
+   .. code-block:: yaml
+      :emphasize-lines: 5
+
+      # /!\ FOR SAFETY, READ THIS /!\
+      # `max_relative_target` limits the magnitude of the relative positional target vector for safety purposes.
+      # The default setting is 5 degrees for Aloha robot motors.
+      # Modify this value to null to remove the limit once you feel confident with the robot.
+      max_relative_target: null  # Updated value
+
+**Important**: We recommend starting by teleoperating the grippers (commenting out the rest of the motors in the YAML file). Gradually enable additional motors until you can control both arms safely.
+
+
 OpenCV Installation Issues (Linux)
 ----------------------------------
 
