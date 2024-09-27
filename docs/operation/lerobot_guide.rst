@@ -328,7 +328,8 @@ Troubleshooting
 Lag Observed in Follower Arms
 -----------------------------
 
-If you notice lag in the follower arms, it's due to the safety settings, which are in place to prevent overshooting that could harm the robot. These are designed to ensure safety for new users or when using untested policies.
+If you notice lag in the follower arms, it's due to the safety settings, which are in place to prevent overshooting that could harm the robot.
+These are designed to ensure safety for new users or when using untested policies.
 
 Once you are comfortable with the kit and the trained policy, you can adjust or disable these safety settings by modifying the configuration.
 
@@ -355,7 +356,7 @@ Follow these steps:
       # Modify this value to null to remove the limit once you feel confident with the robot.
       max_relative_target: null  # Updated value
 
-**Important**: We recommend starting by teleoperating the grippers (commenting out the rest of the motors in the YAML file). Gradually enable additional motors until you can control both arms safely.
+.. important:: We recommend starting by teleoperating the grippers (commenting out the rest of the motors in the YAML file). Gradually enable additional motors until you can control both arms safely.
 
 
 OpenCV Installation Issues (Linux)
