@@ -335,17 +335,17 @@ Once you are comfortable with the kit and the trained policy, you can adjust or 
 
 Follow these steps:
 
-1. Open the configuration file located at:
+#. Open the configuration file located at:
 
    ``lerobot/configs/robots/aloha.yaml``
 
-2. Locate the following line in the configuration file:
+#. Locate the following line in the configuration file:
 
    .. code-block:: yaml
 
       max_relative_target: 5  # Original value
 
-3. Change the value of `max_relative_target` from `5` to `null` to disable the safety limit:
+#. Change the value of `max_relative_target` from `5` to `null` to disable the safety limit:
 
    .. code-block:: yaml
       :emphasize-lines: 5
@@ -356,8 +356,10 @@ Follow these steps:
       # Modify this value to null to remove the limit once you feel confident with the robot.
       max_relative_target: null  # Updated value
 
-.. important:: We recommend starting by teleoperating the grippers (commenting out the rest of the motors in the YAML file). Gradually enable additional motors until you can control both arms safely.
+.. important::
 
+   We recommend starting by teleoperating the grippers (commenting out the rest of the motors in the YAML file).
+   Gradually enable additional motors until you can control both arms safely.
 
 OpenCV Installation Issues (Linux)
 ----------------------------------
