@@ -62,6 +62,7 @@ Now that you know how to bringup and shutdown the ALOHA, teleoperation will be a
 
 Configurations
 ==============
+
 The configuration yaml files provided in the ``~/interbotix_ws/src/aloha/config`` directory can be used to customize the behavior of the ALOHA.
 Please follow the links below to see the details of each configuration file:
 
@@ -87,13 +88,14 @@ Please follow the links below to see the details of each configuration file:
 
 -   Intel RealSense Cameras
 
-    -   :ref:`Mobile <getting_started/mobile/software_setup:camera setup>`, :ref:`Stationary <getting_started/stationary/software_setup:camera setup>`
+    -   `realsense2_camera Parameters`_:
 
         -   ``rs_cam.yaml``
 
 .. _`teleop_twist_joy Parameters`: https://docs.ros.org/en/humble/p/teleop_twist_joy/index.html#parameters
 .. _`Mode Configs`: https://docs.trossenrobotics.com/interbotix_xsarms_docs/ros_interface/ros2/config.html#mode-configs
 .. _`Motor Specs`: https://docs.trossenrobotics.com/interbotix_xsarms_docs/ros2_packages/gravity_compensation.html#configuration
+.. _`realsense2_camera Parameters`: https://github.com/IntelRealSense/realsense-ros/tree/ros2-development?tab=readme-ov-file#parameters
 
 Besides the default configuration files, the launch file ``aloha_bringup.launch.py`` provides additional arguments for further customization.
 Please refer to the following table for details:
