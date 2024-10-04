@@ -42,10 +42,10 @@ To record an episode, follow the steps below:
     $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
     $ cd ~/interbotix_ws/src/aloha/scripts/
     $ python3 record_episodes.py \
-      --task_name <task_name> \
-      [--episode_idx <episode_idx>] \
-      [-b, --enable_base_torque] \
-      [-g, --gravity_compensation]
+          --task_name <task_name> \
+          [--episode_idx <episode_idx>] \
+          [-b, --enable_base_torque] \
+          [-g, --gravity_compensation]
 
   The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
 
