@@ -21,8 +21,8 @@ To bring up a Mobile or Stationary ALOHA, you will need to run the following com
 
 .. tip::
 
-  The ALOHA can be brought up with additional arguments to customize the behavior.
-  For a full list of arguments, refer to the :ref:`operation/bringup_shutdown:Arguments for ALOHA Bringup` section below.
+  The ALOHA can be brought up with different configurations and additional arguments to customize the behavior.
+  Please refer to the :ref:`operation/bringup_shutdown:Configurations` section below for details.
 
 Shutdown
 ========
@@ -60,8 +60,43 @@ Now that you know how to bringup and shutdown the ALOHA, teleoperation will be a
 -   :doc:`/operation/mobile`
 -   :doc:`/operation/stationary`
 
-Arguments for ALOHA Bringup
-===========================
+Configurations
+==============
+The configuration yaml files provided in the ``~/interbotix_ws/src/aloha/config`` directory can be used to customize the behavior of the ALOHA.
+Please follow the links below to see the details of each configuration file:
+
+-   SLATE Robot Base (only for Mobile ALOHA)
+
+    -   `teleop_twist_joy Parameters`_:
+
+        -   ``base_joystick_teleop.yaml``
+
+-   Interbotix Arms
+
+    -   `Mode Configs`_:
+
+        -   ``leader_modes_left.yaml``
+        -   ``leader_modes_right.yaml``
+        -   ``follower_modes_left.yaml``
+        -   ``follower_modes_right.yaml``
+
+    -   `Motor Specs`_:
+
+        -   ``leader_motor_specs_left.yaml``
+        -   ``leader_motor_specs_right.yaml``
+
+-   Intel RealSense Cameras
+
+    -   :ref:`Mobile <getting_started/mobile/software_setup:camera setup>`, :ref:`Stationary <getting_started/stationary/software_setup:camera setup>`
+
+        -   ``rs_cam.yaml``
+
+.. _`teleop_twist_joy Parameters`: https://docs.ros.org/en/humble/p/teleop_twist_joy/index.html#parameters
+.. _`Mode Configs`: https://docs.trossenrobotics.com/interbotix_xsarms_docs/ros_interface/ros2/config.html#mode-configs
+.. _`Motor Specs`: https://docs.trossenrobotics.com/interbotix_xsarms_docs/ros2_packages/gravity_compensation.html#configuration
+
+Besides the default configuration files, the launch file ``aloha_bringup.launch.py`` provides additional arguments for further customization.
+Please refer to the following table for details:
 
 .. csv-table::
   :file: ../_data/bringup.csv
