@@ -40,11 +40,21 @@ To record an episode, follow the steps below:
 
     $ source /opt/ros/humble/setup.bash # configure ROS system install environment
     $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-    $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
     $ cd ~/interbotix_ws/src/aloha/scripts/
-    $ python3 record_episodes.py --task_name <task_name> [--episode_idx <episode_idx>] [-b, --enable_base_torque] [-g, --gravity_compensation]
+    $ python3 record_episodes.py \
+      --task_name <task_name> \
+      [--episode_idx <episode_idx>] \
+      [-b, --enable_base_torque] \
+      [-g, --gravity_compensation]
 
   The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
+
+  The ``episode_idx`` argument is optional and specifies the index of the episode to record reflected in the output filename ``<dataset_dir>/episode_<episode_idx>.hdf5``.
+  If not provided, the script will automatically calculate the next episode index based on the number of episodes already saved in the dataset directory.
+
+  If the ``-b, --enable_base_torque`` argument is set, mobile base will be torqued on during episode recording, allowing the use of a joystick controller or some other manual method.
+
+  If the ``-g, --gravity_compensation`` argument is set, gravity compensation will be enabled for the leader robots when teleop starts.
 
   .. tip::
 
@@ -57,13 +67,6 @@ To record an episode, follow the steps below:
     .. code-block:: bash
 
       $ python3 record_episodes.py --task_name aloha_mobile_dummy --episode_idx 0
-
-  The ``episode_idx`` argument is optional and specifies the index of the episode to record reflected in the output filename ``<dataset_dir>/episode_<episode_idx>.hdf5``.
-  If not provided, the script will automatically calculate the next episode index based on the number of episodes already saved in the dataset directory.
-
-  If the ``-b, --enable_base_torque`` argument is set, mobile base will be torqued on during episode recording, allowing the use of a joystick controller or some other manual method.
-
-  If the ``-g, --gravity_compensation`` argument is set, gravity compensation will be enabled for the leader robots when teleop starts.
 
 Episode Playback
 ================
@@ -78,7 +81,6 @@ To play back a previously-recorded episode, follow the steps below:
 
     $ source /opt/ros/humble/setup.bash # configure ROS system install environment
     $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-    $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
     $ cd ~/interbotix_ws/src/aloha/scripts/
     $ python3 replay_episodes.py --dataset_dir </path/to/dataset> --episode_idx <episode_idx>
 
@@ -112,17 +114,6 @@ This value is used to set the path to the ``ROS_SETUP_PATH`` variable used later
 .. code-block:: bash
 
   ROS_DISTRO=humble
-
-``VENV_ACTIVATE_PATH``
-^^^^^^^^^^^^^^^^^^^^^^
-
-Set the path to the virtual environment's activate file.
-This value is used when setting up the Python virtual environment.
-``VENV_ACTIVATE_PATH`` defaults to ``"$HOME/act/bin/activate"``.
-
-.. code-block:: bash
-
-  VENV_ACTIVATE_PATH="$HOME/act/bin/activate"
 
 ``ROS_SETUP_PATH``
 ^^^^^^^^^^^^^^^^^^

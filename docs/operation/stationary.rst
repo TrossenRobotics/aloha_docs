@@ -12,12 +12,15 @@ While ALOHA bringup is running in another terminal, open a new one and run the f
   $ export INTERBOTIX_ALOHA_IS_MOBILE=false # if not already in your environment
   $ source /opt/ros/humble/setup.bash # configure ROS system install environment
   $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-  $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
   $ cd ~/interbotix_ws/src/aloha/scripts/
   $ python3 dual_side_teleop.py [-g]
 
 The arms will lift themselves up into their "staged" configurations.
 Close both grippers on the leader arms to begin teleop.
+
+You should now be able to teleoperate both sets of arms.
+When you finish, place the leader arms in their cradles.
+Press :kbd:`Ctrl` + :kbd:`C` on the teleoperation terminal to stop teleoperation.
 
 .. tip::
 
@@ -30,10 +33,6 @@ Close both grippers on the leader arms to begin teleop.
 
   With the ``-g`` argument set, the arms **WILL** still torque off and drop for a short period of time while enabling/disabling the gravity compensation feature.
   Please make sure they are readily held while closing the grippers and placed in the cradles before sending them to the sleep configurations.
-
-You should now be able to teleoperate both sets of arms.
-When you finish, place the leader arms in their cradles.
-Press :kbd:`Ctrl` + :kbd:`C` on the teleoperation terminal to stop teleoperation.
 
 What's Next?
 ============

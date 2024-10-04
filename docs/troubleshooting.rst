@@ -5,8 +5,7 @@ Troubleshooting
 .. important::
 
     This guide assumes that the latest version of the software packages is used.
-    Before proceeding, please check that the software packages are up to date.
-    Otherwise, a clean reinstallation is recommended: backup your ``interbotix_ws`` directory, remove it from the ``$HOME`` directory, and run through the installation section for the :doc:`Mobile </getting_started/mobile/software_setup>`/:doc:`Stationary </getting_started/stationary/software_setup>` ALOHA.
+    Before proceeding, please check that they are up to date.
 
 X-Series Arms
 =============
