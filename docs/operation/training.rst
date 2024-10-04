@@ -119,7 +119,7 @@ Training
 
 To start the training, follow the steps below:
 
-#. Sanity Check: 
+#. Sanity Check:
 
     Ensure you have all the hdf5 episodes located in the correct folder after following the data collection steps :ref:`operation/data_collection:Task Creation`.
 
@@ -195,10 +195,7 @@ Evaluation
 
 To evaluate a trained model, follow the steps below:
 
-#. Bring up the ALOHA 
-
-   - Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
-   - Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
+#. :ref:`operation/bringup_shutdown:bringup` the ALOHA
 
 #. Configure the environment
 
@@ -211,7 +208,7 @@ To evaluate a trained model, follow the steps below:
 
 #. Run the evaluation script
 
-   .. code-block:: bash   
+   .. code-block:: bash
       :emphasize-lines: 13-14
 
        python3 imitate_episodes.py \

@@ -2,6 +2,11 @@
 Troubleshooting
 ===============
 
+.. important::
+
+    This guide assumes that the latest version of the software packages is used.
+    Before proceeding, please check that they are up to date.
+
 X-Series Arms
 =============
 
