@@ -70,7 +70,7 @@ To build the SLATE base control software, run the following commands:
 
 .. code-block:: bash
 
-  $ rm ~/interbotix_ws/interbotix_ros_core/interbotix_ros_slate/COLCON_IGNORE
+  $ rm ~/interbotix_ws/src/interbotix_ros_core/interbotix_ros_slate/COLCON_IGNORE
   $ cd ~/interbotix_ws
   $ colcon build
 
