@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Stationary Operation" href="stationary.html" />
-    <link rel="prev" title="Operation" href="../operation.html" />
+    <link rel="prev" title="Bringup &amp; Shutdown" href="bringup_shutdown.html" />
    
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -72,11 +72,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../operation.html">Operation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bringup_shutdown.html">Bringup &amp; Shutdown</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mobile Operation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#running-aloha-bringup">Running ALOHA Bringup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#teleoperation">Teleoperation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sending-arms-to-sleep-configuration">Sending Arms to Sleep Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#joystick-base-teleoperation">Joystick Base Teleoperation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">What’s Next?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="stationary.html">Stationary Operation</a></li>
@@ -116,59 +116,34 @@
              
   <div class="section" id="mobile-operation">
 <h1>Mobile Operation<a class="headerlink" href="#mobile-operation" title="Permalink to this headline"></a></h1>
-<div class="section" id="running-aloha-bringup">
-<h2>Running ALOHA Bringup<a class="headerlink" href="#running-aloha-bringup" title="Permalink to this headline"></a></h2>
-<p>In a terminal, run the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">INTERBOTIX_ALOHA_IS_MOBILE</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="c1"># if not already in your environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="c1"># configure ROS system install environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/interbotix_ws/install/setup.bash<span class="w"> </span><span class="c1"># configure ROS workspace environment</span>
-$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>aloha<span class="w"> </span>aloha_bringup.launch.py<span class="w"> </span><span class="c1"># launch hardware drivers and control software</span>
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Terminating bringup while the follower arms are not in their sleep configurations will cause them to collapse!
-Be sure to run the <a class="reference internal" href="#sending-arms-to-sleep-configuration"><span class="std std-ref">Sending Arms to Sleep Configuration</span></a> process before doing so.</p>
-</div>
-</div>
 <div class="section" id="teleoperation">
 <h2>Teleoperation<a class="headerlink" href="#teleoperation" title="Permalink to this headline"></a></h2>
 <p>While ALOHA bringup is running in another terminal, open a new one and run the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">INTERBOTIX_ALOHA_IS_MOBILE</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="c1"># if not already in your environment</span>
 $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="c1"># configure ROS system install environment</span>
 $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/interbotix_ws/install/setup.bash<span class="w"> </span><span class="c1"># configure ROS workspace environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/&lt;path_to_aloha_venv&gt;/bin/activate<span class="w"> </span><span class="c1"># configure ALOHA Python environment</span>
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws/src/aloha/scripts/
-$<span class="w"> </span>python3<span class="w"> </span>dual_side_teleop.py
+$<span class="w"> </span>python3<span class="w"> </span>dual_side_teleop.py<span class="w"> </span><span class="o">[</span>-g<span class="o">]</span>
 </pre></div>
 </div>
 <p>The arms will lift themselves up into their “staged” configurations.
-Close both grippers on the leader arms to begin teleop.
-While doing teleop, another person can use the included PS4 controller to move the base.</p>
+Close both grippers on the leader arms to begin teleop.</p>
 <p>You should now be able to teleoperate both sets of arms.
-Press <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> on the teleoperation terminal to stop teleoperation.
-Place the leader arms in their cradles.</p>
-</div>
-<div class="section" id="sending-arms-to-sleep-configuration">
-<h2>Sending Arms to Sleep Configuration<a class="headerlink" href="#sending-arms-to-sleep-configuration" title="Permalink to this headline"></a></h2>
-<p>While ALOHA bringup is running in another terminal, open a new one and run the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">INTERBOTIX_ALOHA_IS_MOBILE</span><span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="c1"># if not already in your environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="c1"># configure ROS system install environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/interbotix_ws/install/setup.bash<span class="w"> </span><span class="c1"># configure ROS workspace environment</span>
-$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/&lt;path_to_aloha_venv&gt;/bin/activate<span class="w"> </span><span class="c1"># configure ALOHA Python environment</span>
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws/src/aloha/scripts/
-$<span class="w"> </span>python3<span class="w"> </span>sleep.py
-</pre></div>
-</div>
-<p>The follower arms will move to their “staged” configurations and then place themselves into their sleep configurations.</p>
+When you finish, place the leader arms in their cradles.
+Press <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> on the teleoperation terminal to stop teleoperation.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p>You can optionally append the <code class="docutils literal notranslate"><span class="pre">-a|--all</span></code> flag to the sleep script command to send all arms to their sleep configurations:</p>
-<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>sleep.py<span class="w"> </span>-a
-<span class="c1"># or</span>
-$<span class="w"> </span>python3<span class="w"> </span>sleep.py<span class="w"> </span>--all
-</pre></div>
+<p class="last">If the <code class="docutils literal notranslate"><span class="pre">-g</span></code> argument is set, the gravity compensation feature (introduced since 10/04/2024) will be enabled for the leader robots when teleop starts.
+Otherwise, the leader arms will be torqued off.</p>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Even with the <code class="docutils literal notranslate"><span class="pre">-g</span></code> argument set, the arms <strong>WILL</strong> still torque off and drop for a short period of time while enabling/disabling the gravity compensation feature.</p>
+<p class="last">Please make sure they are readily held while closing the grippers and placed in the cradles before sending them to the sleep configuration.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">While doing teleop, another person can use the included PS4 controller to move the base.</p>
 </div>
 </div>
 <div class="section" id="joystick-base-teleoperation">
@@ -185,13 +160,17 @@ This is the default if your control computer environment is configured as Mobile
 <li>At any time, release the controllers <kbd class="kbd docutils literal notranslate">L2</kbd> button to disable joystick control.</li>
 </ol>
 </div>
+<div class="section" id="what-s-next">
+<h2>What’s Next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline"></a></h2>
+<p>Now that you know how to teleoperate, you can start <a class="reference internal" href="data_collection.html"><span class="doc">collecting data</span></a> with your ALOHA.</p>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../operation.html" class="btn btn-neutral float-left" title="Operation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bringup_shutdown.html" class="btn btn-neutral float-left" title="Bringup &amp; Shutdown" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="stationary.html" class="btn btn-neutral float-right" title="Stationary Operation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

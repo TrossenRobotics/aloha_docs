@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bringup &amp; Shutdown &mdash; ALOHA Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tr_style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mobile Operation" href="mobile.html" />
+    <link rel="prev" title="Operation" href="../operation.html" />
+   
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nglikgkapv");
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <div class="sidebartitle-docs-home">
+    <a href="https://docs.trossenrobotics.com/" target="_blank" class="icon icon-home">
+      &nbsp;Trossen Robotics Docs Home
+    </a>
+    <div class="sidebartitle-docs-home-hr">
+      <hr>
+    </div>
+  </div>
+  
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../specifications.html">Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../operation.html">Operation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bringup &amp; Shutdown</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bringup">Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shutdown">Shutdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">What’s Next?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arguments-for-aloha-bringup">Arguments for ALOHA Bringup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mobile.html">Mobile Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationary.html">Stationary Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_collection.html">Data Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training.html">Training and Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hugging_face.html">Hugging Face Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lerobot_guide.html">LeRobot X Aloha User Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ALOHA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../operation.html">Operation</a></li>
+      <li class="breadcrumb-item active">Bringup &amp; Shutdown</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/TrossenRobotics/aloha_docs/blob/main/docs/operation/bringup_shutdown.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="bringup-shutdown">
+<h1>Bringup &amp; Shutdown<a class="headerlink" href="#bringup-shutdown" title="Permalink to this headline"></a></h1>
+<div class="section" id="bringup">
+<h2>Bringup<a class="headerlink" href="#bringup" title="Permalink to this headline"></a></h2>
+<p>To bring up a Mobile or Stationary ALOHA, you will need to run the following commands in a terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">INTERBOTIX_ALOHA_IS_MOBILE</span><span class="o">=</span>true/false<span class="w"> </span><span class="c1"># true for Mobile, false for Stationary</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="c1"># configure ROS system install environment</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/interbotix_ws/install/setup.bash<span class="w"> </span><span class="c1"># configure ROS workspace environment</span>
+$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>aloha<span class="w"> </span>aloha_bringup.launch.py<span class="w"> </span><span class="c1"># launch hardware drivers and control software</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Terminating bringup while the arms are not in their sleep configurations will cause them to collapse!
+Be sure to run through the <a class="reference internal" href="#shutdown"><span class="std std-ref">Shutdown</span></a> procedure before doing so.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The ALOHA can be brought up with additional arguments to customize the behavior.
+For a full list of arguments, refer to the <a class="reference internal" href="#arguments-for-aloha-bringup"><span class="std std-ref">Arguments for ALOHA Bringup</span></a> section below.</p>
+</div>
+</div>
+<div class="section" id="shutdown">
+<h2>Shutdown<a class="headerlink" href="#shutdown" title="Permalink to this headline"></a></h2>
+<p>To shutdown the ALOHA, you will need to first send the arms to their sleep configurations.
+While the ALOHA bringup is running in another terminal, open a new one and run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">INTERBOTIX_ALOHA_IS_MOBILE</span><span class="o">=</span>true/false<span class="w"> </span><span class="c1"># true for Mobile, false for Stationary</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="c1"># configure ROS system install environment</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/interbotix_ws/install/setup.bash<span class="w"> </span><span class="c1"># configure ROS workspace environment</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/interbotix_ws/src/aloha/scripts/
+$<span class="w"> </span>python3<span class="w"> </span>sleep.py
+</pre></div>
+</div>
+<p>The follower arms will move to their “staged” configurations and then place themselves into their sleep configurations.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>You can optionally append the <code class="docutils literal notranslate"><span class="pre">-a|--all</span></code> flag to the sleep script command to send all arms to their sleep configurations:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>sleep.py<span class="w"> </span>-a
+<span class="c1"># or</span>
+$<span class="w"> </span>python3<span class="w"> </span>sleep.py<span class="w"> </span>--all
+</pre></div>
+</div>
+</div>
+<p>Now that the arms are in their sleep configurations, you can terminate the ALOHA bringup by pressing <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal where the bringup was launched.</p>
+</div>
+<div class="section" id="what-s-next">
+<h2>What’s Next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline"></a></h2>
+<p>Now that you know how to bringup and shutdown the ALOHA, teleoperation will be a good starting point to explore its features.</p>
+<ul class="simple">
+<li><a class="reference internal" href="mobile.html"><span class="doc">Mobile Operation</span></a></li>
+<li><a class="reference internal" href="stationary.html"><span class="doc">Stationary Operation</span></a></li>
+</ul>
+</div>
+<div class="section" id="arguments-for-aloha-bringup">
+<h2>Arguments for ALOHA Bringup<a class="headerlink" href="#arguments-for-aloha-bringup" title="Permalink to this headline"></a></h2>
+<table border="1" class="colwidths-given docutils align-default">
+<colgroup>
+<col width="17%" />
+<col width="50%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+<th class="head">Choices</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>robot_model_leader</td>
+<td>model type of the leader arms.</td>
+<td><code class="docutils literal notranslate"><span class="pre">aloha_wx250s</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>robot_model_follower</td>
+<td>model type of the follower arms.</td>
+<td><code class="docutils literal notranslate"><span class="pre">aloha_vx300s</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>robot_name_leader_left</td>
+<td>name of the left leader arm</td>
+<td><code class="docutils literal notranslate"><span class="pre">leader_left</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>robot_name_leader_right</td>
+<td>name of the right leader arm</td>
+<td><code class="docutils literal notranslate"><span class="pre">leader_right</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>robot_name_follower_left</td>
+<td>name of the left follower arm</td>
+<td><code class="docutils literal notranslate"><span class="pre">follower_left</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>robot_name_follower_right</td>
+<td>name of the right follower arm</td>
+<td><code class="docutils literal notranslate"><span class="pre">follower_right</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>leader_modes_left</td>
+<td>the file path to the ‘mode config’ YAML file for the left leader arm.</td>
+<td>LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">aloha</span></code>) + ‘config’ + ‘leader_modes_left.yaml’’)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>leader_modes_right</td>
+<td>the file path to the ‘mode config’ YAML file for the right leader arm.</td>
+<td>LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">aloha</span></code>) + ‘config’ + ‘leader_modes_right.yaml’’)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>follower_modes_left</td>
+<td>the file path to the ‘mode config’ YAML file for the left follower arm.</td>
+<td>LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">aloha</span></code>) + ‘config’ + ‘follower_modes_left.yaml’’)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>follower_modes_right</td>
+<td>the file path to the ‘mode config’ YAML file for the right follower arm.</td>
+<td>LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">aloha</span></code>) + ‘config’ + ‘follower_modes_right.yaml’’)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>launch_leaders</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, launches both the leader and follower arms; if <a href="#id1"><span class="problematic" id="id2">``</span></a>false, just the followers are launched.</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td>use_cameras</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, launches the camera drivers.</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-even"><td>cam_high_name</td>
+<td>&#160;</td>
+<td><code class="docutils literal notranslate"><span class="pre">cam_high</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cam_low_name</td>
+<td>&#160;</td>
+<td><code class="docutils literal notranslate"><span class="pre">cam_low</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cam_left_wrist_name</td>
+<td>&#160;</td>
+<td><code class="docutils literal notranslate"><span class="pre">cam_left_wrist</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cam_right_wrist_name</td>
+<td>&#160;</td>
+<td><code class="docutils literal notranslate"><span class="pre">cam_right_wrist</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>is_mobile</td>
+<td>&#160;</td>
+<td>EnvVar(<code class="docutils literal notranslate"><span class="pre">INTERBOTIX_ALOHA_IS_MOBILE</span></code>)</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td>use_base</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, launches the driver for the SLATE base.</td>
+<td>LaunchConfig(<code class="docutils literal notranslate"><span class="pre">is_mobile</span></code>)</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-even"><td>use_joystick_teleop</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, launches a joystick teleop node for the base.</td>
+<td>LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_base</span></code>)</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td>use_aloha_rviz</td>
+<td>One of: (‘true’, ‘false’)</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>aloha_rvizconfig</td>
+<td>&#160;</td>
+<td>LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">aloha</span></code>) + ‘rviz’ + ‘aloha.rviz’’)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>base_link_frame</td>
+<td>name of the ‘root’ link on the arm; typically <code class="docutils literal notranslate"><span class="pre">base_link</span></code>, but can be changed if attaching the arm to a mobile base that already has a <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame.</td>
+<td><code class="docutils literal notranslate"><span class="pre">base_link</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>use_gripper</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, the default gripper is included in the <code class="docutils literal notranslate"><span class="pre">robot_description</span></code>; if <code class="docutils literal notranslate"><span class="pre">false</span></code>, it is left out; set to <code class="docutils literal notranslate"><span class="pre">false</span></code> if not using the default gripper.</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td>show_ar_tag</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, the AR tag mount is included in the <code class="docutils literal notranslate"><span class="pre">robot_description</span></code>; if <code class="docutils literal notranslate"><span class="pre">false</span></code>, it is left out; set to <code class="docutils literal notranslate"><span class="pre">true</span></code> if using the AR tag mount in your project.</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-even"><td>show_gripper_bar</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, the gripper_bar link is included in the <code class="docutils literal notranslate"><span class="pre">robot_description</span></code>; if <code class="docutils literal notranslate"><span class="pre">false</span></code>, the gripper_bar and finger links are not loaded. Set to <code class="docutils literal notranslate"><span class="pre">false</span></code> if you have a custom gripper attachment.</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td>show_gripper_fingers</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, the gripper fingers are included in the <code class="docutils literal notranslate"><span class="pre">robot_description</span></code>; if <code class="docutils literal notranslate"><span class="pre">false</span></code>, the gripper finger links are not loaded. Set to <code class="docutils literal notranslate"><span class="pre">false</span></code> if you have custom gripper fingers.</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-even"><td>use_world_frame</td>
+<td>set this to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you would like to load a ‘world’ frame to the <code class="docutils literal notranslate"><span class="pre">robot_description</span></code> which is located exactly at the ‘base_link’ frame of the robot; if using multiple robots or if you would like to attach the ‘base_link’ frame of the robot to a different frame, set this to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</td>
+<td><code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-odd"><td>external_urdf_loc</td>
+<td>the file path to the custom urdf.xacro file that you would like to include in the Interbotix robot’s urdf.xacro file.</td>
+<td>‘’</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>hardware_type</td>
+<td>configures the <code class="docutils literal notranslate"><span class="pre">robot_description</span></code> to use the actual hardware, fake hardware, or hardware simulated in Gazebo.</td>
+<td><code class="docutils literal notranslate"><span class="pre">actual</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">actual</span></code>, <code class="docutils literal notranslate"><span class="pre">fake</span></code>, <code class="docutils literal notranslate"><span class="pre">gz_classic</span></code></td>
+</tr>
+<tr class="row-odd"><td>robot_description_leader_left</td>
+<td>URDF of the robot; this is typically generated by the xacro command.</td>
+<td>Command(FindExec(<code class="docutils literal notranslate"><span class="pre">xacro</span></code>) + ‘ ‘ + LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">interbotix_xsarm_descriptions</span></code>) + ‘urdf’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_model_leader</span></code>)’) + ‘.urdf.xacro ‘ + ‘robot_name:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_name_leader_left</span></code>) + ‘ ‘ + ‘base_link_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>) + ‘ ‘ + ‘use_gripper:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_gripper</span></code>) + ‘ ‘ + ‘show_ar_tag:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_ar_tag</span></code>) + ‘ ‘ + ‘show_gripper_bar:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_bar</span></code>) + ‘ ‘ + ‘show_gripper_fingers:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_fingers</span></code>) + ‘ ‘ + ‘use_world_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_world_frame</span></code>) + ‘ ‘ + ‘external_urdf_loc:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">external_urdf_loc</span></code>) + ‘ ‘ + ‘hardware_type:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">hardware_type</span></code>) + ‘ ‘)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>robot_description_leader_right</td>
+<td>URDF of the robot; this is typically generated by the xacro command.</td>
+<td>Command(FindExec(<code class="docutils literal notranslate"><span class="pre">xacro</span></code>) + ‘ ‘ + LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">interbotix_xsarm_descriptions</span></code>) + ‘urdf’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_model_leader</span></code>)’) + ‘.urdf.xacro ‘ + ‘robot_name:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_name_leader_right</span></code>) + ‘ ‘ + ‘base_link_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>) + ‘ ‘ + ‘use_gripper:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_gripper</span></code>) + ‘ ‘ + ‘show_ar_tag:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_ar_tag</span></code>) + ‘ ‘ + ‘show_gripper_bar:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_bar</span></code>) + ‘ ‘ + ‘show_gripper_fingers:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_fingers</span></code>) + ‘ ‘ + ‘use_world_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_world_frame</span></code>) + ‘ ‘ + ‘external_urdf_loc:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">external_urdf_loc</span></code>) + ‘ ‘ + ‘hardware_type:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">hardware_type</span></code>) + ‘ ‘)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>robot_description_follower_left</td>
+<td>URDF of the robot; this is typically generated by the xacro command.</td>
+<td>Command(FindExec(<code class="docutils literal notranslate"><span class="pre">xacro</span></code>) + ‘ ‘ + LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">interbotix_xsarm_descriptions</span></code>) + ‘urdf’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_model_follower</span></code>)’) + ‘.urdf.xacro ‘ + ‘robot_name:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_name_follower_left</span></code>) + ‘ ‘ + ‘base_link_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>) + ‘ ‘ + ‘use_gripper:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_gripper</span></code>) + ‘ ‘ + ‘show_ar_tag:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_ar_tag</span></code>) + ‘ ‘ + ‘show_gripper_bar:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_bar</span></code>) + ‘ ‘ + ‘show_gripper_fingers:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_fingers</span></code>) + ‘ ‘ + ‘use_world_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_world_frame</span></code>) + ‘ ‘ + ‘external_urdf_loc:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">external_urdf_loc</span></code>) + ‘ ‘ + ‘hardware_type:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">hardware_type</span></code>) + ‘ ‘)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>robot_description_follower_right</td>
+<td>URDF of the robot; this is typically generated by the xacro command.</td>
+<td>Command(FindExec(<code class="docutils literal notranslate"><span class="pre">xacro</span></code>) + ‘ ‘ + LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">interbotix_xsarm_descriptions</span></code>) + ‘urdf’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_model_follower</span></code>)’) + ‘.urdf.xacro ‘ + ‘robot_name:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">robot_name_follower_right</span></code>) + ‘ ‘ + ‘base_link_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>) + ‘ ‘ + ‘use_gripper:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_gripper</span></code>) + ‘ ‘ + ‘show_ar_tag:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_ar_tag</span></code>) + ‘ ‘ + ‘show_gripper_bar:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_bar</span></code>) + ‘ ‘ + ‘show_gripper_fingers:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">show_gripper_fingers</span></code>) + ‘ ‘ + ‘use_world_frame:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">use_world_frame</span></code>) + ‘ ‘ + ‘external_urdf_loc:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">external_urdf_loc</span></code>) + ‘ ‘ + ‘hardware_type:=’ + LaunchConfig(<code class="docutils literal notranslate"><span class="pre">hardware_type</span></code>) + ‘ ‘)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>use_gravity_compensation</td>
+<td>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, launches the gravity compensation node.</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-even"><td>leader_motor_specs_left</td>
+<td>the file path to the ‘motor specs’ YAML file for the left leader arm.</td>
+<td>LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">aloha</span></code>) + ‘config’ + ‘leader_motor_specs_left.yaml’’)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>leader_motor_specs_right</td>
+<td>the file path to the ‘motor specs’ YAML file for the right leader arm.</td>
+<td>LocalVar(‘FindPackageShare(pkg= <code class="docutils literal notranslate"><span class="pre">aloha</span></code>) + ‘config’ + ‘leader_motor_specs_right.yaml’’)</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../operation.html" class="btn btn-neutral float-left" title="Operation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mobile.html" class="btn btn-neutral float-right" title="Mobile Operation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Trossen Robotics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+     
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

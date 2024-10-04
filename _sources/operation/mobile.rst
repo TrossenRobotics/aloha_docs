@@ -2,23 +2,6 @@
 Mobile Operation
 ================
 
-Running ALOHA Bringup
-=====================
-
-In a terminal, run the following commands:
-
-.. code-block:: bash
-
-  $ export INTERBOTIX_ALOHA_IS_MOBILE=true # if not already in your environment
-  $ source /opt/ros/humble/setup.bash # configure ROS system install environment
-  $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-  $ ros2 launch aloha aloha_bringup.launch.py # launch hardware drivers and control software
-
-.. warning::
-
-  Terminating bringup while the follower arms are not in their sleep configurations will cause them to collapse!
-  Be sure to run the :ref:`operation/mobile:Sending Arms to Sleep Configuration` process before doing so.
-
 Teleoperation
 =============
 
@@ -29,43 +12,30 @@ While ALOHA bringup is running in another terminal, open a new one and run the f
   $ export INTERBOTIX_ALOHA_IS_MOBILE=true # if not already in your environment
   $ source /opt/ros/humble/setup.bash # configure ROS system install environment
   $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-  $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
   $ cd ~/interbotix_ws/src/aloha/scripts/
-  $ python3 dual_side_teleop.py
+  $ python3 dual_side_teleop.py [-g]
 
 The arms will lift themselves up into their "staged" configurations.
 Close both grippers on the leader arms to begin teleop.
-While doing teleop, another person can use the included PS4 controller to move the base.
 
 You should now be able to teleoperate both sets of arms.
+When you finish, place the leader arms in their cradles.
 Press :kbd:`Ctrl` + :kbd:`C` on the teleoperation terminal to stop teleoperation.
-Place the leader arms in their cradles.
-
-Sending Arms to Sleep Configuration
-===================================
-
-While ALOHA bringup is running in another terminal, open a new one and run the following commands:
-
-.. code-block:: bash
-
-  $ export INTERBOTIX_ALOHA_IS_MOBILE=false # if not already in your environment
-  $ source /opt/ros/humble/setup.bash # configure ROS system install environment
-  $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-  $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
-  $ cd ~/interbotix_ws/src/aloha/scripts/
-  $ python3 sleep.py
-
-The follower arms will move to their "staged" configurations and then place themselves into their sleep configurations.
 
 .. tip::
 
-  You can optionally append the ``-a|--all`` flag to the sleep script command to send all arms to their sleep configurations:
+  If the ``-g`` argument is set, the gravity compensation feature (introduced since 10/04/2024) will be enabled for the leader robots when teleop starts.
+  Otherwise, the leader arms will be torqued off.
 
-  .. code-block:: bash
+.. warning::
 
-    $ python3 sleep.py -a
-    # or
-    $ python3 sleep.py --all
+  Even with the ``-g`` argument set, the arms **WILL** still torque off and drop for a short period of time while enabling/disabling the gravity compensation feature.
+
+  Please make sure they are readily held while closing the grippers and placed in the cradles before sending them to the sleep configuration.
+
+.. tip::
+
+  While doing teleop, another person can use the included PS4 controller to move the base.
 
 Joystick Base Teleoperation
 ===========================
@@ -80,3 +50,8 @@ Then proceed with the following steps:
 #.  Use the controller's left stick to send forwards or backwards linear velocity commands.
 #.  Use the controller's right stick to send clockwise or counter-clockwise angular velocity commands.
 #.  At any time, release the controllers :kbd:`L2` button to disable joystick control.
+
+What's Next?
+============
+
+Now that you know how to teleoperate, you can start :doc:`collecting data </operation/data_collection>` with your ALOHA.

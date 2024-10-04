@@ -32,10 +32,7 @@ Recording Episodes
 
 To record an episode, follow the steps below:
 
-#.  Bring up the ALOHA control stack according to your platform
-
-    * Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
-    * Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
+#.  :ref:`operation/bringup_shutdown:bringup` the ALOHA control stack according to your platform
 
 #.  Configure the environment and run the episode recording script as follows:
 
@@ -43,13 +40,21 @@ To record an episode, follow the steps below:
 
     $ source /opt/ros/humble/setup.bash # configure ROS system install environment
     $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-    $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
     $ cd ~/interbotix_ws/src/aloha/scripts/
-    $ python3 record_episodes.py --task_name <task_name> --episode_idx <episode_idx>
+    $ python3 record_episodes.py \
+          --task_name <task_name> \
+          [--episode_idx <episode_idx>] \
+          [-b, --enable_base_torque] \
+          [-g, --gravity_compensation]
 
-  .. note::
+  The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
 
-    The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
+  The ``episode_idx`` argument is optional and specifies the index of the episode to record reflected in the output filename ``<dataset_dir>/episode_<episode_idx>.hdf5``.
+  If not provided, the script will automatically calculate the next episode index based on the number of episodes already saved in the dataset directory.
+
+  If the ``-b, --enable_base_torque`` argument is set, mobile base will be torqued on during episode recording, allowing the use of a joystick controller or some other manual method.
+
+  If the ``-g, --gravity_compensation`` argument is set, gravity compensation will be enabled for the leader robots when teleop starts.
 
   .. tip::
 
@@ -68,10 +73,7 @@ Episode Playback
 
 To play back a previously-recorded episode, follow the steps below:
 
-#.  Bring up the ALOHA control stack according to your platform
-
-    * Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
-    * Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
+#.  :ref:`operation/bringup_shutdown:bringup` the ALOHA control stack according to your platform
 
 #.  Configure the environment and run the episode playback script as follows:
 
@@ -79,7 +81,6 @@ To play back a previously-recorded episode, follow the steps below:
 
     $ source /opt/ros/humble/setup.bash # configure ROS system install environment
     $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
-    $ source /<path_to_aloha_venv>/bin/activate # configure ALOHA Python environment
     $ cd ~/interbotix_ws/src/aloha/scripts/
     $ python3 replay_episodes.py --dataset_dir </path/to/dataset> --episode_idx <episode_idx>
 
@@ -113,17 +114,6 @@ This value is used to set the path to the ``ROS_SETUP_PATH`` variable used later
 .. code-block:: bash
 
   ROS_DISTRO=humble
-
-``VENV_ACTIVATE_PATH``
-^^^^^^^^^^^^^^^^^^^^^^
-
-Set the path to the virtual environment's activate file.
-This value is used when setting up the Python virtual environment.
-``VENV_ACTIVATE_PATH`` defaults to ``"$HOME/act/bin/activate"``.
-
-.. code-block:: bash
-
-  VENV_ACTIVATE_PATH="$HOME/act/bin/activate"
 
 ``ROS_SETUP_PATH``
 ^^^^^^^^^^^^^^^^^^
@@ -164,16 +154,13 @@ Usage
 
 Once configured, the auto_record script is now ready to use. To auto-record a specific amount of episodes, follow the steps below:
 
-#.  Bring up the ALOHA control stack according to your platform
-
-    * Stationary: :ref:`operation/stationary:Running ALOHA Bringup`
-    * Mobile: :ref:`operation/mobile:Running ALOHA Bringup`
+#.  :ref:`operation/bringup_shutdown:bringup` the ALOHA control stack according to your platform
 
 #.  In a new terminal, navigate to the directory storing the auto_record script and run the command below:
 
     .. code-block::
 
-      $ auto_record.sh <task_name> <num_episodes>
+      $ auto_record.sh <task_name> <num_episodes> [-b, --enable_base_torque] [-g, --gravity_compensation]
 
     .. tip::
 
@@ -208,3 +195,8 @@ ALOHA saves its episodes in the `hdf5 format`_ with the following format:
 
     action                  (14,)         'float64'
     base_action             (2,)          'float64' (on Mobile)
+
+What's Next?
+============
+
+With the data collected, we are ready to :doc:`train and evaluate </operation/training>` the machine learning models.
