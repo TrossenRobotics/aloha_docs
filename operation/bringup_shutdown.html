@@ -76,7 +76,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#bringup">Bringup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shutdown">Shutdown</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-s-next">What’s Next?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#arguments-for-aloha-bringup">Arguments for ALOHA Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurations">Configurations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mobile.html">Mobile Operation</a></li>
@@ -133,8 +133,8 @@ Be sure to run through the <a class="reference internal" href="#shutdown"><span 
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">The ALOHA can be brought up with additional arguments to customize the behavior.
-For a full list of arguments, refer to the <a class="reference internal" href="#arguments-for-aloha-bringup"><span class="std std-ref">Arguments for ALOHA Bringup</span></a> section below.</p>
+<p class="last">The ALOHA can be brought up with different configurations and additional arguments to customize the behavior.
+Please refer to the <a class="reference internal" href="#configurations"><span class="std std-ref">Configurations</span></a> section below for details.</p>
 </div>
 </div>
 <div class="section" id="shutdown">
@@ -168,8 +168,43 @@ $<span class="w"> </span>python3<span class="w"> </span>sleep.py<span class="w">
 <li><a class="reference internal" href="stationary.html"><span class="doc">Stationary Operation</span></a></li>
 </ul>
 </div>
-<div class="section" id="arguments-for-aloha-bringup">
-<h2>Arguments for ALOHA Bringup<a class="headerlink" href="#arguments-for-aloha-bringup" title="Permalink to this headline"></a></h2>
+<div class="section" id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline"></a></h2>
+<p>The configuration yaml files provided in the <code class="docutils literal notranslate"><span class="pre">~/interbotix_ws/src/aloha/config</span></code> directory can be used to customize the behavior of the ALOHA.
+Please follow the links below to see the details of each configuration file:</p>
+<ul class="simple">
+<li>SLATE Robot Base (only for Mobile ALOHA)<ul>
+<li><a class="reference external" href="https://docs.ros.org/en/humble/p/teleop_twist_joy/index.html#parameters" rel="noopener noreferrer" target="_blank">teleop_twist_joy Parameters</a>:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">base_joystick_teleop.yaml</span></code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Interbotix Arms<ul>
+<li><a class="reference external" href="https://docs.trossenrobotics.com/interbotix_xsarms_docs/ros_interface/ros2/config.html#mode-configs" rel="noopener noreferrer" target="_blank">Mode Configs</a>:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">leader_modes_left.yaml</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">leader_modes_right.yaml</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">follower_modes_left.yaml</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">follower_modes_right.yaml</span></code></li>
+</ul>
+</li>
+<li><a class="reference external" href="https://docs.trossenrobotics.com/interbotix_xsarms_docs/ros2_packages/gravity_compensation.html#configuration" rel="noopener noreferrer" target="_blank">Motor Specs</a>:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">leader_motor_specs_left.yaml</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">leader_motor_specs_right.yaml</span></code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Intel RealSense Cameras<ul>
+<li><a class="reference external" href="https://github.com/IntelRealSense/realsense-ros/tree/ros2-development?tab=readme-ov-file#parameters" rel="noopener noreferrer" target="_blank">realsense2_camera Parameters</a>:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">rs_cam.yaml</span></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Besides the default configuration files, the launch file <code class="docutils literal notranslate"><span class="pre">aloha_bringup.launch.py</span></code> provides additional arguments for further customization.
+Please refer to the following table for details:</p>
 <table border="1" class="colwidths-given docutils align-default">
 <colgroup>
 <col width="17%" />
