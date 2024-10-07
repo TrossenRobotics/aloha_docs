@@ -24,12 +24,12 @@ Press :kbd:`Ctrl` + :kbd:`C` on the teleoperation terminal to stop teleoperation
 
 .. tip::
 
-  If the ``-g`` argument is set, the gravity compensation feature (introduced since 10/04/2024) will be enabled for the leader robots when teleop starts.
+  If the ``-g`` argument is set, the :doc:`gravity compensation </operation/gravity_compensation>` feature (introduced since 10/04/2024) will be enabled for the leader robots when teleop starts.
   Otherwise, the leader arms will be torqued off.
 
 .. warning::
 
-  Even with the ``-g`` argument set, the arms **WILL** still torque off and drop for a short period of time while enabling/disabling the gravity compensation feature.
+  Even with the ``-g`` argument set, the arms **WILL** still torque off and drop for a short period of time while enabling/disabling the :doc:`gravity compensation </operation/gravity_compensation>` feature.
 
   Please make sure they are readily held while closing the grippers and placed in the cradles before sending them to the sleep configuration.
 
