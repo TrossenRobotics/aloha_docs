@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="training.html">Training and Evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hugging_face.html">Hugging Face Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lerobot_guide.html">LeRobot X Aloha User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gravity_compensation.html">Gravity Compensation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -133,12 +134,12 @@ When you finish, place the leader arms in their cradles.
 Press <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> on the teleoperation terminal to stop teleoperation.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">If the <code class="docutils literal notranslate"><span class="pre">-g</span></code> argument is set, the gravity compensation feature (introduced since 10/04/2024) will be enabled for the leader robots when teleop starts.
+<p class="last">If the <code class="docutils literal notranslate"><span class="pre">-g</span></code> argument is set, the <a class="reference internal" href="gravity_compensation.html"><span class="doc">gravity compensation</span></a> feature (introduced since 10/04/2024) will be enabled for the leader robots when teleop starts.
 Otherwise, the leader arms will be torqued off.</p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>Even with the <code class="docutils literal notranslate"><span class="pre">-g</span></code> argument set, the arms <strong>WILL</strong> still torque off and drop for a short period of time while enabling/disabling the gravity compensation feature.</p>
+<p>Even with the <code class="docutils literal notranslate"><span class="pre">-g</span></code> argument set, the arms <strong>WILL</strong> still torque off and drop for a short period of time while enabling/disabling the <a class="reference internal" href="gravity_compensation.html"><span class="doc">gravity compensation</span></a> feature.</p>
 <p class="last">Please make sure they are readily held while closing the grippers and placed in the cradles before sending them to the sleep configuration.</p>
 </div>
 <div class="admonition tip">

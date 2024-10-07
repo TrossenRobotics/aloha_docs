@@ -27,11 +27,11 @@ Press :kbd:`Ctrl` + :kbd:`C` on the teleoperation terminal to stop teleoperation
   If the mechanical gravity compensation system is not preferred for your application, we also have a software solution introduced since 10/04/2024.
 
   You can detach the pulley system from the leader arms and set the ``-g`` argument.
-  This will enable the gravity compensation feature for the leader robots when teleop starts.
+  This will enable the :doc:`gravity compensation </operation/gravity_compensation>` feature for the leader robots when teleop starts.
 
 .. warning::
 
-  With the ``-g`` argument set, the arms **WILL** still torque off and drop for a short period of time while enabling/disabling the gravity compensation feature.
+  With the ``-g`` argument set, the arms **WILL** still torque off and drop for a short period of time while enabling/disabling the :doc:`gravity compensation </operation/gravity_compensation>` feature.
   Please make sure they are readily held while closing the grippers and placed in the cradles before sending them to the sleep configurations.
 
 What's Next?

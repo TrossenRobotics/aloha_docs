@@ -12,3 +12,4 @@ Operation
   ./operation/training.rst
   ./operation/hugging_face.rst
   ./operation/lerobot_guide.rst
+  ./operation/gravity_compensation.rst
