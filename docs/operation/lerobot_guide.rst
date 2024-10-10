@@ -254,13 +254,22 @@ To upload intermediate checkpoints:
 Google Colab for Training
 ===============================
 
-If you would like to speed up the training process or do not have access to a powerful local machine, you can use the **Google Colab Notebook** that we have prepared for training LeRobot models on a cloud platform. Colab provides free access to GPUs, which can significantly reduce training time.
+If you would like to speed up the training process or do not have access to a powerful local machine, you can use the **Google Colab Notebook** that we have prepared for training LeRobot models on a cloud platform.
+Colab provides free access to GPUs, which can significantly reduce training time.
 
 To access and use the Colab notebook, follow these steps:
 
-1. **Download the Colab Notebook**: To download the Colab notebook, click the link below:
+1. **Download or Open the Colab Notebook**: You can either download the Colab notebook to your local machine or open it directly in Google Colab for instant use.
 
-   :download:`Download Notebook <../images/LeRobot_Notebook.ipynb>`
+   **Options**:
+   
+   - :download:`Download the Notebook <../images/LeRobot_Notebook.ipynb>`
+   
+   - .. raw:: html
+
+      <a target="_blank" href="https://colab.research.google.com/github/TrossenRobotics/aloha_docs/blob/main/docs/images/LeRobot_Notebook.ipynb">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+      </a>
 
 2. **GPU Setup**: Colab allows you to leverage powerful GPUs (e.g., T4, A100) to accelerate the training process.
    Ensure you have enabled GPU by navigating to **Runtime** > **Change runtime type** > **GPU**.
