@@ -229,8 +229,9 @@ To train a policy for controlling your robot, use the following command:
    #. The environment is set with :guilabel:`env=aloha_real`.
       This configuration is loaded from :file:`lerobot/configs/env/aloha_real.yaml`.
    #. The device is set to :guilabel:`cuda` to utilize an NVIDIA GPU for training.
-   #. :guilabel:`wandb.enable=true` is used for visualizing training plots via [Weights and Biases](https://docs.wandb.ai/quickstart).
+   #. :guilabel:`wandb.enable=true` is used for visualizing training plots via `Weights and Biases <https://docs.wandb.ai/quickstart>`_.
       Ensure you are logged in by running `wandb login`.
+
 
 Upload Policy Checkpoints
 =========================
@@ -249,6 +250,34 @@ To upload intermediate checkpoints:
    $ CKPT=010000
    $ huggingface-cli upload ${HF_USER}/act_aloha_test_${CKPT} \
       outputs/train/act_aloha_test/checkpoints/${CKPT}/pretrained_model
+
+Google Colab for Training
+===============================
+
+If you would like to speed up the training process or do not have access to a powerful local machine, you can use the **Google Colab Notebook** that we have prepared for training LeRobot models on a cloud platform. Colab provides free access to GPUs, which can significantly reduce training time.
+
+To access and use the Colab notebook, follow these steps:
+
+1. **Download the Colab Notebook**: To download the Colab notebook, click the link below:
+
+   :download:`Download Notebook <../images/LeRobot_Notebook.ipynb>`
+
+2. **GPU Setup**: Colab allows you to leverage powerful GPUs (e.g., T4, A100) to accelerate the training process.
+   Ensure you have enabled GPU by navigating to **Runtime** > **Change runtime type** > **GPU**.
+3. **Install Dependencies**: The notebook will automatically install all necessary dependencies such as `pyrealsense2`, `dynamixel-sdk`, and other tools required for the LeRobot framework.
+4. **Log in to Hugging Face**: Follow the instructions to log in with your Hugging Face token for seamless access to datasets and model uploads.
+5. **Start Training**: The notebook is pre-configured with commands to start training with the Aloha policy and datasets.
+6. **Monitor Progress**: Keep an eye on the first few training epochs to ensure everything runs smoothly.
+
+For additional step-by-step instructions, check out our **instructional video** `here <https://your-video-link>`_.
+
+Benefits of Using Colab
+-----------------------
+- **GPU Acceleration**: Google Colab provides free access to NVIDIA GPUs, which can dramatically reduce the time needed for model training.
+- **Cloud-Based**: You don’t need to rely on your local machine for heavy computation, and the training session can run in the background.
+- **Seamless Integration**: The notebook is integrated with Hugging Face, allowing you to easily access datasets and upload trained models.
+- **No Setup Hassle**: All the necessary dependencies and configurations are handled within the notebook, making the setup easy and quick.
+
 
 Evaluation
 ==========
