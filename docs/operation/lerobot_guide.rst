@@ -60,7 +60,7 @@ Teleoperation
 To teleoperate your robot, follow these steps:
 
 #. Find the serial numbers of your robot's arms and cameras as described in the following documentation:
-   
+
    - Arm Symlink Setup: `Aloha Post Install Arm Setup <https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#arm-symlink-setup>`_
    - Camera Setup: `Aloha Post Install Camera Setup <https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#camera-setup>`_
 
@@ -136,7 +136,7 @@ The system supports episode-based data collection, where episodes are time-bound
 
    #. The :guilabel:`--num-episodes` defines the total number of episodes to be collected.
       Therefore it will check the existing output directories for any previously recorded episodes and will start recording from the last recorded episode.
-   
+
    #. The recorded data is pushed to hugging face hub by default you can set this false by using :guilabel:`--push-to-hub 0`.
 
 .. note::
@@ -203,7 +203,7 @@ To replay the first episode of your recorded dataset:
 
    Use different :guilabel:`--fps` values to adjust the frequency of the robot actions.
 
-Training 
+Training
 ========
 
 To train a policy for controlling your robot, use the following command:
@@ -393,9 +393,9 @@ Arrow Keys Not Working During Data Recording (Linux)
 
 Frequency drops during evaluation
 ---------------------------------
-  
+
    This happens on low-performance systems due to their inability to handle multi-threaded I/O operations.
-   Checkout the following version for a smoother operation. 
+   Checkout the following version for a smoother operation.
    Changes will be integrated soon in the newer version of the repository.
    `Low Frequency Fix <https://github.com/Interbotix/lerobot/pull/3>`_
 
