@@ -263,7 +263,7 @@ To access and use the Colab notebook, follow these steps:
 
    **Options**:
    
-   - :download:`Download the Notebook <../images/LeRobot_Notebook.ipynb>`
+   - :download:`Download the Notebook <../files/LeRobot_Notebook.ipynb>`
    
    - .. raw:: html
 
@@ -273,6 +273,9 @@ To access and use the Colab notebook, follow these steps:
 
 2. **GPU Setup**: Colab allows you to leverage powerful GPUs (e.g., T4, A100) to accelerate the training process.
    Ensure you have enabled GPU by navigating to **Runtime** > **Change runtime type** > **GPU**.
+
+   If you're new to Google Colab or need more information on how it works, check out the **[Google Colab FAQ](https://research.google.com/colaboratory/faq.html)** for answers to common questions.
+   
 3. **Install Dependencies**: The notebook will automatically install all necessary dependencies such as `pyrealsense2`, `dynamixel-sdk`, and other tools required for the LeRobot framework.
 4. **Log in to Hugging Face**: Follow the instructions to log in with your Hugging Face token for seamless access to datasets and model uploads.
 5. **Start Training**: The notebook is pre-configured with commands to start training with the Aloha policy and datasets.
@@ -282,11 +285,11 @@ For additional step-by-step instructions, check out our **instructional video** 
 
 Benefits of Using Colab
 -----------------------
+
 - **GPU Acceleration**: Google Colab provides free access to NVIDIA GPUs, which can dramatically reduce the time needed for model training.
 - **Cloud-Based**: You don’t need to rely on your local machine for heavy computation, and the training session can run in the background.
 - **Seamless Integration**: The notebook is integrated with Hugging Face, allowing you to easily access datasets and upload trained models.
 - **No Setup Hassle**: All the necessary dependencies and configurations are handled within the notebook, making the setup easy and quick.
-
 
 Evaluation
 ==========
