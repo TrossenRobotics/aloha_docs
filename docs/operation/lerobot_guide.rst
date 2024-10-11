@@ -281,7 +281,7 @@ To access and use the Colab notebook, follow these steps:
 5. **Start Training**: The notebook is pre-configured with commands to start training with the Aloha policy and datasets.
 6. **Monitor Progress**: Keep an eye on the first few training epochs to ensure everything runs smoothly.
 
-For additional step-by-step instructions, check out our **instructional video** `here <https://your-video-link>`_.
+For additional step-by-step instructions, check out our **instructional video** `here <https://www.youtube.com/watch?v=KAdVobQZSBg>`_.
 
 Benefits of Using Colab
 -----------------------
