@@ -25,14 +25,15 @@ release = ''
 extensions = [
     'sphinx_collapse',
     'sphinx_copybutton',
+    'sphinx_multiversion',
     'sphinx_tabs.tabs',
     'sphinx.ext.extlinks',
     'sphinx.ext.githubpages',
     'sphinx.ext.graphviz',
     'sphinx.ext.mathjax',
+    'sphinxcontrib.video',
     'sphinxcontrib.youtube',
     "sphinx.ext.autosectionlabel",
-    'sphinxcontrib.video',
 ]
 
 # True to prefix each section label with the name of the document it is in, followed by a colon.
@@ -55,6 +56,12 @@ copybutton_line_continuation_character = "\\"
 templates_path = [
     '_templates'
 ]
+
+# Whitelist pattern for branches (set to None to ignore all branches)
+# Set to a regex that will filter branches based on '$MAJOR.$MINOR' (e.g. '1.2')
+smv_branch_whitelist = r'^(\d+\.\d+)$'
+
+smv_latest_version = '2.0'
 
 # The suffix(es) of source filenames. You can specify multiple suffix as a list of string:
 source_suffix = '.rst'
@@ -198,5 +205,18 @@ class PatchedHTMLTranslator(HTMLTranslator):
             self.body.append(('%s' + self.secnumber_suffix) %
                              '.'.join(map(str, node['secnumber'])))
 
+
+def smv_rewrite_configs(app, config):
+    if app.config.smv_current_version != '':
+        app.config.html_baseurl = app.config.html_baseurl + '/' + app.config.smv_current_version
+
+
+def github_link_rewrite_branch(app, pagename, templatename, context, doctree):
+    if app.config.smv_current_version != '':
+        context['github_version'] = app.config.smv_current_version + '/'
+
+
 def setup(app):
     app.set_translator('html', PatchedHTMLTranslator)
+    app.connect('config-inited', smv_rewrite_configs)
+    app.connect('html-page-context', github_link_rewrite_branch)

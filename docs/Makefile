@@ -1,20 +1,18 @@
-# Minimal makefile for Sphinx documentation
-#
+SOURCE  = .
+OUT     = _build
+BUILD   = python3 -m sphinx
+OPTS    =
+LATEST  = 2.0
 
-# You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = ALOHA Documentation
-SOURCEDIR     = .
-BUILDDIR      = _build
-
-# Put it first so that "make" without argument is like "make help".
 help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(BUILD) -M help "$(SOURCE)" "$(OUT)" $(OPTS) $(O)
+	@echo "  multiversion to build documentation for all branches"
 
-.PHONY: help Makefile
+multiversion: Makefile
+	sphinx-multiversion $(OPTS) "$(SOURCE)" "$(OUT)/html"
+	@echo "<html><head><meta http-equiv=\"refresh\" content=\"0; url=$(LATEST)/index.html\" /></head></html>" > $(OUT)/html/index.html
 
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
+.PHONY: help Makefile multiversion
+
 %: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(BUILD) -M $@ "$(SOURCE)" "$(OUT)" $(OPTS) $(O)
