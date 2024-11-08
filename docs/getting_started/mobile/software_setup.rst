@@ -95,13 +95,7 @@ ALOHA Software Installation
 
 .. _`link`: https://github.com/Interbotix/interbotix_ros_toolboxes/blob/c187bcea89b60391244bb19943ebd78f770aa975/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py#L81
 
-4.  Add the following line to your ``~/.bashrc`` file:
-
-  .. code-block:: bash
-
-    $ echo "export INTERBOTIX_ALOHA_IS_MOBILE=true" >> ~/.bashrc
-
-5.  Build the workspace:
+4.  Build the workspace:
 
   .. code-block:: bash
 
@@ -199,7 +193,7 @@ Camera Setup
   .. image:: images/rsviewer_serialno.png
     :align: center
 
-4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/rs_cam.yaml``.
+4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_mobile.yaml``.
 
 5.  Repeat for the rest of the cameras.
     If the workspace has not been symbolically-linked, a rebuild may be necessary.

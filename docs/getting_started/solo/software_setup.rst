@@ -1,17 +1,17 @@
 ===============================
-Stationary ALOHA Software Setup
+Solo ALOHA Software Setup
 ===============================
 
 .. note::
 
-  The Interbotix ALOHA Stationary control software is supported for **ROS 2 Humble** running on **native Linux Ubuntu 22.04**.
+  The Interbotix ALOHA Solo control software is supported for **ROS 2 Humble** running on **native Linux Ubuntu 22.04**.
 
 .. note::
 
   If using a laptop supplied by Trossen Robotics, all required software will be pre-installed.
   In this case, you can skip to the Post-Install Hardware Setup section of this guide.
 
-This guide will walk through the process of setting up the Interbotix ALOHA Stationary control software.
+This guide will walk through the process of setting up the Interbotix ALOHA Solo control software.
 
 ROS 2 Installation
 ==================
@@ -110,12 +110,14 @@ The following sections will provide steps on setting up unique symbolic links fo
 Arm Symlink Setup
 -----------------
 
-We will configure udev rules for the arms such that they are bound to the following device names:
+We will configure udev rules to bind the arms to specific device names. 
+Depending on the orientation of the pair you plan to use, configure the device names accordingly as either left or right:
 
-* ``ttyDXL_leader_left``
-* ``ttyDXL_leader_right``
-* ``ttyDXL_follower_left``
-* ``ttyDXL_follower_right``
+* ``ttyDXL_leader_left`` for the left leader arm
+* ``ttyDXL_follower_left`` for the left follower arm
+* ``ttyDXL_leader_right`` for the right leader arm
+* ``ttyDXL_follower_right`` for the right follower arm
+
 
 To set these up, do the following:
 
@@ -148,15 +150,26 @@ To set these up, do the following:
 
     $ sudo udevadm control --reload && sudo udevadm trigger
 
-8.  Plug all arms back into the computer and verify that you can see all devices:
+8. Plug all arms back into the computer and verify that you can see all devices. 
+   Depending on whether you configured the arms for a left or right orientation, you will see the corresponding device names:
 
-  .. code-block:: bash
+   .. code-block:: bash
 
-    $ ls /dev | grep ttyDXL_
-    ttyDXL_leader_left
-    ttyDXL_leader_right
-    ttyDXL_follower_left
-    ttyDXL_follower_right
+     $ ls /dev | grep ttyDXL_
+
+   For a left orientation, you should see:
+   
+   .. code-block:: bash
+
+     ttyDXL_leader_left
+     ttyDXL_follower_left
+
+   For a right orientation, you should see:
+
+   .. code-block:: bash
+
+     ttyDXL_leader_right
+     ttyDXL_follower_right
 
 Camera Setup
 ------------
@@ -181,7 +194,7 @@ Camera Setup
   .. image:: images/rsviewer_serialno.png
     :align: center
 
-4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_stationary.yaml``.
+4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_solo.yaml``.
 
 5.  Repeat for the rest of the cameras.
     If the workspace has not been symbolically-linked, a rebuild may be necessary.
