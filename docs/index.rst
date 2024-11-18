@@ -23,4 +23,5 @@ Table of Contents
   specifications.rst
   getting_started.rst
   operation.rst
+  training.rst
   troubleshooting.rst

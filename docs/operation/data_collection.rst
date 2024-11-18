@@ -5,9 +5,9 @@ Data Collection
 Task Creation
 =============
 
-Task configuration can be found in the ALOHA package's aloha module under ``constants.py`` in the ``TASK_CONFIGS`` dictionary.
-A template task (``aloha_template``) is provided containing all possible fields and some placeholder values.
-Here, we will focus only on the task name, the dataset directory, the episode length, and the observation cameras.
+Task configurations are now set up in the ``tasks_config.yaml`` file located inside the ``config`` folder in the Aloha package.
+A template task (aloha_template) is provided within the file, which includes all possible fields and placeholder values.
+For this guide, we will focus on configuring the task name, dataset directory, and episode length.
 
 .. list-table::
   :align: center
@@ -23,9 +23,7 @@ Here, we will focus only on the task name, the dataset directory, the episode le
     - The ``dataset_dir`` field sets the directory episodes will saved to.
   * - Episode Length
     - The ``episode_len`` field sets the length of the episode in number of timesteps.
-  * - Camera Names
-    - The ``camera_names`` field takes in a list of strings corresponding to camera names.
-      These camera names will be used as observation sources during dataset collection.
+
 
 Recording Episodes
 ==================
@@ -43,11 +41,15 @@ To record an episode, follow the steps below:
     $ cd ~/interbotix_ws/src/aloha/scripts/
     $ python3 record_episodes.py \
           --task_name <task_name> \
+          --robot <robot_configuration> \
           [--episode_idx <episode_idx>] \
           [-b, --enable_base_torque] \
           [-g, --gravity_compensation]
 
-  The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
+  The ``task_name`` argument should match one of the task names defined in the ``tasks_config.yaml`` file, as configured in the :ref:`operation/data_collection:Task Creation` section.
+
+  The ``-r, --robot`` argument should correspond to one of the configurations present in the ``config/robot`` directory.
+  Supported robot names include ``aloha_solo``, ``aloha_mobile``, and ``aloha_stationary``.
 
   The ``episode_idx`` argument is optional and specifies the index of the episode to record reflected in the output filename ``<dataset_dir>/episode_<episode_idx>.hdf5``.
   If not provided, the script will automatically calculate the next episode index based on the number of episodes already saved in the dataset directory.
@@ -61,12 +63,13 @@ To record an episode, follow the steps below:
     Each platform has a "dummy" task that can be used to test basic data collection and playback.
     For the Stationary variant, use the ``aloha_stationary_dummy`` task.
     For the Mobile variant, use the ``aloha_mobile_dummy`` task.
+    For the Solo variant, use the ``aloha_solo_dummy`` task.
 
     An example for the Mobile variant would look like:
 
     .. code-block:: bash
 
-      $ python3 record_episodes.py --task_name aloha_mobile_dummy --episode_idx 0
+      $ python3 record_episodes.py --task_name aloha_mobile_dummy --robot aloha_mobile --episode_idx 0
 
 Episode Playback
 ================
@@ -82,7 +85,7 @@ To play back a previously-recorded episode, follow the steps below:
     $ source /opt/ros/humble/setup.bash # configure ROS system install environment
     $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
     $ cd ~/interbotix_ws/src/aloha/scripts/
-    $ python3 replay_episodes.py --dataset_dir </path/to/dataset> --episode_idx <episode_idx>
+    $ python3 replay_episodes.py --robot <robot_configuration>--dataset_dir </path/to/dataset> --episode_idx <episode_idx>
 
   .. tip::
 
@@ -90,7 +93,7 @@ To play back a previously-recorded episode, follow the steps below:
 
     .. code-block:: bash
 
-      $ python3 replay_episodes.py --dataset_dir ~/aloha_data/aloha_mobile_dummy/ --episode_idx 0
+      $ python3 replay_episodes.py --robot aloha_mobile --dataset_dir ~/aloha_data/aloha_mobile_dummy/ --episode_idx 0
 
 Episode Auto-Recording
 ======================
@@ -160,7 +163,7 @@ Once configured, the auto_record script is now ready to use. To auto-record a sp
 
     .. code-block::
 
-      $ auto_record.sh <task_name> <num_episodes> [-b, --enable_base_torque] [-g, --gravity_compensation]
+      $ auto_record.sh <task_name> <num_episodes> <robot_name> [-b, --enable_base_torque] [-g, --gravity_compensation]
 
     .. tip::
 
@@ -168,7 +171,7 @@ Once configured, the auto_record script is now ready to use. To auto-record a sp
 
       .. code-block:: bash
 
-        $ auto_record.sh aloha_mobile_dummy 50
+        $ auto_record.sh aloha_mobile_dummy 50 aloha_mobile
 
     The auto_record script will then call the record_episodes Python script the specified number of times.
 
@@ -183,18 +186,48 @@ ALOHA saves its episodes in the `hdf5 format`_ with the following format:
 
 .. _`hdf5 format`: https://en.wikipedia.org/wiki/Hierarchical_Data_Format#HDF5
 
+
+Aloha Stationary
+
 .. code-block::
 
     - images
         - cam_high          (480, 640, 3) 'uint8'
-        - cam_low           (480, 640, 3) 'uint8'   (on Stationary)
+        - cam_low           (480, 640, 3) 'uint8'
         - cam_left_wrist    (480, 640, 3) 'uint8'
         - cam_right_wrist   (480, 640, 3) 'uint8'
     - qpos                  (14,)         'float64'
     - qvel                  (14,)         'float64'
 
     action                  (14,)         'float64'
-    base_action             (2,)          'float64' (on Mobile)
+
+Aloha Mobile
+
+.. code-block::
+
+    - images
+        - cam_high          (480, 640, 3) 'uint8'
+        - cam_left_wrist    (480, 640, 3) 'uint8'
+        - cam_right_wrist   (480, 640, 3) 'uint8'
+    - qpos                  (14,)         'float64'
+    - qvel                  (14,)         'float64'
+
+    action                  (14,)         'float64'
+    base_action             (2,)          'float64'
+
+Aloha Solo
+
+.. code-block::
+
+    - images
+        - cam_high          (480, 640, 3) 'uint8'
+        - cam_left_wrist    (480, 640, 3) 'uint8'   or
+        - cam_right_wrist   (480, 640, 3) 'uint8'
+    - qpos                  (7,)          'float64'
+    - qvel                  (7,)          'float64'
+
+    action                  (7,)          'float64'
+
 
 What's Next?
 ============

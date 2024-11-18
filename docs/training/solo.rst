@@ -1,48 +1,7 @@
-=======================
-Training and Evaluation
-=======================
 
-Virtual Environment Setup
-=========================
-
-Effective containerization is important when it comes to running machine learning models as there can be conflicting dependencies.
-You can either use a Virtual Environment or Conda.
-
-Virtual Environment Installation and Setup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Install the virtual environment package:
-
-  .. code-block:: bash
-
-      $ sudo apt-get install python3-venv
-
-#. Create a virtual environment:
-
-  .. code-block:: bash
-
-      $ python3 -m venv ~/act  # Creates a venv "act" in the home directory, can be created anywhere
-
-#. Activate the virtual environment:
-
-  .. code-block:: bash
-
-      $ source act/bin/activate
-
-Conda Setup
-^^^^^^^^^^^
-
-#. Create a virtual environment:
-
-  .. code-block:: bash
-
-    $ conda create -n aloha python=3.8.10
-
-#. Activate the virtual environment:
-
-  .. code-block:: bash
-
-    $ conda activate aloha
+===================
+Aloha Solo Training
+===================
 
 Install Dependencies
 ^^^^^^^^^^^^^^^^^^^^
@@ -66,25 +25,20 @@ Install the necessary dependencies inside your containerized environment:
     $ pip install torch
     $ pip install torchvision
 
-Clone Repository
-================
+Clone ACT Solo Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Clone ACT if using Aloha Stationary
 
-.. code-block:: bash
-
-    $ cd ~
-    $ git clone https://github.com/Interbotix/act.git act_training_evaluation
-
-Clone ACT++ if using Aloha Mobile
+Clone ACT Solo if using Aloha Solo
 
 .. code-block:: bash
 
     $ cd ~
-    $ git clone https://github.com/Interbotix/act_plus_plus.git act_training_evaluation
+    $ git clone https://github.com/Interbotix/act_solo.git act_training_evaluation
 
-Build and Install ACT Models
-============================
+
+Build and Install ACT Solo Models
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
    :emphasize-lines: 4
@@ -108,14 +62,14 @@ Build and Install ACT Models
     └── README.md
 
 
-Navigate to the ``detr`` directory inside the repository and install the detr module whihc contains the model definitions using the below command:
+Navigate to the ``detr`` directory inside the repository and install the detr module which contains the model definitions using the below command:
 
 .. code-block:: bash
 
     $ cd /path/to/act/detr && pip install -e .
 
 Training
-========
+^^^^^^^^
 
 To start the training, follow the steps below:
 
@@ -191,7 +145,7 @@ To start the training, follow the steps below:
       - 1e-5
 
 Evaluation
-==========
+^^^^^^^^^^
 
 To evaluate a trained model, follow the steps below:
 
