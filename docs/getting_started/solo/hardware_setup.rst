@@ -27,6 +27,6 @@ Steps
 #. Find a stable, flat surface to place your arms. Once satisfied, secure them using `Gorilla Tape <https://a.co/d/2v591vP>`_ or G-Clamps.
 #. Connect the power cables to the arms.
 #. Position the tripod so the camera effectively covers the experiment space.
-   Warning: Keep the camera position consistent throughout data collection and evaluation for optimal results.
+   **Warning:** Keep the camera position consistent throughout data collection and evaluation for optimal results.
 #. Connect the camera cables and arm cables to the USB hub.
 #. Connect the USB hub to your computer.
