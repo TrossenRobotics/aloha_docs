@@ -1,7 +1,14 @@
 
-===================
-Aloha Solo Training
-===================
+================================
+Aloha Solo Training $ Evaluation
+================================
+
+.. note::
+
+  **ACT Solo** is supported exclusively with **Aloha 2.0**.
+  There is no support for **Aloha Solo** on **Aloha 1.0**.
+  Ensure that you are using compatible software versions to avoid any issues during training or evaluation.
+
 
 Install Dependencies
 ^^^^^^^^^^^^^^^^^^^^
@@ -62,11 +69,11 @@ Build and Install ACT Solo Models
     └── README.md
 
 
-Navigate to the ``detr`` directory inside the repository and install the detr module which contains the model definitions using the below command:
+Navigate to the ``detr`` directory inside the repository and install the ``detr`` module which contains the model definitions using the below command:
 
 .. code-block:: bash
 
-    $ cd /path/to/act/detr && pip install -e .
+    $ cd /path/to/act_solo/ && pip install -e .
 
 Training
 ^^^^^^^^
@@ -96,7 +103,7 @@ To start the training, follow the steps below:
 
       $ cd /path/to/act/repository/
       $ python3 imitate_episodes.py \
-        --task_name aloha_stationary_dummy \
+        --task_name aloha_solo_dummy \
         --ckpt_dir <ckpt dir> \
         --policy_class ACT \
         --kl_weight 10 \
@@ -110,7 +117,7 @@ To start the training, follow the steps below:
 
 .. note::
 
-   - ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
+   - ``task_name`` argument should match one of the task names in the ``tasks_config.yaml``, as configured in the :ref:`operation/data_collection:Task Creation` section.
    - ``ckpt_dir``: The relative location where the checkpoints and best policy will be stored.
    - ``policy_class``: Determines the choice of policy 'ACT'/'CNNMLP'.
    - ``kl_weight``: Controls the balance between exploration and exploitation.
@@ -158,7 +165,7 @@ To evaluate a trained model, follow the steps below:
        $ source /opt/ros/humble/setup.bash  # Configure ROS system install environment
        $ source interbotix_ws/install/setup.bash  # Configure ROS workspace environment
        $ source /<path_to_aloha_venv>/bin/activate  # Configure ALOHA Python environment
-       $ cd ~/<act_repository>/act/
+       $ cd ~/<act_repository>/act_solo/
 
 #. Run the evaluation script
 
@@ -166,7 +173,7 @@ To evaluate a trained model, follow the steps below:
       :emphasize-lines: 13-14
 
        python3 imitate_episodes.py \
-        --task_name aloha_stationary_dummy \
+        --task_name aloha_solo_dummy \
         --ckpt_dir <ckpt dir> \
         --policy_class ACT \
         --kl_weight 10 \
@@ -182,7 +189,7 @@ To evaluate a trained model, follow the steps below:
 
 .. note::
 
-   - The ``task_name`` argument should match one of the task names in the ``TASK_CONFIGS``, as configured in the :ref:`operation/data_collection:Task Creation` section.
+   - The ``task_name`` argument should match one of the task names in the ``tasks_config.yaml``, as configured in the :ref:`operation/data_collection:Task Creation` section.
    - The ``ckpt_dir`` argument should match the correct relative directory location of the trained policy.
    - The ``eval`` flag will set the script into evaluation mode.
    - The ``temporal_agg`` is not required, but helps to smoothen the trajectory of the robots.

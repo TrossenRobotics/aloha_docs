@@ -70,7 +70,7 @@ ALOHA Software Installation
   .. code-block:: bash
 
     $ cd ~/interbotix_ws/src
-    $ git clone https://github.com/Interbotix/aloha.git
+    $ git clone https://github.com/Interbotix/aloha.git -b 2.0
 
 2.  Run rosdep to install any dependencies:
 

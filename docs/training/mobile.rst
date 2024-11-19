@@ -1,7 +1,12 @@
 
-=====================
-Aloha Mobile Training
-=====================
+==================================
+Aloha Mobile Training & Evaluation
+==================================
+
+.. note::
+
+   **ACT++** is only supported with **Aloha 1.0**.
+   Ensure that you are using compatible software versions to avoid any issues during training or evaluation.
 
 Install Dependencies
 ^^^^^^^^^^^^^^^^^^^^
@@ -15,6 +20,7 @@ Install the necessary dependencies inside your containerized environment:
     $ pip install h5py
     $ pip install ipython
     $ pip install matplotlib
+    $ pip install modern_robotics
     $ pip install mujoco==2.3.7
     $ pip install opencv-python
     $ pip install packaging
@@ -24,6 +30,18 @@ Install the necessary dependencies inside your containerized environment:
     $ pip install rospkg
     $ pip install torch
     $ pip install torchvision
+    $ pip install transforms3d
+    $ pip install wandb
+
+Clone Robomimic
+^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    $ cd ~
+    $ git clone -b r2d2 https://github.com/ARISE-Initiative/robomimic.git
+    $ cd robomimic
+    $ pip install -e .
 
 Clone ACT++ Repository
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -64,18 +82,12 @@ Build and Install ACT++ Models
     └── README.md
 
 
-Navigate to the ``detr`` directory inside the repository and install the detr module which contains the model definitions using the below command:
-Will make the changes for clarity. As in ACT++ we run pip install outside detr and in ACT we run it inside detr.
-
+Navigate to the ``act_plus_plus`` directory inside the repository and install the ``detr`` module, which contains the model definitions, by running the following command:
 
 .. code-block:: bash
 
-    $ cd /path/to/act/detr && pip install -e .
+    $ cd /path/to/act_plus_plus && pip install -e .
 
-
-Install Robo Mimic
-^^^^^^^^^^^^^^^^^^
-    Details about installing robotmimic
 
 Training
 ^^^^^^^^
@@ -105,7 +117,7 @@ To start the training, follow the steps below:
 
       $ cd /path/to/act/repository/
       $ python3 imitate_episodes.py \
-        --task_name aloha_stationary_dummy \
+        --task_name aloha_mobile_dummy \
         --ckpt_dir <ckpt dir> \
         --policy_class ACT \
         --kl_weight 10 \
@@ -113,7 +125,7 @@ To start the training, follow the steps below:
         --hidden_dim 512 \
         --batch_size 8 \
         --dim_feedforward 3200 \
-        --num_epochs 2000 \
+        --num_steps 2000 \
         --lr 1e-5 \
         --seed 0
 
@@ -125,7 +137,7 @@ To start the training, follow the steps below:
    - ``kl_weight``: Controls the balance between exploration and exploitation.
    - ``chunk_size``: Determines the length of the action sequence. K=1 is no action chunking and K=episode length is full open loop control.
    - ``batch_size``: Low batch size leads to better generalization and high batch size results in slower convergence but faster training time.
-   - ``num_epochs``: Too many epochs lead to overfitting; too few epochs may not allow the model to learn.
+   - ``num_steps``: Too many steps lead to overfitting; too few steps may not allow the model to learn.
    - ``lr``: Higher learning rate can lead to faster convergence but may overshoot the optima, while lower learning rate might lead to slower but stable optimization.
 
 
@@ -167,7 +179,7 @@ To evaluate a trained model, follow the steps below:
        $ source /opt/ros/humble/setup.bash  # Configure ROS system install environment
        $ source interbotix_ws/install/setup.bash  # Configure ROS workspace environment
        $ source /<path_to_aloha_venv>/bin/activate  # Configure ALOHA Python environment
-       $ cd ~/<act_repository>/act/
+       $ cd ~/<act_repository>/act_plus_plus/
 
 #. Run the evaluation script
 
@@ -183,7 +195,7 @@ To evaluate a trained model, follow the steps below:
         --hidden_dim 512 \
         --batch_size 8 \
         --dim_feedforward 3200 \
-        --num_epochs 2000 \
+        --num_steps 2000 \
         --lr 1e-5 \
         --seed 0 \
         --eval \

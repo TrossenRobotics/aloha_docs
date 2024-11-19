@@ -309,10 +309,10 @@ Mobile Technical Drawing
 Coming Soon!
 
 
-Aloha Stationary
+Aloha Solo
 ================
 
-Stationary Packing List
+Solo Packing List
 -----------------------
 
 .. table::

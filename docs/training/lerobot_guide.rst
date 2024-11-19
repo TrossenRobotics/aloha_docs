@@ -1,6 +1,6 @@
-==========================
-LeRobot X Aloha User Guide
-==========================
+=====================================
+LeRobot X Aloha Stationary User Guide
+=====================================
 
 
 Setting up Conda Environment
@@ -359,6 +359,127 @@ Instructions for downloading and using these datasets can be found at the follow
 
 `Trossen Robotics Community <https://huggingface.co/TrossenRoboticsCommunity>`_
 
+
+
+===============================
+LeRobot X Aloha Solo User Guide
+===============================
+
+The process for using Aloha Solo is similar to Aloha Stationary. However, there are key differences in the configurations, policies, and environment settings that must be applied. This guide outlines the specific changes needed to set up and run Aloha Solo.
+
+Key Differences Between Aloha Solo and Aloha Stationary
+=======================================================
+
+.. list-table::
+   :widths: 20 40 40
+   :header-rows: 1
+
+   * - **Feature**
+     - **Aloha Stationary**
+     - **Aloha Solo**
+   * - **Robot Configuration**
+     - ``aloha_stationary.yaml``
+     - ``aloha_solo.yaml``
+   * - **Policy**
+     - ``act_aloha_real``
+     - ``act_aloha_solo_real``
+   * - **Environment**
+     - ``aloha_real``
+     - ``aloha_solo_real``
+   * - **Camera Support**
+     - ``cam_high``, ``cam_low``, ``cam_left_wrist``, ``cam_right_wrist``
+     - ``cam_high`` and either ``cam_left_wrist`` or ``cam_right_wrist``
+
+
+Steps to Configure Aloha Solo
+=============================
+
+#. **Place the Required Files**:
+
+   Ensure the following files are updated and placed in their appropriate folder locations:
+
+    - **Robot Configuration**: Place ``aloha_solo.yaml`` in ``lerobot/configs/robot/``. 
+      :download:`Download Robot Configuration <../files/aloha_solo.yaml>`
+
+    - **Policy Configuration**: Place ``act_aloha_solo_real.yaml`` in ``lerobot/configs/policy/``. 
+      :download:`Download Policy Configuration <../files/act_aloha_solo_real.yaml>`
+
+    - **Environment Configuration**: Place ``aloha_solo_real.yaml`` in ``lerobot/configs/env/``. 
+      :download:`Download Environment Configuration <../files/aloha_solo_real.yaml>`
+
+#. **Camera Setup**:
+
+   For Aloha Solo, ensure that only two cameras are configured:
+   - ``cam_high``
+   - Either ``cam_left_wrist`` or ``cam_right_wrist`` (depending on your setup).
+   - 
+#. **Update the Robot Configuration**:
+
+   Replace the robot configuration file used in your setup with ``aloha_solo.yaml``. This file is located in the ``lerobot/configs/robot/`` directory.
+
+   Example:
+
+   .. code-block:: bash
+
+      --robot-path lerobot/configs/robot/aloha_solo.yaml
+
+#. **Adjust the Policy and Environment**:
+
+   Update the policy and environment names in the commands you use:
+     - **Policy**: ``act_aloha_solo_real``
+     - **Environment**: ``aloha_solo_real``
+
+   Example Training Command:
+
+   .. code-block:: bash
+
+      $ DATA_DIR=data python lerobot/scripts/train.py \
+         dataset_repo_id=${HF_USER}/aloha_solo_dataset \
+         policy=act_aloha_solo \
+         env=aloha_solo \
+         hydra.run.dir=outputs/train/act_aloha_solo \
+         hydra.job.name=act_aloha_solo \
+         device=cuda \
+         wandb.enable=false
+
+Example Command Updates for Aloha Solo
+======================================
+
+- **Teleoperation**:
+  
+  .. code-block:: bash
+
+      $ python lerobot/scripts/control_robot.py teleoperate \
+         --robot-path lerobot/configs/robot/aloha_solo.yaml
+
+- **Recording Data**:
+  
+  .. code-block:: bash
+
+      $ python lerobot/scripts/control_robot.py record \
+         --robot-path lerobot/configs/robot/aloha_solo.yaml \
+         --fps 30 \
+         --root data \
+         --repo-id ${HF_USER}/aloha_solo_dataset \
+         --warmup-time-s 5 \
+         --episode-time-s 30 \
+         --reset-time-s 30 \
+         --num-episodes 10
+
+- **Training**:
+  
+  .. code-block:: bash
+
+      $ DATA_DIR=data python lerobot/scripts/train.py \
+         dataset_repo_id=${HF_USER}/aloha_solo_dataset \
+         policy=act_aloha_solo \
+         env=aloha_solo \
+         hydra.run.dir=outputs/train/act_aloha_solo \
+         hydra.job.name=act_aloha_solo \
+         device=cuda \
+         wandb.enable=false
+
+===============
 Troubleshooting
 ===============
 
@@ -367,7 +488,7 @@ Troubleshooting
 
 
 Lag Observed in Follower Arms
------------------------------
+=============================
 
 If you notice lag in the follower arms, it's due to the safety settings, which are in place to prevent overshooting that could harm the robot.
 These are designed to ensure safety for new users or when using untested policies.
@@ -403,7 +524,7 @@ Follow these steps:
    Gradually enable additional motors until you can control both arms safely.
 
 OpenCV Installation Issues (Linux)
-----------------------------------
+==================================
 
    If you encounter OpenCV installation issues, uninstall it via :guilabel:`pip` and reinstall using Conda:
 
@@ -413,7 +534,7 @@ OpenCV Installation Issues (Linux)
       $ conda install -c conda-forge opencv=4.10.0
 
 FFmpeg Encoding Error (:guilabel:`unknown encoder libsvtav1`)
--------------------------------------------------------------
+=============================================================
 
    Install FFmpeg with :guilabel:`libsvtav1` support via Conda-Forge or Homebrew:
 
@@ -428,12 +549,12 @@ FFmpeg Encoding Error (:guilabel:`unknown encoder libsvtav1`)
       $ brew install ffmpeg
 
 Arrow Keys Not Working During Data Recording (Linux)
-----------------------------------------------------
+====================================================
 
    Ensure that the :guilabel:`$DISPLAY` environment variable is set correctly.
 
 Frequency drops during evaluation
----------------------------------
+=================================
 
    This happens on low-performance systems due to their inability to handle multi-threaded I/O operations.
    Checkout the following version for a smoother operation.
@@ -441,13 +562,13 @@ Frequency drops during evaluation
    `Low Frequency Fix <https://github.com/Interbotix/lerobot/pull/3>`_
 
 Compute Dataset Statistic Failure
----------------------------------
+=================================
 
    It is noticed that on low-performance systems the compute statistic fails due to high batch size and number of workers.
    Checkout the following version with lower batch size and number of workers.
    `Compute Statistic Fix <https://github.com/Interbotix/lerobot/pull/4>`_
 
 Checkout LeRobot Documentation for further help and details
------------------------------------------------------------
+===========================================================
 
    `LeRobot Github <https://github.com/huggingface/lerobot>`_

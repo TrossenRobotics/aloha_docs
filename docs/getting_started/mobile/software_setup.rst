@@ -77,12 +77,24 @@ To build the SLATE base control software, run the following commands:
 ALOHA Software Installation
 ===========================
 
+.. admonition:: Important Compatibility Notice
+
+   This documentation and software correspond to **Aloha version 2.0**.
+   It supports features such as teleoperation, data recording, replay, and visualization. 
+   However, it is **not compatible** with training and evaluation for **ACT** or **ACT++**.
+
+   For end-to-end training of **Aloha Stationary** and **Aloha Mobile**, stick to **Aloha 1.0**. 
+   You can find the Aloha 1.0 documentation here: `Aloha 1.0 Documentation <https://docs.trossenrobotics.com/aloha_docs>`_
+
+   We are actively working on updates to provide full compatibility in the future.
+
+
 1.  Clone the Interbotix fork of ALOHA into the workspace's source directory:
 
   .. code-block:: bash
 
     $ cd ~/interbotix_ws/src
-    $ git clone https://github.com/Interbotix/aloha.git
+    $ git clone https://github.com/Interbotix/aloha.git -b 2.0
 
 2.  Run rosdep to install any dependencies:
 

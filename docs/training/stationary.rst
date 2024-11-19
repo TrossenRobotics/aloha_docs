@@ -1,7 +1,12 @@
 
-=========================
-Aloha Stationary Training
-=========================
+======================================
+Aloha Stationary Training & Evaluation
+======================================
+
+.. note::
+
+   **ACT** is only supported with **Aloha 1.0**.
+   Ensure that you are using compatible software versions to avoid any issues during training or evaluation.
 
 Install Dependencies
 ^^^^^^^^^^^^^^^^^^^^
@@ -26,7 +31,7 @@ Install the necessary dependencies inside your containerized environment:
     $ pip install torchvision
 
 Clone ACT Repository
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 Clone ACT if using Aloha Stationary
 
