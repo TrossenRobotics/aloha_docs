@@ -429,3 +429,17 @@ The laptop is the Serval WS (serw13) from System76 with the following specificat
 * WiFi 6E + Bluetooth 5
 * 8 GB GeForce RTX 4060 with 3072 CUDA Cores
 * 17.3" Matte 2K QHD (240Hz) Display
+
+
+ALOHA Pre-configured Mini PC
+============================
+
+Trossen Robotics offers the option of providing a mini computer pre-configured to work with either variant of the ALOHA kit.
+The computer is the Meerkat (meer8) from System76 with the following specifications:
+
+* Ubuntu 22.04 LTS
+* 4.5 GHz i5-1340P
+* 32 GB DDR5 3200 MHz (2x 16GB)
+* 500 GB PCIe4 M.2 SSD
+* WiFi 6E + Bluetooth 5
+* i5-1340P: Intel® Iris® Xe Graphics
