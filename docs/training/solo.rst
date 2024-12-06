@@ -1,6 +1,5 @@
-
 ================================
-Aloha Solo Training $ Evaluation
+Aloha Solo Training & Evaluation
 ================================
 
 .. note::
@@ -9,9 +8,8 @@ Aloha Solo Training $ Evaluation
   There is no support for **Aloha Solo** on **Aloha 1.0**.
   Ensure that you are using compatible software versions to avoid any issues during training or evaluation.
 
-
 Install Dependencies
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Install the necessary dependencies inside your containerized environment:
 

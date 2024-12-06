@@ -5,7 +5,7 @@ Data Collection
 Task Creation
 =============
 
-Task configurations are now set up in the ``tasks_config.yaml`` file located inside the ``config`` folder in the Aloha package.
+Task configurations are set up in the ``tasks_config.yaml`` file located inside the ``config`` folder in the Aloha package.
 A template task (aloha_template) is provided within the file, which includes all possible fields and placeholder values.
 For this guide, we will focus on configuring the task name, dataset directory, and episode length.
 
@@ -85,7 +85,7 @@ To play back a previously-recorded episode, follow the steps below:
     $ source /opt/ros/humble/setup.bash # configure ROS system install environment
     $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
     $ cd ~/interbotix_ws/src/aloha/scripts/
-    $ python3 replay_episodes.py --robot <robot_configuration>--dataset_dir </path/to/dataset> --episode_idx <episode_idx>
+    $ python3 replay_episodes.py --robot <robot_configuration> --dataset_dir </path/to/dataset> --episode_idx <episode_idx>
 
   .. tip::
 
@@ -188,6 +188,7 @@ ALOHA saves its episodes in the `hdf5 format`_ with the following format:
 
 
 Aloha Stationary
+----------------
 
 .. code-block::
 
@@ -202,6 +203,7 @@ Aloha Stationary
     action                  (14,)         'float64'
 
 Aloha Mobile
+------------
 
 .. code-block::
 
@@ -216,6 +218,7 @@ Aloha Mobile
     base_action             (2,)          'float64'
 
 Aloha Solo
+----------
 
 .. code-block::
 

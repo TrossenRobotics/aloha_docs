@@ -67,11 +67,11 @@ ALOHA Software Installation
 
 .. admonition:: Important Compatibility Notice
 
-   This documentation and software correspond to **Aloha version 2.0**.
+   This documentation and software correspond to **Interbotix Aloha version 2.0**.
    It supports features such as teleoperation, data recording, replay, and visualization. 
    However, it is **not compatible** with training and evaluation for **ACT** or **ACT++**.
 
-   For end-to-end training of **Aloha Stationary** and **Aloha Mobile**, stick to **Aloha 1.0**. 
+   For end-to-end training of **Aloha Stationary** and **Aloha Mobile**, stick to **Interbotix Aloha 1.0**. 
    You can find the Aloha 1.0 documentation here: `Aloha 1.0 Documentation <https://docs.trossenrobotics.com/aloha_docs>`_
 
    We are actively working on updates to provide full compatibility in the future.

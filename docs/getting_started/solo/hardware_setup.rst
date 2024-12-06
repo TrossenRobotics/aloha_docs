@@ -1,6 +1,6 @@
-===========================
+=========================
 Solo ALOHA Hardware Setup
-===========================
+=========================
 
 .. attention::
 
@@ -21,7 +21,6 @@ Video Overview
 
 Steps
 -----
-
 
 #. Attach the camera mount and fix the camera securely on the Viper arm.
 #. Find a stable, flat surface to place your arms. Once satisfied, secure them using `Gorilla Tape <https://a.co/d/2v591vP>`_ or G-Clamps.

@@ -1,6 +1,6 @@
-===============================
+=========================
 Solo ALOHA Software Setup
-===============================
+=========================
 
 .. note::
 
@@ -113,10 +113,10 @@ Arm Symlink Setup
 We will configure udev rules to bind the arms to specific device names. 
 Depending on the orientation of the pair you plan to use, configure the device names accordingly as either left or right:
 
-* ``ttyDXL_leader_left`` for the left leader arm
-* ``ttyDXL_follower_left`` for the left follower arm
-* ``ttyDXL_leader_right`` for the right leader arm
-* ``ttyDXL_follower_right`` for the right follower arm
+* ``ttyDXL_leader_left`` for the left oriented leader arm
+* ``ttyDXL_follower_left`` for the follower arm
+* ``ttyDXL_leader_right`` for the right oriented leader arm
+* ``ttyDXL_follower_right`` for the follower arm
 
 
 To set these up, do the following:
@@ -142,7 +142,7 @@ To set these up, do the following:
     SUBSYSTEM=="tty", ATTRS{serial}=="<SERIAL NUMBER>", ENV{ID_MM_DEVICE_IGNORE}="1", ATTR{device/latency_timer}="1", SYMLINK+="ttyDXL_leader_left"
     #                                 ^^^^^^^^^^^^^^^ The result from the previous step
 
-6.  Repeat for the rest of the arms.
+6.  Repeat for the other arm.
 
 7.  To update and refresh the rules, run the following command:
 
@@ -150,7 +150,7 @@ To set these up, do the following:
 
     $ sudo udevadm control --reload && sudo udevadm trigger
 
-8. Plug all arms back into the computer and verify that you can see all devices. 
+8. Plug both arms back into the computer and verify that you can see all devices. 
    Depending on whether you configured the arms for a left or right orientation, you will see the corresponding device names:
 
    .. code-block:: bash
@@ -191,7 +191,7 @@ Camera Setup
 
 3.  Click on Info for the camera, find the Serial Number, and copy it.
 
-  .. image:: images/rsviewer_serialno.png
+  .. image:: ../../images/rsviewer_serialno.png
     :align: center
 
 4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_solo.yaml``.

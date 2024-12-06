@@ -1,4 +1,3 @@
-
 ==================================
 Aloha Mobile Training & Evaluation
 ==================================
@@ -46,16 +45,10 @@ Clone Robomimic
 Clone ACT++ Repository
 ^^^^^^^^^^^^^^^^^^^^^^
 
-
-Clone ACT++ if using Aloha Mobile
-
 .. code-block:: bash
 
     $ cd ~
     $ git clone https://github.com/Interbotix/act_plus_plus.git act_training_evaluation
-
-
-
 
 Build and Install ACT++ Models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,13 +74,11 @@ Build and Install ACT++ Models
     ├── LICENSE
     └── README.md
 
-
 Navigate to the ``act_plus_plus`` directory inside the repository and install the ``detr`` module, which contains the model definitions, by running the following command:
 
 .. code-block:: bash
 
     $ cd /path/to/act_plus_plus && pip install -e .
-
 
 Training
 ^^^^^^^^

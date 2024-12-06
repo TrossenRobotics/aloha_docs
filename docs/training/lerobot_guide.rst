@@ -1,6 +1,6 @@
-=====================================
-LeRobot X Aloha Stationary User Guide
-=====================================
+==========================
+LeRobot X Aloha User Guide
+==========================
 
 
 Setting up Conda Environment
@@ -359,8 +359,6 @@ Instructions for downloading and using these datasets can be found at the follow
 
 `Trossen Robotics Community <https://huggingface.co/TrossenRoboticsCommunity>`_
 
-
-
 ===============================
 LeRobot X Aloha Solo User Guide
 ===============================
@@ -394,7 +392,7 @@ Key Differences Between Aloha Solo and Aloha Stationary
 Steps to Configure Aloha Solo
 =============================
 
-#. **Place the Required Files**:
+#. Place the Required Files:
 
    Ensure the following files are updated and placed in their appropriate folder locations:
 
@@ -407,13 +405,13 @@ Steps to Configure Aloha Solo
     - **Environment Configuration**: Place ``aloha_solo_real.yaml`` in ``lerobot/configs/env/``. 
       :download:`Download Environment Configuration <../files/aloha_solo_real.yaml>`
 
-#. **Camera Setup**:
+#. Camera Setup:
 
    For Aloha Solo, ensure that only two cameras are configured:
    - ``cam_high``
    - Either ``cam_left_wrist`` or ``cam_right_wrist`` (depending on your setup).
-   - 
-#. **Update the Robot Configuration**:
+   
+#. Update the Robot Configuration:
 
    Replace the robot configuration file used in your setup with ``aloha_solo.yaml``. This file is located in the ``lerobot/configs/robot/`` directory.
 
@@ -423,7 +421,7 @@ Steps to Configure Aloha Solo
 
       --robot-path lerobot/configs/robot/aloha_solo.yaml
 
-#. **Adjust the Policy and Environment**:
+#. Adjust the Policy and Environment:
 
    Update the policy and environment names in the commands you use:
      - **Policy**: ``act_aloha_solo_real``
@@ -485,7 +483,6 @@ Troubleshooting
 
 .. warning::
    If you encounter issues, follow these troubleshooting steps:
-
 
 Lag Observed in Follower Arms
 =============================

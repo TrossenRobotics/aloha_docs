@@ -42,7 +42,6 @@ While the ALOHA bringup is running in another terminal, open a new one and run t
   $ cd ~/interbotix_ws/src/aloha/scripts/
   $ python3 sleep.py -r <configuration>
 
-
 .. important::
 
   The robot argument is required to specify which ALOHA configuration to bring up.

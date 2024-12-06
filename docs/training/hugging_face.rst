@@ -2,17 +2,16 @@
 Hugging Face Guide
 ==================
 
-
 Creating an Account
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 If you don't already have an account, sign up for a new account on the `Hugging Face Sign Up <https://huggingface.co/join>`_.
 
 Creating a New Dataset Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
-Web Interface (Repository)
---------------------------
+Web Interface
+^^^^^^^^^^^^^
 
 #. Navigate to the `Hugging Face website <https://huggingface.co>`_.
 #. Log in to your account.
@@ -20,7 +19,7 @@ Web Interface (Repository)
 #. Follow the on-screen instructions to create a new dataset repository.
 
 Command Line Interface (CLI)
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Ensure you have the `huggingface_hub <https://huggingface.co/docs/huggingface_hub/index>`_ library installed.
 #. Use the following Python script to create a new repository:
@@ -35,12 +34,12 @@ Command Line Interface (CLI)
 For more information on creating repositories, refer to the `Hugging Face Repositories <https://huggingface.co/docs/hub/repositories>`_.
 
 Uploading Your Dataset
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 You have two primary methods to upload datasets: through the web interface or using the Python API.
 
-Web Interface (Dataset Upload)
-------------------------------
+Web Interface
+^^^^^^^^^^^^^
 
 #. Navigate to your dataset repository on the Hugging Face website.
 #. Click on the "Files and versions" tab.
@@ -48,7 +47,7 @@ Web Interface (Dataset Upload)
 #. Click "Commit changes" to save the files in the repository.
 
 Python API
-----------
+^^^^^^^^^^
 
 You can use the following Python script to upload your dataset:
 
@@ -79,12 +78,12 @@ You can use the following Python script to upload your dataset:
 For more information on uploading datasets, refer to the `Hugging Face Uploading <https://huggingface.co/docs/hub/upload>`_.
 
 Downloading Datasets
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 You can download datasets either by cloning the repository or using the Hugging Face CLI.
 
 Cloning the Repository
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 To clone the repository, use the following command:
 
@@ -93,7 +92,7 @@ To clone the repository, use the following command:
     $ git clone https://huggingface.co/datasets/username/repository_name
 
 Using the Hugging Face CLI
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can also use the Hugging Face CLI to download datasets with the following Python script:
 
@@ -116,7 +115,7 @@ You can also use the Hugging Face CLI to download datasets with the following Py
 For more information on downloading datasets, refer to the `Hugging Face Datasets <https://huggingface.co/docs/hub/download>`_.
 
 Additional Information
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 - **Repository Management**: Utilize the `Hugging Face Hub documentation <https://huggingface.co/docs/hub/repositories>`_ for detailed instructions on managing repositories, handling versions, and setting permissions.
 - **Dataset Formats**: Hugging Face supports various dataset formats. For this guide, we specifically use the Aloha's native ``.hdf5`` format.
