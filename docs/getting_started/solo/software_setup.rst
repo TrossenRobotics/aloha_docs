@@ -121,36 +121,40 @@ Depending on the orientation of the pair you plan to use, configure the device n
 
 To set these up, do the following:
 
-1.  Plug in only the leader left robot to the computer.
+#. Plug in only the leader robot to the computer.
 
-2.  Determine its device name by checking the ``/dev`` directory before and after plugging the device in.
+#. Determine its device name by checking the ``/dev`` directory before and after plugging the device in.
     This is likely something like ``/dev/ttyUSB0``.
 
-3.  Print out the device serial number by running the following command:
+#. Print out the device serial number by running the following command:
 
   .. code-block:: bash
 
     $ udevadm info --name=/dev/ttyUSB0 --attribute-walk | grep ATTRS{serial} | head -n 1 | cut -d '"' -f2
     FT88YWBJ
 
-4.  The output of the command will look like ``FT88YWBJ`` and be the serial number of the arm's U2D2 serial converter.
+#. The output of the command will look like ``FT88YWBJ`` and be the serial number of the arm's U2D2 serial converter.
 
-5.  Add the following line to the computer's fixed Interbotix udev rules at ``/etc/udev/rules.d/99-fixed-interbotix-udev.rules``:
+#. Add the following line to the computer's Interbotix udev rules file located at ``/etc/udev/rules.d/99-fixed-interbotix-udev.rules``. 
+   You only need to configure a leader and a follower.
+   The orientation (left or right) depends on your choice.
+   If you use a right leader, ensure you pair it with a right follower, and similarly for the left orientation.
+   Update the serial number and symlink name accordingly for your chosen configuration:
 
   .. code-block:: bash
 
     SUBSYSTEM=="tty", ATTRS{serial}=="<SERIAL NUMBER>", ENV{ID_MM_DEVICE_IGNORE}="1", ATTR{device/latency_timer}="1", SYMLINK+="ttyDXL_leader_left"
     #                                 ^^^^^^^^^^^^^^^ The result from the previous step
 
-6.  Repeat for the other arm.
+#.  Repeat for the other arm.
 
-7.  To update and refresh the rules, run the following command:
+#.  To update and refresh the rules, run the following command:
 
   .. code-block:: bash
 
     $ sudo udevadm control --reload && sudo udevadm trigger
 
-8. Plug both arms back into the computer and verify that you can see all devices. 
+#. Plug both arms back into the computer and verify that you can see all devices. 
    Depending on whether you configured the arms for a left or right orientation, you will see the corresponding device names:
 
    .. code-block:: bash
@@ -196,7 +200,7 @@ Camera Setup
 
 4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_solo.yaml``.
 
-5.  Repeat for the rest of the cameras.
+5.  Repeat for the other camera.
     If the workspace has not been symbolically-linked, a rebuild may be necessary.
 
 Post-Install Software Tips

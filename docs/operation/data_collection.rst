@@ -235,4 +235,4 @@ Aloha Solo
 What's Next?
 ============
 
-With the data collected, we are ready to :doc:`train and evaluate </operation/training>` the machine learning models.
+With the data collected, we are ready to :doc:`train and evaluate <../training>` the machine learning models.

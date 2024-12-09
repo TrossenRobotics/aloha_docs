@@ -47,8 +47,8 @@ Conda Setup
 
 
 
-Training and Evaluation
-=======================
+Train and Evaluate
+==================
 
 Depending upon the setup you are using 
 

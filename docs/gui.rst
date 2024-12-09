@@ -81,9 +81,11 @@ Application Features
    - Re-Record: Allows re-recording of the current episode if necessary.
 
 #. Progress Tracking:
+
    - A progress bar tracks the recording session in real-time, displaying completion percentage.
 
 #. Camera Views:
+
    - View multiple camera feeds in real-time during recording for better monitoring.
 
 #. Configuration Management:
@@ -92,6 +94,7 @@ Application Features
    - Edit Task Configuration: Adjust task-specific parameters via a YAML editor.
 
 #. Quit Button:
+
    - Use the Quit button in the menu to gracefully exit the application.
 
 Configuration Management
@@ -114,7 +117,7 @@ Task-specific parameters are stored in the `tasks_config.yaml` file. Below is an
        episode_length_s: 12
        warmup_time_s: 1
        reset_time_s: 5
-       hf_user: "TrossenRobotics"
+       hf_user: "YourUser"
        fps: 30
        push_to_hub: false
 
@@ -122,7 +125,7 @@ Task-specific parameters are stored in the `tasks_config.yaml` file. Below is an
        episode_length_s: 15
        warmup_time_s: 5
        reset_time_s: 10
-       hf_user: "TrossenRobotics"
+       hf_user: "YourUser"
        fps: 30
        push_to_hub: false
 
@@ -130,7 +133,7 @@ Task-specific parameters are stored in the `tasks_config.yaml` file. Below is an
        episode_length_s: 9
        warmup_time_s: 5
        reset_time_s: 5
-       hf_user: "TrossenRobotics"
+       hf_user: "YourUser"
        fps: 30
        push_to_hub: false
 
@@ -207,16 +210,11 @@ Below is a simplified version of a robot configuration file:
 - **leader_arms / follower_arms**: Specifies motor configurations for both leader and follower arms, including ports and motor models.
 - **cameras**: Configures Intel RealSense cameras with serial numbers, frame rates, and resolutions.
 
-**Steps to Configure the Robot YAML:**
+#. **Set Ports for Arms**: Update the `port` fields for `leader_arms` and `follower_arms` based on the symbolic links set for the robotic arms.
 
-#. **Set Ports for Arms**:
-   Update the `port` fields for `leader_arms` and `follower_arms` based on the symbolic links set for the robotic arms.
+#. **Add Serial Numbers for Cameras**: Use the Intel RealSense Viewer to obtain and add the correct serial numbers for each camera under the `cameras` section.
 
-#. **Add Serial Numbers for Cameras**:
-   Use the Intel RealSense Viewer to obtain and add the correct serial numbers for each camera under the `cameras` section.
-
-#. **Verify Calibration**:
-   Ensure the `calibration_dir` points to the appropriate calibration files.
+#. **Verify Calibration**: Ensure the `calibration_dir` points to the appropriate calibration files.
 
 Once the above configurations are completed, your setup is ready for teleoperation, data recording, and other tasks.
 
@@ -228,9 +226,8 @@ For detailed instructions on the hardware setup, please refer to the official do
 
 This guide provides comprehensive information, including:
 
-- Connecting the Arms: Step-by-step guidance to assemble and connect the robotic arms.
-- Serial Number Configuration: Instructions on setting up and verifying serial numbers for the arms.
-- Camera Setup: Using the Intel RealSense Viewer for calibrating and positioning cameras effectively.
+- `Arm Configuration <https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#arm-symlink-setup>`_: Step-by-step guidance to assemble and connect the robotic arms.
+- `Camera Setup <https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#camera-setup>`_: Using the Intel RealSense Viewer for calibrating and positioning cameras effectively.
 
 
 License
