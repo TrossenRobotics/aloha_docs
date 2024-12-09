@@ -37,8 +37,7 @@ jobs:
         run: |
           git fetch --all
           git checkout 1.0
-          git checkout 2.0
-          git checkout main
+          git checkout 2.0 # branch to deploy from
           cd docs
           make multiversion
 
