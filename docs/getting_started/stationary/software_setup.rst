@@ -72,7 +72,7 @@ ALOHA Software Installation
    However, it is **not compatible** with training and evaluation for **ACT** or **ACT++**.
 
    For end-to-end training of **Aloha Stationary** and **Aloha Mobile**, stick to **Interbotix Aloha 1.0**. 
-   You can find the Aloha 1.0 documentation here: `Aloha 1.0 Documentation <https://docs.trossenrobotics.com/aloha_docs>`_
+   You can find the Aloha 1.0 documentation here: `Aloha 1.0 Documentation <https://docs.trossenrobotics.com/aloha_docs/1.0/index.rst>`_
 
    We are actively working on updates to provide full compatibility in the future.
 

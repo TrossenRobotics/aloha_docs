@@ -355,7 +355,7 @@ Datasets can also be downloaded from the Trossen Robotics Community on Hugging F
 These datasets can be used with your preferred network architectures.
 Instructions for downloading and using these datasets can be found at the following link:
 
-`Dataset Download and Upload Instructions <https://docs.trossenrobotics.com/aloha_docs/operation/hugging_face.html>`_
+`Dataset Download and Upload Instructions <https://docs.trossenrobotics.com/aloha_docs/training/hugging_face.html>`_
 
 `Trossen Robotics Community <https://huggingface.co/TrossenRoboticsCommunity>`_
 
@@ -364,6 +364,13 @@ LeRobot X Aloha Solo User Guide
 ===============================
 
 The process for using Aloha Solo is similar to Aloha Stationary. However, there are key differences in the configurations, policies, and environment settings that must be applied. This guide outlines the specific changes needed to set up and run Aloha Solo.
+
+.. warning::
+   
+   **Aloha Solo is not yet officially supported on LeRobot.**  
+   To use Aloha Solo, you will need to apply custom upgrades and manually adjust configurations.
+   These upgrades include adding specific policies, environment files, and robot configurations, which are outlined in this guide.
+   Proceed with caution and ensure all changes are tested thoroughly before deployment.
 
 Key Differences Between Aloha Solo and Aloha Stationary
 =======================================================
