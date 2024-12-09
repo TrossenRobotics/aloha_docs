@@ -65,6 +65,17 @@ The installation script does the following:
 ALOHA Software Installation
 ===========================
 
+.. admonition:: Important Compatibility Notice
+
+   This documentation and software correspond to **Interbotix Aloha version 2.0**.
+   It supports features such as teleoperation, data recording, replay, and visualization. 
+   However, it is **not compatible** with training and evaluation for **ACT** or **ACT++**.
+
+   For end-to-end training of **Aloha Stationary** and **Aloha Mobile**, stick to **Interbotix Aloha 1.0**. 
+   You can find the Aloha 1.0 documentation here: `Aloha 1.0 Documentation <https://docs.trossenrobotics.com/aloha_docs/1.0/index.rst>`_
+
+   We are actively working on updates to provide full compatibility in the future.
+
 1.  Clone the Interbotix fork of ALOHA into the workspace's source directory:
 
   .. code-block:: bash
@@ -83,13 +94,7 @@ ALOHA Software Installation
 
 .. _`link`: https://github.com/Interbotix/interbotix_ros_toolboxes/blob/c187bcea89b60391244bb19943ebd78f770aa975/interbotix_xs_toolbox/interbotix_xs_modules/interbotix_xs_modules/xs_robot/arm.py#L81
 
-4.  Add the following line to your ``~/.bashrc`` file:
-
-  .. code-block:: bash
-
-    $ echo "export INTERBOTIX_ALOHA_IS_MOBILE=false" >> ~/.bashrc
-
-5.  Build the workspace:
+4.  Build the workspace:
 
   .. code-block:: bash
 
@@ -187,7 +192,7 @@ Camera Setup
   .. image:: images/rsviewer_serialno.png
     :align: center
 
-4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/rs_cam.yaml``.
+4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_stationary.yaml``.
 
 5.  Repeat for the rest of the cameras.
     If the workspace has not been symbolically-linked, a rebuild may be necessary.

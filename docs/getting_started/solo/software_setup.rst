@@ -1,17 +1,17 @@
-===========================
-Mobile ALOHA Software Setup
-===========================
+=========================
+Solo ALOHA Software Setup
+=========================
 
 .. note::
 
-  The Interbotix ALOHA Mobile control software is supported for **ROS 2 Humble** running on **native Linux Ubuntu 22.04**.
+  The Interbotix ALOHA Solo control software is supported for **ROS 2 Humble** running on **native Linux Ubuntu 22.04**.
 
 .. note::
 
   If using a laptop supplied by Trossen Robotics, all required software will be pre-installed.
   In this case, you can skip to the Post-Install Hardware Setup section of this guide.
 
-This guide will walk through the process of setting up the Interbotix ALOHA Mobile control software.
+This guide will walk through the process of setting up the Interbotix ALOHA Solo control software.
 
 ROS 2 Installation
 ==================
@@ -62,31 +62,8 @@ The installation script does the following:
   After running the install script, remove all added lines beneath the ``# Interbotix Configurations`` header in the ``~/.bashrc`` file.
   Doing so will make environment configuration easier later on.
 
-SLATE Base Software Install
-===========================
-
-The SLATE base control software is provided with the Interbotix installation but is not built by default.
-To build the SLATE base control software, run the following commands:
-
-.. code-block:: bash
-
-  $ rm ~/interbotix_ws/src/interbotix_ros_core/interbotix_ros_slate/COLCON_IGNORE
-  $ cd ~/interbotix_ws
-  $ colcon build
-
 ALOHA Software Installation
 ===========================
-
-.. admonition:: Important Compatibility Notice
-
-   This documentation and software correspond to **Interbotix Aloha version 2.0**.
-   It supports features such as teleoperation, data recording, replay, and visualization. 
-   However, it is **not compatible** with training and evaluation for **ACT** or **ACT++**.
-
-   For end-to-end training of **Aloha Stationary** and **Aloha Mobile**, stick to **Interbotix Aloha 1.0**. 
-   You can find the Aloha 1.0 documentation here: `Aloha 1.0 Documentation <https://docs.trossenrobotics.com/aloha_docs/1.0/index.html>`_
-
-   We are actively working on updates to provide full compatibility in the future.
 
 1.  Clone the Interbotix fork of ALOHA into the workspace's source directory:
 
@@ -133,53 +110,70 @@ The following sections will provide steps on setting up unique symbolic links fo
 Arm Symlink Setup
 -----------------
 
-We will configure udev rules for the arms such that they are bound to the following device names:
+We will configure udev rules to bind the arms to specific device names. 
+Depending on the orientation of the pair you plan to use, configure the device names accordingly as either left or right:
 
-* ``ttyDXL_leader_left``
-* ``ttyDXL_leader_right``
-* ``ttyDXL_follower_left``
-* ``ttyDXL_follower_right``
+* ``ttyDXL_leader_left`` for the left oriented leader arm
+* ``ttyDXL_follower_left`` for the follower arm
+* ``ttyDXL_leader_right`` for the right oriented leader arm
+* ``ttyDXL_follower_right`` for the follower arm
+
 
 To set these up, do the following:
 
-1.  Plug in only the leader left robot to the computer.
+#. Plug in only the leader robot to the computer.
 
-2.  Determine its device name by checking the ``/dev`` directory before and after plugging the device in.
+#. Determine its device name by checking the ``/dev`` directory before and after plugging the device in.
     This is likely something like ``/dev/ttyUSB0``.
 
-3.  Print out the device serial number by running the following command:
+#. Print out the device serial number by running the following command:
 
   .. code-block:: bash
 
     $ udevadm info --name=/dev/ttyUSB0 --attribute-walk | grep ATTRS{serial} | head -n 1 | cut -d '"' -f2
     FT88YWBJ
 
-4.  The output of the command will look like ``FT88YWBJ`` and be the serial number of the arm's U2D2 serial converter.
+#. The output of the command will look like ``FT88YWBJ`` and be the serial number of the arm's U2D2 serial converter.
 
-5.  Add the following line to the computer's fixed Interbotix udev rules at ``/etc/udev/rules.d/99-fixed-interbotix-udev.rules``:
+#. Add the following line to the computer's Interbotix udev rules file located at ``/etc/udev/rules.d/99-fixed-interbotix-udev.rules``. 
+   You only need to configure a leader and a follower.
+   The orientation (left or right) depends on your choice.
+   If you use a right leader, ensure you pair it with a right follower, and similarly for the left orientation.
+   Update the serial number and symlink name accordingly for your chosen configuration:
 
   .. code-block:: bash
 
     SUBSYSTEM=="tty", ATTRS{serial}=="<SERIAL NUMBER>", ENV{ID_MM_DEVICE_IGNORE}="1", ATTR{device/latency_timer}="1", SYMLINK+="ttyDXL_leader_left"
     #                                 ^^^^^^^^^^^^^^^ The result from the previous step
 
-6.  Repeat for the rest of the arms.
+#.  Repeat for the other arm.
 
-7.  To update and refresh the rules, run the following command:
+#.  To update and refresh the rules, run the following command:
 
   .. code-block:: bash
 
     $ sudo udevadm control --reload && sudo udevadm trigger
 
-8.  Plug all arms back into the computer and verify that you can see all devices:
+#. Plug both arms back into the computer and verify that you can see all devices. 
+   Depending on whether you configured the arms for a left or right orientation, you will see the corresponding device names:
 
-  .. code-block:: bash
+   .. code-block:: bash
 
-    $ ls /dev | grep ttyDXL_
-    ttyDXL_leader_left
-    ttyDXL_leader_right
-    ttyDXL_follower_left
-    ttyDXL_follower_right
+     $ ls /dev | grep ttyDXL_
+
+   For a left orientation, you should see:
+   
+   .. code-block:: bash
+
+     ttyDXL_leader_left
+     ttyDXL_follower_left
+
+   For a right orientation, you should see:
+
+   .. code-block:: bash
+
+     ttyDXL_leader_right
+     ttyDXL_follower_right
 
 Camera Setup
 ------------
@@ -201,27 +195,16 @@ Camera Setup
 
 3.  Click on Info for the camera, find the Serial Number, and copy it.
 
-  .. image:: images/rsviewer_serialno.png
+  .. image:: ../../images/rsviewer_serialno.png
     :align: center
 
-4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_mobile.yaml``.
+4.  Put the camera serial number in the appropriate config entry at ``~/interbotix_ws/src/aloha/config/robot/aloha_solo.yaml``.
 
-5.  Repeat for the rest of the cameras.
+5.  Repeat for the other camera.
     If the workspace has not been symbolically-linked, a rebuild may be necessary.
 
 Post-Install Software Tips
 ==========================
-
-Removing ``brltty``
--------------------
-
-The USB-Serial converter in the SLATE base shares the same vendor and product ID with some brail readers.
-Because of this, the ``brltty`` program may claim the device, preventing its use by other drivers.
-Solving this issue is as simple as removing the package using apt.
-
-.. code-block:: bash
-
-  $ sudo apt-get remove brltty
 
 Disable wandb
 -------------

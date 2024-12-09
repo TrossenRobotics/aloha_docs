@@ -1,51 +1,15 @@
-=======================
-Training and Evaluation
-=======================
 
-Virtual Environment Setup
-=========================
+======================================
+Aloha Stationary Training & Evaluation
+======================================
 
-Effective containerization is important when it comes to running machine learning models as there can be conflicting dependencies.
-You can either use a Virtual Environment or Conda.
+.. note::
 
-Virtual Environment Installation and Setup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Install the virtual environment package:
-
-  .. code-block:: bash
-
-      $ sudo apt-get install python3-venv
-
-#. Create a virtual environment:
-
-  .. code-block:: bash
-
-      $ python3 -m venv ~/act  # Creates a venv "act" in the home directory, can be created anywhere
-
-#. Activate the virtual environment:
-
-  .. code-block:: bash
-
-      $ source act/bin/activate
-
-Conda Setup
-^^^^^^^^^^^
-
-#. Create a virtual environment:
-
-  .. code-block:: bash
-
-    $ conda create -n aloha python=3.8.10
-
-#. Activate the virtual environment:
-
-  .. code-block:: bash
-
-    $ conda activate aloha
+   **ACT** is only supported with **Aloha 1.0**.
+   Ensure that you are using compatible software versions to avoid any issues during training or evaluation.
 
 Install Dependencies
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Install the necessary dependencies inside your containerized environment:
 
@@ -66,25 +30,16 @@ Install the necessary dependencies inside your containerized environment:
     $ pip install torch
     $ pip install torchvision
 
-Clone Repository
-================
-
-Clone ACT if using Aloha Stationary
+Clone ACT Repository
+--------------------
 
 .. code-block:: bash
 
     $ cd ~
     $ git clone https://github.com/Interbotix/act.git act_training_evaluation
 
-Clone ACT++ if using Aloha Mobile
-
-.. code-block:: bash
-
-    $ cd ~
-    $ git clone https://github.com/Interbotix/act_plus_plus.git act_training_evaluation
-
 Build and Install ACT Models
-============================
+----------------------------
 
 .. code-block:: bash
    :emphasize-lines: 4
@@ -107,15 +62,14 @@ Build and Install ACT Models
     ├── LICENSE
     └── README.md
 
-
-Navigate to the ``detr`` directory inside the repository and install the detr module whihc contains the model definitions using the below command:
+Navigate to the ``detr`` directory inside the repository and install the detr module which contains the model definitions using the below command:
 
 .. code-block:: bash
 
     $ cd /path/to/act/detr && pip install -e .
 
 Training
-========
+--------
 
 To start the training, follow the steps below:
 
@@ -165,7 +119,6 @@ To start the training, follow the steps below:
    - ``num_epochs``: Too many epochs lead to overfitting; too few epochs may not allow the model to learn.
    - ``lr``: Higher learning rate can lead to faster convergence but may overshoot the optima, while lower learning rate might lead to slower but stable optimization.
 
-
 .. tip::
 
   We recommend the following parameters:
@@ -191,7 +144,7 @@ To start the training, follow the steps below:
       - 1e-5
 
 Evaluation
-==========
+----------
 
 To evaluate a trained model, follow the steps below:
 

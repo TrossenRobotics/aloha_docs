@@ -2,9 +2,6 @@
 Hugging Face Guide
 ==================
 
-Uploading and Downloading Datasets on Hugging Face
-==================================================
-
 Creating an Account
 -------------------
 
@@ -13,8 +10,8 @@ If you don't already have an account, sign up for a new account on the `Hugging 
 Creating a New Dataset Repository
 ---------------------------------
 
-Web Interface
-^^^^^^^^^^^^^
+Web Interface (Create Repository)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Navigate to the `Hugging Face website <https://huggingface.co>`_.
 #. Log in to your account.
@@ -41,8 +38,8 @@ Uploading Your Dataset
 
 You have two primary methods to upload datasets: through the web interface or using the Python API.
 
-Web Interface
-^^^^^^^^^^^^^
+Web Interface (Upload Dataset)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Navigate to your dataset repository on the Hugging Face website.
 #. Click on the "Files and versions" tab.

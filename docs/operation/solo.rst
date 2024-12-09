@@ -1,6 +1,6 @@
-====================
-Stationary Operation
-====================
+==============
+Solo Operation
+==============
 
 Teleoperation
 =============
@@ -12,7 +12,7 @@ While ALOHA bringup is running in another terminal, open a new one and run the f
   $ source /opt/ros/humble/setup.bash # configure ROS system install environment
   $ source ~/interbotix_ws/install/setup.bash # configure ROS workspace environment
   $ cd ~/interbotix_ws/src/aloha/scripts/
-  $ python3 teleop.py -r aloha_stationary [-g]
+  $ python3 teleop.py -r aloha_solo [-g]
 
 The arms will lift themselves up into their "staged" configurations.
 Close both grippers on the leader arms to begin teleop.
@@ -23,9 +23,11 @@ Press :kbd:`Ctrl` + :kbd:`C` on the teleoperation terminal to stop teleoperation
 
 .. tip::
 
-  If the mechanical gravity compensation system is not preferred for your application, we also have a software solution introduced since 10/04/2024.
-
-  You can detach the pulley system from the leader arms and set the ``-g`` argument.
+  The Aloha Solo does not include a mechanical gravity compensation system.
+  Instead, it is recommended to use the software-based gravity compensation feature, as it is more convenient for recording episodes over extended periods.
+  However, for smoother and more precise control of the arms, you may choose to disable gravity compensation.
+  Be aware that this can put additional strain on the user's arms during operation.
+  You can set the ``-g`` argument.
   This will enable the :doc:`gravity compensation </operation/gravity_compensation>` feature for the leader robots when teleop starts.
 
 .. warning::

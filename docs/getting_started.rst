@@ -15,3 +15,4 @@ Getting Started
 
   ./getting_started/mobile.rst
   ./getting_started/stationary.rst
+  ./getting_started/solo.rst
