@@ -1,5 +1,5 @@
 Trossen Aloha UI
-======================
+================
 
 .. image:: ./images/aloha_gui.png
    :alt: ALOHA GUI
@@ -98,7 +98,7 @@ Application Features
    - Use the Quit button in the menu to gracefully exit the application.
 
 Configuration Management
-========================
+------------------------
 
 The **Trossen Aloha UI** application provides two primary configuration files for setup:
 
@@ -106,7 +106,7 @@ The **Trossen Aloha UI** application provides two primary configuration files fo
 #. Robot Configuration: Used to define arm and camera settings, motor limits, and safety parameters.
 
 Task Configuration
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Task-specific parameters are stored in the `tasks_config.yaml` file. Below is an example configuration:
 
@@ -154,7 +154,7 @@ To enable dataset uploads to the Hugging Face Hub, set up authentication using t
 `Hugging Face Authentication Guide <https://huggingface.co/docs/huggingface_hub/en/quick-start#authentication>`_
 
 Robot Configuration
---------------------
+^^^^^^^^^^^^^^^^^^^
 
 The robot's settings are defined in a YAML file (e.g., `aloha_solo.yaml`).
 Below is a simplified version of a robot configuration file:
@@ -222,12 +222,12 @@ Hardware Setup
 --------------
 
 For detailed instructions on the hardware setup, please refer to the official documentation:  
-`Aloha Hardware Setup Guide <https://docs.trossenrobotics.com/aloha_docs/>`_
+:ref:`getting_started/solo/software_setup:Post-Install Hardware Setup`.
 
-This guide provides comprehensive information, including:
+This guide provides comprehensive information, including:   
 
-- `Arm Configuration <https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#arm-symlink-setup>`_: Step-by-step guidance to assemble and connect the robotic arms.
-- `Camera Setup <https://docs.trossenrobotics.com/aloha_docs/getting_started/stationary/software_setup.html#camera-setup>`_: Using the Intel RealSense Viewer for calibrating and positioning cameras effectively.
+- :ref:`Arm Configuration <getting_started/solo/software_setup:Arm Symlink Setup>`: Step-by-step guidance to assemble and connect the robotic arms.
+- :ref:`Camera Setup <getting_started/solo/software_setup:Camera Setup>`: Using the Intel RealSense Viewer for calibrating and positioning cameras effectively.
 
 
 License
