@@ -426,7 +426,6 @@ Steps to Configure Aloha Solo
       --robot-path lerobot/configs/robot/aloha_solo.yaml
 
 #. Adjust the Policy and Environment:
-   
    Update the policy and environment names in the commands you use:
 
      - **Policy**: ``act_aloha_solo_real``
