@@ -222,12 +222,12 @@ Hardware Setup
 --------------
 
 For detailed instructions on the hardware setup, please refer to the official documentation:  
-`Aloha Hardware Setup Guide <https://docs.trossenrobotics.com/aloha_docs/2.0/getting_started/solo/software_setup.html#post-install-hardware-setup>`_
+:ref:`getting_started/solo/software_setup:Post-Install Hardware Setup`.
 
-This guide provides comprehensive information, including:
+This guide provides comprehensive information, including:   
 
-- `Arm Configuration <https://docs.trossenrobotics.com/aloha_docs/2.0/getting_started/stationary/software_setup.html#arm-symlink-setup>`_: Step-by-step guidance to assemble and connect the robotic arms.
-- `Camera Setup <https://docs.trossenrobotics.com/aloha_docs/2.0/getting_started/stationary/software_setup.html#camera-setup>`_: Using the Intel RealSense Viewer for calibrating and positioning cameras effectively.
+- :ref:`Arm Configuration <getting_started/solo/software_setup:Arm Symlink Setup>`: Step-by-step guidance to assemble and connect the robotic arms.
+- :ref:`Camera Setup <getting_started/solo/software_setup:Camera Setup>`: Using the Intel RealSense Viewer for calibrating and positioning cameras effectively.
 
 
 License

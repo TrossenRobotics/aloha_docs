@@ -58,8 +58,8 @@ To teleoperate your robot, follow these steps:
 
 #. Find the serial numbers of your robot's arms and cameras as described in the following documentation:
 
-   - Arm Symlink Setup: `Aloha Post Install Arm Setup <https://docs.trossenrobotics.com/aloha_docs/2.0/getting_started/stationary/software_setup.html#arm-symlink-setup>`_
-   - Camera Setup: `Aloha Post Install Camera Setup <https://docs.trossenrobotics.com/aloha_docs/2.0/getting_started/stationary/software_setup.html#camera-setup>`_
+   - Arm Symlink Setup: :ref:`Aloha Post Install Arm Setup <getting_started/stationary/software_setup:Arm Symlink Setup>`
+   - Camera Setup: :ref:`Aloha Post Install Camera Setup <getting_started/stationary/software_setup:Camera Setup>`
 
 #. Update the serial numbers in the configuration file: :file:`lerobot/common/configs/robot/aloha.yaml`
 
@@ -352,7 +352,7 @@ Datasets can also be downloaded from the Trossen Robotics Community on Hugging F
 These datasets can be used with your preferred network architectures.
 Instructions for downloading and using these datasets can be found at the following link:
 
-`Dataset Download and Upload Instructions <https://docs.trossenrobotics.com/aloha_docs/2.0/training/hugging_face.html>`_
+:doc:`Dataset Download and Upload Instructions </training/hugging_face>`
 
 `Trossen Robotics Community <https://huggingface.co/TrossenRoboticsCommunity>`_
 
