@@ -9,7 +9,7 @@ leader_modes_left,the file path to the 'mode config' YAML file for the left lead
 leader_modes_right,the file path to the 'mode config' YAML file for the right leader arm.,LocalVar('FindPackageShare\(pkg= ``aloha``\) + 'config' + 'leader_modes_right.yaml''),
 follower_modes_left,the file path to the 'mode config' YAML file for the left follower arm.,LocalVar('FindPackageShare\(pkg= ``aloha``\) + 'config' + 'follower_modes_left.yaml''),
 follower_modes_right,the file path to the 'mode config' YAML file for the right follower arm.,LocalVar('FindPackageShare\(pkg= ``aloha``\) + 'config' + 'follower_modes_right.yaml''),
-launch_leaders,"if ``true``, launches both the leader and follower arms; if ``false, just the followers are launched.",``true``,"``true``, ``false``"
+launch_leaders,"if ``true``, launches both the leader and follower arms; if ``false``, just the followers are launched.",``true``,"``true``, ``false``"
 use_cameras,"if ``true``, launches the camera drivers.",``true``,"``true``, ``false``"
 cam_high_name,,``cam_high``,
 cam_low_name,,``cam_low``,
