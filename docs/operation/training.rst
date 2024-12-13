@@ -288,7 +288,7 @@ Build and Install ACT++ Models
     ├── LICENSE
     └── README.md
 
-Navigate to the ``act_plus_plus`` directory inside the repository and install the ``detr`` module, which contains the model definitions, by running the following command:
+Navigate to the ``act_plus_plus`` directory inside the repository and install the required modules for model definitions by running the following command:
 
 .. code-block:: bash
 
