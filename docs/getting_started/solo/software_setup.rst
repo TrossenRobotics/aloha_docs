@@ -161,14 +161,14 @@ To set these up, do the following:
 
     $ ls /dev | grep ttyDXL_
 
-   For a left orientation, you should see:
+  For a left orientation, you should see:
 
   .. code-block:: bash
 
     ttyDXL_leader_left
     ttyDXL_follower_left
 
-   For a right orientation, you should see:
+  For a right orientation, you should see:
 
   .. code-block:: bash
 
