@@ -16,7 +16,7 @@ To bring up an ALOHA robot configuration (Mobile, Solo, or Stationary), you need
 .. important::
 
   The robot argument is required to specify which ALOHA configuration to bring up.
-  Choose the value that matches your setup, such as ``aloha_static``, ``aloha_solo``, or ``aloha_mobile``.
+  Choose the value that matches your setup, such as ``aloha_stationary``, ``aloha_solo``, or ``aloha_mobile``.
 
 .. warning::
 
@@ -45,7 +45,7 @@ While the ALOHA bringup is running in another terminal, open a new one and run t
 .. important::
 
   The robot argument is required to specify which ALOHA configuration to bring up.
-  Choose the value that matches your setup, such as ``aloha_static``, ``aloha_solo``, or ``aloha_mobile``.
+  Choose the value that matches your setup, such as ``aloha_stationary``, ``aloha_solo``, or ``aloha_mobile``.
 
 The follower arms will move to their "staged" configurations and then place themselves into their sleep configurations.
 

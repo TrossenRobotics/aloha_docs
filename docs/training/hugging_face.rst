@@ -71,7 +71,7 @@ You can use the following Python script to upload your dataset:
 
     api.upload_folder(
         folder_path="~/aloha_data/aloha_stationary_block_pickup",
-        repo_id="TrossenRoboticsCommunity/aloha_static_datasets",
+        repo_id="TrossenRoboticsCommunity/aloha_stationary_datasets",
         repo_type="dataset",
     )
 
