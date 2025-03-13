@@ -172,7 +172,7 @@ To visualize a single dataset episode from the Hugging Face Hub:
 .. code-block:: bash
 
    $ python lerobot/scripts/visualize_dataset.py \
-      --repo-id ${HF_USER}/aloha_static_block_pickup \
+      --repo-id ${HF_USER}/aloha_stationary_block_pickup \
       --episode-index 0
 
 To visualize a single dataset episode stored locally:
@@ -180,7 +180,7 @@ To visualize a single dataset episode stored locally:
 .. code-block:: bash
 
    $ DATA_DIR='./my_local_data_dir' python lerobot/scripts/visualize_dataset.py \
-      --repo-id TrossenRoboticsCommunity/aloha_static_block_pickup \
+      --repo-id TrossenRoboticsCommunity/aloha_stationary_block_pickup \
       --episode-index 0
 
 Replay Recorded Episodes
