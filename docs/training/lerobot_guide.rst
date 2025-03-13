@@ -29,12 +29,14 @@ Environment Setup
 Clone Repository
 ================
 
-Clone the LeRobot repository:
+Clone the LeRobot repository and check out the commit compatible with this guide:
 
 .. code-block:: bash
 
    $ cd ~
    $ git clone https://github.com/huggingface/lerobot.git
+   $ cd lerobot
+   $ git checkout 96c7052777aca85d4e55dfba8f81586103ba8f61
 
 Build and Install LeRobot Models
 ================================
@@ -43,13 +45,13 @@ Build and Install LeRobot Models
 
    .. code-block:: bash
 
-      $ cd lerobot && pip install -e .
+      $ cd ~/lerobot && pip install -e .
 
 #. As we are working with real robots we will require to install dependencies for :guilabel:`intelrealsense` camera's and :guilabel:`dynamixel` servos.
 
    .. code-block:: bash
 
-      $ cd lerobot && pip install .[intelrealsense,dynamixel]
+      $ cd ~/lerobot && pip install .[intelrealsense,dynamixel]
 
 Teleoperation
 =============
