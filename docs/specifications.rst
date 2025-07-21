@@ -273,41 +273,42 @@ Mobile Specifications
   :align: center
 
   * - Dimensions
-    - Coming Soon
+    - See drawing for minimum and maximum dimensions
   * - Weight
-    - Coming Soon
+    - 122 kg
   * - Maximum Speed
-    - 1m/s | 3.6k/hr
-  * - Maximum Reach
-    - Coming Soon
+    - 1m/s
   * - Leader Arms
     - WidowX 250 S - Aloha Version
   * - Follower Arms
     - ViperX 300 S - Aloha Version
   * - Camera
     - 3x USB Camera
-  * - Chassis
-    - Modular
   * - Stability
     - Adjustable Training Wheels
-  * - Vertical Adjustability
-    - Infinite
-  * - Horizontal Adjustability
-    - Infinite
-  * - Computer
-    - Coming Soon
   * - USB Hubs
     - Yes 2X
   * - Gravity Compensators
-    - No
+    - Software-enabled gravity compensation
   * - Mobile Power Station Battery
     - Yes - 1.4kWh
 
 Mobile Technical Drawing
 ------------------------
 
-Coming Soon!
+Mobile Minimum Dimensions
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. image:: /images/aloha_mobile_min_drawing.png
+  :align: center
+  :alt: Aloha Mobile Minimum Dimensions Drawing
+
+Mobile Maximum Dimensions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: /images/aloha_mobile_max_drawing.png
+  :align: center
+  :alt: Aloha Mobile Maximum Dimensions Drawing
 
 Aloha Solo
 ==========
