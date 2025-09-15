@@ -2,6 +2,11 @@
 ALOHA
 =====
 
+.. attention::
+
+  This documentation is for the Interbotix ALOHA kits sold by Trossen Robotics and related software.
+  If you are looking for documentation on the Trossen AI Arms and related software and integrations, please visit the `Trossen AI Arms Documentation <https://docs.trossenrobotics.com/trossen_arm/main/index.html>`_.
+
 .. image:: images/header.png
   :align: center
   :width: 100%
@@ -15,7 +20,6 @@ What's Here
 * :doc:`training` - Comprehensive guides on training models using the ALOHA platforms, covering dataset preparation and policy evaluation.
 * :doc:`gui` - Guide to using the Trossen ALOHA GUI for intuitive control, data recording, and task management.
 * :doc:`troubleshooting` - Small guides to walk users through possible issues that may occur when using the ALOHA kits.
-
 
 Table of Contents
 =================
